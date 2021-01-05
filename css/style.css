@@ -1,0 +1,75 @@
+body{
+  background: #f4f4f4;
+}
+
+.jumbotron{
+  background: url("../images/5.jpeg") center center no-repeat;
+  background-size: cover;
+}
+
+.jumbotron .container{
+  color: #fff;
+  padding:100px 60px 0 60px;
+  min-height: 500px;
+}
+hr {
+    border: 0.5px white solid;
+}
+
+.blockquote{
+  background: #d0d0d0;
+  padding: 50px 0 50px 0;
+  text-align: center;
+}
+
+.blocks{
+  text-align: center;
+  margin-top: 30px;
+  padding-bottom: 100px;
+}
+.boxes .row{
+  margin:100px 0 100px 0;
+}
+.righ{
+  text-align: right;
+}
+.ico{
+  font-size:7rem;
+  text-align: center;
+  color: #08f;
+}
+.newsletter{
+  background: url("../images/8.jpeg") center center no-repeat;
+  background-size: cover;
+  margin: 0;
+  padding:50px 0 50px 0;
+  color:#fff;
+}
+.newsletter h1{
+  margin-top: 150px;
+}
+.subfoot{
+  padding: 40px 0;
+  background:#0066ff;
+  color:#fff;
+}
+.subfoot .row{
+  padding:20px;
+}
+.subfoot .col-8{
+  border-right: 1px white solid;
+}
+.subfoot .col-4{
+  text-align: center;
+}
+.subfoot a{
+  color:#fff;
+}
+.footer p{
+  text-align: center;
+  font-weight: bold;
+  padding:20px;
+  background: #0088ff;
+  color:#fff;
+  margin-bottom:0;
+}
