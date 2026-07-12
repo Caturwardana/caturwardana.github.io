@@ -108,8 +108,9 @@ function renderProject(project) {
                     };
                     const icon = iconMap[item.type] || iconMap['other'];
                     const resourceUrl = item.url.startsWith('assets/') ? `../${item.url}` : item.url;
+                    const isLocal = item.url.startsWith('assets/');
                     return `
-                    <a href="${resourceUrl}" target="_blank" class="resource-item">
+                    <a href="${isLocal ? 'javascript:void(0)' : resourceUrl}" ${isLocal ? `onclick="openFileViewer('${resourceUrl}')"` : 'target="_blank"'} class="resource-item ${isLocal ? 'local-file' : ''}">
                         <div class="resource-icon"><i class="${icon}"></i></div>
                         <div class="resource-info">
                             <span class="resource-type">${item.type.charAt(0).toUpperCase() + item.type.slice(1)}</span>
@@ -256,6 +257,59 @@ function closeLightbox() {
     const lightbox = document.getElementById('lightbox');
     lightbox.classList.remove('active');
     document.body.style.overflow = '';
+}
+
+function openFileViewer(url) {
+    const ext = url.split('.').pop().toLowerCase();
+    const imageExts = ['jpg', 'jpeg', 'png', 'gif', 'webp', 'svg'];
+    const isImage = imageExts.includes(ext);
+    const isPdf = ext === 'pdf';
+
+    let viewer = document.getElementById('file-viewer');
+    if (!viewer) {
+        viewer = document.createElement('div');
+        viewer.className = 'file-viewer';
+        viewer.id = 'file-viewer';
+        viewer.innerHTML = `
+            <span class="close" onclick="closeFileViewer()">&times;</span>
+            <div id="file-viewer-body" class="file-viewer-content" style="display:flex;flex-direction:column;align-items:center;justify-content:center;"></div>
+        `;
+        document.body.appendChild(viewer);
+        viewer.addEventListener('click', function(e) {
+            if (e.target === viewer) closeFileViewer();
+        });
+        document.addEventListener('keydown', function(e) {
+            if (!viewer.classList.contains('active')) return;
+            if (e.key === 'Escape') closeFileViewer();
+        });
+    }
+
+    const body = document.getElementById('file-viewer-body');
+
+    if (isImage) {
+        body.innerHTML = `<img src="${url}" alt="File Viewer" class="file-viewer-img" onerror="this.parentElement.innerHTML='<div class=error><i class=\\'fas fa-exclamation-circle\\'></i><p>Failed to load image</p></div>'">`;
+    } else if (isPdf) {
+        body.innerHTML = `<iframe src="${url}" class="file-viewer-pdf" onerror="this.parentElement.innerHTML='<div class=error><i class=\\'fas fa-exclamation-circle\\'></i><p>Failed to load PDF</p></div>'"></iframe>`;
+    } else {
+        body.innerHTML = `
+            <div class="error">
+                <i class="fas fa-exclamation-circle"></i>
+                <p>Cannot preview this file type.</p>
+                <a href="${url}" target="_blank" class="download-link"><i class="fas fa-download"></i> Download File</a>
+            </div>
+        `;
+    }
+
+    viewer.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeFileViewer() {
+    const viewer = document.getElementById('file-viewer');
+    if (viewer) {
+        viewer.classList.remove('active');
+        document.body.style.overflow = '';
+    }
 }
 
 function navigateLightbox(direction) {
