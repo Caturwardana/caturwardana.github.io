@@ -18,7 +18,7 @@ Personal portfolio website showcasing engineering projects, professional experie
 - **Education** - Academic background (UGM, SMK 2 Yogyakarta)
 - **Projects** - Filterable project gallery with detail pages
 - **Experience** - Timeline of professional experience
-- **Contact** - EmailJS-powered contact form
+- **Contact** - Formspree-powered contact form
 
 ## Project Detail Page
 
@@ -40,7 +40,7 @@ Each project has a dedicated detail page (`project-detail.html?id={slug}`) featu
 - Vanilla Tilt.js (3D tilt effect)
 - ScrollReveal (scroll animations)
 - Isotope (project filtering)
-- EmailJS (contact form)
+- Formspree (contact form)
 - Font Awesome 5 (icons)
 
 ## File Structure
@@ -217,3 +217,12 @@ Edit `skills.json`:
 ## License
 
 This portfolio is for personal use. Design template by [LifeCodes](https://github.com/life-code).
+
+## Credits
+
+Special thanks to [Jigar Sable](https://github.com/jigar-sable) for the original [Portfolio-Website](https://github.com/jigar-sable/Portfolio-Website) template. 
+
+The template has been significantly modified to support:
+- **Project detail pages** with dynamic data loading from JSON, YouTube video embeds, image gallery with lightbox, news/media links, and research resources
+- **Custom styling** and content tailored for a Mechanical Design & Analysis Engineer portfolio
+- **Additional pages** including projects listing, project detail, and experience detail pages
