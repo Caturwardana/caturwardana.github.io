@@ -1,0 +1,113 @@
+sertifikat : assets\images\projects\kandang-filter\IDD000075957_Kandang Hewan Percobaan dengan Ventilasi Individu.pdf
+
+deskripsi alat . Alat yang kamu jelaskan adalah Individually Ventilated Cage (IVC) atau dalam bahasa Indonesia disebut Kandang Hewan Percobaan dengan Ventilasi Individual.
+
+Gambaran Singkat
+5
+
+IVC merupakan sistem kandang khusus untuk hewan laboratorium (tikus, mencit, hamster, dll.) yang setiap kandangnya memiliki aliran udara bersih sendiri, sehingga antar kandang tidak saling mencemari.
+
+Berbeda dengan kandang biasa yang udara di dalam rak bercampur, pada IVC setiap kandang mendapatkan suplai udara yang telah disaring menggunakan HEPA Filter.
+
+Fungsi Utama
+Melindungi hewan dari kontaminasi
+Bakteri
+Virus
+Jamur
+Debu
+Mikroorganisme lainnya
+Mencegah penularan penyakit antar kandang
+Menjaga hasil penelitian tetap valid
+Karena kondisi kesehatan hewan lebih konsisten.
+Melindungi peneliti
+Sistem ventilasi juga mengurangi penyebaran alergen, bau, maupun patogen dari hewan ke ruangan laboratorium.
+Cara Kerja
+
+Secara sederhana aliran udaranya seperti ini:
+
+AHU / Blower
+       │
+       ▼
+HEPA Filter
+       │
+       ▼
+Manifold Distribusi
+       │
+ ┌─────┼─────┐
+ ▼     ▼     ▼
+Cage1 Cage2 Cage3
+ │      │      │
+ ▼      ▼      ▼
+Udara keluar
+       │
+HEPA Exhaust Filter
+       │
+      Buang
+
+Setiap kandang memiliki:
+
+inlet udara bersih
+outlet udara kotor
+
+Sehingga udara antar kandang tidak bercampur.
+
+Komponen Utama
+Rak IVC
+Kandang individual
+HEPA Filter Supply
+HEPA Filter Exhaust
+Air Handling Unit (AHU)
+Blower
+Manifold distribusi udara
+Differential Pressure Sensor
+Pre-filter
+Lampu UV (opsional)
+Monitoring tekanan dan airflow
+Kenapa memakai HEPA Filter?
+
+HEPA mampu menyaring sekitar 99,97% partikel berukuran 0,3 mikron, sehingga:
+
+bakteri tertahan
+spora jamur tertahan
+debu tertahan
+sebagian besar aerosol biologis tertahan
+Mengapa diperlukan pada penelitian?
+
+Misalnya penelitian obat diabetes.
+
+Jika seekor tikus ternyata telah terinfeksi bakteri:
+
+kadar gula berubah
+sistem imun berubah
+metabolisme berubah
+
+Akibatnya peneliti bisa salah menyimpulkan bahwa obat gagal atau justru berhasil, padahal penyebabnya adalah infeksi.
+
+Karena itu laboratorium menggunakan IVC agar kondisi seluruh hewan tetap seragam.
+
+Keunggulan
+
+✅ Meminimalkan infeksi silang (cross contamination)
+
+✅ Menjaga status SPF (Specific Pathogen Free)
+
+✅ Mengurangi bau kandang
+
+✅ Mengurangi paparan alergen kepada operator
+
+✅ Meningkatkan reproduksibilitas penelitian
+
+Aplikasi
+
+IVC banyak digunakan pada:
+
+Laboratorium farmasi
+Penelitian vaksin
+Penelitian biomedis
+Penelitian genetika
+Fakultas kedokteran
+Balai penelitian hewan
+Industri bioteknologi
+Jika ini akan menjadi deskripsi proyek atau portofolio, kamu bisa menuliskannya seperti berikut:
+
+Kandang Hewan Percobaan dengan Ventilasi Individual (Individually Ventilated Cage/IVC) merupakan sistem pemeliharaan hewan laboratorium yang dilengkapi ventilasi udara terpisah pada setiap kandang. Udara bersih disuplai melalui sistem Air Handling Unit (AHU) dan disaring menggunakan HEPA filter sebelum didistribusikan ke masing-masing kandang. Sistem ini menjaga hewan tetap bebas dari kontaminasi mikroorganisme, mencegah infeksi silang antar kandang, serta memastikan kondisi lingkungan yang stabil sehingga menghasilkan data penelitian yang akurat, konsisten, dan dapat dipertanggungjawabkan. IVC banyak digunakan pada fasilitas penelitian biomedis, farmasi, dan laboratorium yang memelihara hewan dengan standar Specific Pathogen Free (SPF).

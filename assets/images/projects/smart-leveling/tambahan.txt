@@ -1,0 +1,49 @@
+Video Penjelasan alat PKM KI SMART LEVELING
+https://youtu.be/5NCpB_3Ww_8
+
+link berita
+https://ugm.ac.id/id/berita/21610-mahasiswa-ugm-ciptakan-robot-pengukur-kemiringan-lantai/
+https://www.liputan6.com/regional/read/4649234/smart-leveling-robot-canggih-pengukur-kemiringan-lantai-buatan-ugm
+https://edukasi.kompas.com/read/2021/08/31/145907871/robot-pintar-karya-mahasiswa-ugm-mampu-ukur-kemiringan-lantai
+https://edukasi.okezone.com/read/2021/09/02/623/2464872/keren-mahasiswa-ugm-ciptakan-robot-pengukur-kemiringan-lantai
+https://edukasi.sindonews.com/read/529310/211/inovasi-keren-mahasiswa-ugm-buat-robot-pengukur-kemiringan-lantai-1630552172
+
+
+
+poster PATH
+assets\images\projects\smart-leveling\NaufalRashadAryaputra_UniversitasGadjahMada_PKM-KI.jpg
+
+
+LINK jurnal
+https://www.researchgate.net/publication/369912763_Smart_Leveling_Pendeteksi_Kemiringan_Permukaan_Lantai_Keramik_Berbasis_Sensor_Inertia_Measurement_Unit_dengan_Mechanum-Driven_Technology
+LINK PUBLIKASI POSTER
+https://www.researchgate.net/publication/369912873_Naufal_Rashad_Aryaputra_Poster_Smart_Leveling_for_PIMNAS_34_PKM-KI
+
+setifikat HKI
+assets/images/projects/smart-leveling/sertifikat ALAT PENDETEKSI KERATAAN LANTAI PINTAR.pdf
+
+sertifikat PENDAnAAN PKM PIMNAS
+assets\images\projects\smart-leveling\PKM KI PENDANAAN SMART LEVELING.jpg
+
+SERTIFIKAT ANGGOTA (DALAM PROJECT INI)
+assets\images\projects\smart-leveling\PKM KI SERTIFIKAT ANGGOTA SMART LEVELING.jpg
+
+
+
+Tim mahasiswa dari Sekolah Vokasi UGM berhasil menciptakan robot pintar pemindai dan pengukur kemiringan permukaan lantai dengan teknologi sensor inersia dan mechanum-driven wheel yang mampu bergerak secara 3-DOF atau Degree of Freedom. Robot yang dinamakan Smart Leveling dapat digunakan untuk mempersingkat waktu pekerjaan pengecekan kerataan lantai keramik tanpa mengurangi kualitas pekerjaan sehingga mengurangi risiko terjadinya kerugian pemilik proyek maupun pelaksana proyek.
+
+“Jika Smart Leveling digunakan dalam setiap proyek konstruksi terutama bangunan gedung akan menghemat biaya yang akan dikeluarkan oleh pemilik proyek. Selain itu, juga dapat meminimalkan terjadinya kerugian dalam pelaksanaan proyek,”kata  ketua tim, Rashad Aryaputra, Senin (30/8).
+
+Menurut Naufal, robot canggih ini merupakan salah satu produk unggulan dari Sekolah Vokasi UGM yang diikutsertakan dalam kompetisi Program Kreativitas Mahasiswa – Karya Inovatif (PKM-KI) dan mendapat pendanaan riset dari Dirjen Kemendikbud Ristek RI. Namun demikian, Naufal berharap produk ini dapat menjawab tantangan dalam sektor pembangunan infrastruktur dan dunia teknik sipil yang dipadukan dengan orientasi robotika dan IoT. “Dalam dunia konstruksi, manajemen waktu proyek menjadi suatu hal penting. Potensi pemborosan dan kegagalan proyek akan semakin besar jika tidak dilakukan manajemen waktu,” paparnya.
+
+Selain itu, keunikan dari produk ini adalah kemampuan untuk bergerak secara 3-DOF (Degree of Freedom) yang mampu melakukan gerak translasi maju-mundur (translasi sumbu x), geser kanan dan kiri (translasi sumbu y), serta bergerak secara diagonal yang memungkinkan kendali penuh untuk bergerak bebas untuk mendeteksi kemiringan permukaan jalan, lantai, dan bangunan lainnya.
+
+Diceritakan Naufal dalam perancangan robot ini dibagi menjadi tiga bagian yaitu mekanis, elektronis dan perancangan perangkat lunak yang akan digunakan pada perangkat. Proses desain mekanis menggunakan aplikasi solidworks yang diikuti oleh perancangan desain elektronis dengan software proteus dan fusion 360.
+
+Selain itu, untuk pemrograman menggunakan arduino IDE. Lalu, selanjutnya proses perakitan dilakukan dengan pemasangan rangka utama, dan instalasi roda mechanum pada robot. “Dilanjutkan dengan instalasi komponen elektronik dan mikrokontroler sebagai chip kendali yang diprogram dan dikendalikan lewat remote control dengan bantuan sinyal transmisi yang ditangkap oleh receiver,” urainya.
+
+Proses pembuatan dan perakitan robot dilakukan dengan menggunakan bahan produksi lokal dengan estimasi biaya sekitar Rp9 juta. Namun, dengan fungsi alat dan keandalan yang berstandar industri nantinya dapat membantu dunia industri sipil, pembangunan jalan raya, konstruksi jembatan, dan konstruksi bangunan.
+
+“Setidaknya bisa memudahkan pekerjaan dan meminimalkan biaya kesalahan,” katanya.
+
+Dalam proses pengembangan produk karya inovatif ini, Naufal didukung oleh keempat rekannya yakni Aditya Putra Yudhananta dari Prodi Teknologi Rekayasa Instrumentasi dan Kontrol, Catur Wardana dari Prodi Teknologi Rekayasa Mesin, Ciptaningtyas Vindy Prabawati  dari Prodi Teknik Pengelolaan dan Pemeliharaan Infrastruktur Sipil, dan Aisyah Adiningsih dari Prodi Teknik Pengelolaan dan Pemeliharaan Infrastruktur Sipil.

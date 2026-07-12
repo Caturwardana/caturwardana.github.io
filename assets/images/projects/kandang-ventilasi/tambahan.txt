@@ -1,0 +1,238 @@
+sertifikat HKI
+katup pada kandang
+assets\images\projects\kandang-ventilasi\2. Sertifikat DI_Katup Saluran Udara Pengunci_Setyawan Bekti.pdf
+
+kandang (1 cage)
+assets/images/projects/kandang-ventilasi/IDD000074886_Kandang Hewan Percobaan Dilengkapi Filter Udara.pdf
+
+
+
+1. Nama 1 kandangnya
+
+Biasanya disebut:
+
+IVC Cage ✅ (istilah paling umum)
+Individually Ventilated Cage
+IVC Mouse Cage (untuk mencit)
+IVC Rat Cage (untuk tikus)
+Ventilated Cage
+Micro-Isolator Cage (pada beberapa merek, konsepnya mirip tetapi tidak selalu aktif berventilasi)
+
+Jadi kalau membeli satu unit, vendor biasanya menulis:
+
+1 Unit IVC Cage
+
+atau
+
+IVC Cage Assembly
+
+2. Bagian-bagian 1 IVC Cage
+
+Satu kandang biasanya terdiri dari:
+
++----------------------------+
+|   Tutup IVC                |
+| +------------------------+ |
+| | HEPA Filter            | |
+| | Supply Port            | |
+| | Exhaust Port           | |
+| +------------------------+ |
++----------------------------+
+
+      ▲
+      │
+
++----------------------------+
+|                            |
+|   Body Cage (PC/PSU)       |
+|                            |
+| Bedding                    |
+| Makanan                    |
+| Minum                      |
+| Hewan                      |
+|                            |
++----------------------------+
+
+Komponennya:
+
+Cage body (bak kandang)
+IVC lid (tutup ventilasi)
+HEPA filter
+Air inlet
+Air outlet
+Water bottle atau automatic watering
+Wire lid / tempat pakan
+3. Cara kerja satu cage
+
+Misalkan blower menghasilkan udara bersih.
+
+Langkah 1
+
+Udara dari AHU masuk ke manifold.
+
+Blower
+   │
+   ▼
+HEPA
+   │
+   ▼
+Rack
+Langkah 2
+
+Di belakang rack terdapat konektor.
+
+Saat cage didorong masuk,
+
+Rack
+   ○  Supply
+   ○  Exhaust
+
+     ||
+     ||
+     \/
+
+Cage
+
+port supply dan exhaust otomatis menempel.
+
+Tidak perlu selang satu-satu.
+
+Langkah 3
+
+Udara masuk ke cage.
+
+     Supply
+
+        ▼
+
++----------------------+
+|                      |
+|     Mencit           |
+|                      |
+|                      |
++----------------------+
+
+        ▼
+
+     Exhaust
+
+Udara masuk dengan debit kecil.
+
+Biasanya sekitar 40–75 pergantian udara per jam (Air Changes per Hour/ACH), tergantung spesifikasi sistem.
+
+Langkah 4
+
+Udara keluar.
+
+Udara membawa:
+
+CO₂
+amonia dari urin
+bau
+debu bedding
+mikroorganisme
+
+lalu masuk ke exhaust manifold.
+
+Cage
+
+   ▼
+
+Exhaust
+
+   ▼
+
+HEPA
+
+   ▼
+
+Keluar
+4. Yang membuat "Individual"
+
+Yang dimaksud Individually Ventilated bukan berarti tiap cage punya blower sendiri.
+
+Melainkan:
+
+AHU
+ │
+ ├── Cage 1
+ ├── Cage 2
+ ├── Cage 3
+ ├── Cage 4
+ └── Cage 5
+
+Semua memakai blower yang sama.
+
+Tetapi...
+
+setiap cage memiliki jalur udara sendiri-sendiri.
+
+Udara dari Cage 1 tidak melewati Cage 2.
+
+Itulah yang disebut ventilasi individual.
+
+5. Di dalam cage ada kipas?
+
+Tidak.
+
+Biasanya tidak ada fan di dalam cage.
+
+Aliran udara terjadi karena:
+
+Blower
+
+↓
+
+Tekanan positif
+
+↓
+
+Supply Port
+
+↓
+
+Dalam Cage
+
+↓
+
+Exhaust Port
+
+↓
+
+Tekanan negatif
+
+Fan hanya berada di AHU atau blower unit.
+
+6. Mekanisme di tutup cage
+
+Di dalam tutup IVC biasanya terdapat:
+
+ _______________________
+
+ Supply Port
+
+     ↓
+
+ HEPA Filter
+
+     ↓
+
+ Diffuser
+
+──────────────
+
+ Ruang Hewan
+
+──────────────
+
+ Exhaust Slot
+
+     ↓
+
+ HEPA
+
+     ↓
+
+ Exhaust Port
+
+Diffuser berfungsi menyebarkan udara agar tidak langsung mengenai hewan (tidak seperti kena AC tepat di wajah 😄), sehingga aliran udara lebih merata dan nyaman.

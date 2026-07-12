@@ -1,0 +1,477 @@
+[
+  {
+    "id": "digital-artificial-insemination-gun",
+    "name": "Digital Artificial Insemination Gun (IB-G2)",
+    "category": "mechanical",
+    "date": "Feb 2022 - Nov 2022",
+    "client": "Universitas Gadjah Mada (UGM)",
+    "thumbnail": "IB-GUN/thumb.jpg",
+    "shortDesc": "Device that detects heat cycles and pregnancy in female cows, sheep, and goats, improving the success of artificial insemination.",
+    "fullDesc": "This device can detect heat cycles and pregnancy in female cows, sheep, and goats, improving the success of artificial insemination. Through a grant program in 2022, the second-generation IB-Gun (IB-G2) was developed with a high-resolution camera and onboard color LCD for accurate semen placement. It also includes a temperature sensor to monitor the reproductive health of livestock.",
+    "specs": [
+      "High-resolution camera for accurate semen placement",
+      "Onboard color LCD display",
+      "Temperature sensor for reproductive health monitoring",
+      "Digital heat cycle detection",
+      "Pregnancy detection capability"
+    ],
+    "skills": ["Electrical Design", "CAD", "Embedded Systems", "Sensor Integration", "Product Design", "Prototyping"],
+    "images": [
+      "IB-GUN/thumb.jpg",
+      "IB-GUN/1.jpg",
+      "IB-GUN/2.jpg",
+      "IB-GUN/3.jpg",
+      "IB-GUN/4.jpg",
+      "IB-GUN/5.jpg",
+      "IB-GUN/6.jpg",
+      "IB-GUN/7.jpg",
+      "IB-GUN/8.jpg",
+      "IB-GUN/9.jpg",
+      "IB-GUN/10.jpg",
+      "IB-GUN/11.jpg"
+    ],
+    "resources": [
+      {
+        "title": "Sertifikat HKI - Alat Inseminasi Buatan Berbasis Digital",
+        "url": "IB-GUN/Sertifikat DI ALAT INSEMINASI BUATAN BERBASIS DIGITAL.pdf",
+        "type": "patent"
+      }
+    ]
+  },
+  {
+    "id": "super-sekip-ev3-evo",
+    "name": "Super Sekip EV-3 EVO",
+    "category": "automotive",
+    "date": "Dec 2021 - May 2022",
+    "client": "YACARANDA UGM",
+    "thumbnail": "ev3-evo/thumb.jpg",
+    "shortDesc": "Electric racing car for Formula Student built and developed by the Yacaranda UGM team.",
+    "fullDesc": "The Super Sekip EV-3 EVO is an electric racing car for Formula Student built and developed by the Yacaranda UGM team. This car is prepared to participate in the FESC IIMS Kemayoran 2022 competition. The vehicle features advanced powertrain systems, lightweight chassis design, and optimized battery management for maximum performance in energy-efficient racing.",
+    "specs": [
+      "Electric powertrain system",
+      "Lightweight chassis design",
+      "Optimized battery management",
+      "Aerodynamic body design",
+      "Formula Student FESC IIMS 2022"
+    ],
+    "skills": ["Mechanical Design", "Automotive Engineering", "Power Train Systems", "CAD/CAE", "Structural Analysis"],
+    "images": [
+      "ev3-evo/thumb.jpg",
+      "ev3-evo/1.jpg",
+      "ev3-evo/2.jpg"
+    ],
+    "news": [
+      {
+        "title": "UGM - Mobil Formula E Mahasiswa UGM Best Acceleration 2022",
+        "url": "https://ugm.ac.id/id/berita/22444-mobil-formula-e-mahasiswa-ugm-best-acceleration-2022/"
+      }
+    ],
+    "achievements": "Juara 1 Best Acceleration & Juara 2 Business Plan - FESC IIMS 2022"
+  },
+  {
+    "id": "yacaranda-et1",
+    "name": "Yacaranda ET-1",
+    "category": "automotive",
+    "date": "Oct 2020 - Nov 2021",
+    "client": "YACARANDA UGM",
+    "thumbnail": "et-1/thumb.jpg",
+    "shortDesc": "Urban Ethanol Racing Car built for Energy-Efficient Car Contest 2023.",
+    "fullDesc": "The Super Sekip ET-1 is an Urban Ethanol Racing Car built and developed by Yacaranda UGM. It is currently being prepared for the 'Energy-Efficient Car Contest 2023'. The vehicle utilizes ethanol as a sustainable fuel source, featuring optimized engine performance and aerodynamic design for maximum fuel efficiency.",
+    "specs": [
+      "Ethanol-powered engine",
+      "Urban racing car design",
+      "Energy-efficient powertrain",
+      "Aerodynamic optimization",
+      "KMHE 2023 competition ready"
+    ],
+    "skills": ["CAD", "Power Train", "Mechanical Design", "Automotive Engineering"],
+    "images": [
+      "et-1/thumb.jpg",
+      "et-1/1.jpg",
+      "et-1/2.jpg"
+    ],
+    "news": [
+      {
+        "title": "UGM - Tim Yacaranda SV UGM Meluncurkan Mobil Hemat Energi Super Sekip ET-1",
+        "url": "https://sv.ugm.ac.id/2021/12/21/tim-yacaranda-sv-ugm-meluncurkan-mobil-hemat-energi-super-sekip-et-1/"
+      }
+    ]
+  },
+  {
+    "id": "alat-pengering-batik",
+    "name": "Alat Pengering Batik (Batik Dryer)",
+    "category": "mechanical",
+    "date": "Feb 2021 - Sep 2021",
+    "client": "UMKM Sinar Abadi Batik Kulon Progo",
+    "thumbnail": "batik-dryer/thumb.jpg",
+    "shortDesc": "Drying chamber for batik fabric using water heat converted to hot air, centrally integrated and automatically controlled.",
+    "fullDesc": "The batik drying chamber is a specially designed room for drying batik fabric. It utilizes a system that converts water heat into hot air, which is then circulated inside the chamber. The average temperature inside the drying chamber reaches 42°C, ensuring quick and efficient drying of batik fabric. The system is centrally integrated and can be controlled automatically. This innovation aims to provide a solution for UMKM Sinar Abadi Batik, allowing them to shorten drying time, maintain production stability, and preserve the quality of the batik fabric.",
+    "poster": "batik-dryer/POSTER CaturWardana_UniversitasGadjahMada_PKM-PI.jpg",
+    "specs": [
+      "Water heat to hot air conversion system",
+      "Average temperature 42°C",
+      "Automatic temperature control",
+      "Centralized system integration",
+      "Preserves batik fabric quality"
+    ],
+    "skills": ["Mechanical Engineering", "Thermal Systems", "Automation", "Product Design"],
+    "images": [
+      "batik-dryer/thumb.jpg",
+      "batik-dryer/1.jpg",
+      "batik-dryer/2.jpg",
+      "batik-dryer/3.jpg",
+      "batik-dryer/4.jpg",
+      "batik-dryer/5.jpg",
+      "batik-dryer/6.jpg"
+    ],
+    "videos": [
+      {
+        "title": "Video Alat Pengering Batik",
+        "url": "https://youtu.be/K-MPJgf1Jgs"
+      },
+      {
+        "title": "Video Tatacara Kerja Alat Pengering Batik",
+        "url": "https://youtu.be/UlsXxDbNwiY"
+      },
+      {
+        "title": "Video Penjelasan Alat PKM PI & Testimonial Mitra",
+        "url": "https://youtu.be/qRzjm3ugzAw"
+      }
+    ],
+    "news": [
+      {
+        "title": "UGM - Tim PKM-PI UGM Ciptakan Alat Pengering Kain Batik Saat Cuaca Tak Menentu",
+        "url": "https://ugm.ac.id/id/berita/21575-tim-pkm-pi-ugm-ciptakan-alat-pengering-kain-batik-saat-cuaca-tak-menentu/"
+      },
+      {
+        "title": "Gudeg.net - Mahasiswa UGM Ciptakan Alat Pengering Kain Batik",
+        "url": "https://www.gudeg.net/read/19084/mahasiswa-ugm-ciptakan-alat-pengering-kain-batik.html"
+      },
+      {
+        "title": "JurnalPost - 5 Mahasiswa UGM Ciptakan Solusi Tepat Pengeringan Kain Batik",
+        "url": "https://jurnalpost.com/5-mahasiswa-ugm-ciptakan-solusi-tepat-pengeringan-kain-batik-dikala-cuaca-tidak-menentu/24709/"
+      },
+      {
+        "title": "IDN Times - Permudah Perajin, Mahasiswa UGM Bikin Pengering Kain Batik Otomatis",
+        "url": "https://jogja.idntimes.com/news/jogja/permudah-perajin-mahasiswa-ugm-bikin-pengering-kain-batik-otomatis-00-jq5qx-vw562t"
+      }
+    ],
+    "resources": [
+      {
+        "title": "Jurnal - Penerapan Alat Pengering Batik",
+        "url": "https://www.researchgate.net/publication/360001459_Penerapan_Alat_Pengering_Batik_dengan_Memanfaatkan_Kalor_Tungku_Pelorotan_guna_Meningkatkan_Efesiensi_Produksi_sebagai_Antisipasi_Cuaca_yang_Tidak_Menentu",
+        "type": "journal"
+      },
+      {
+        "title": "Poster Publication - ResearchGate",
+        "url": "https://www.researchgate.net/publication/360001463_Catur_Wardana_Poster_Ruangan_Pegering_Batik",
+        "type": "journal"
+      },
+      {
+        "title": "Sertifikat DI - Alat Pengering Batik (24 Maret 2022)",
+        "url": "batik-dryer/sertifikat DI ALAT PENGERING BATIK 24 Maret 2022.pdf",
+        "type": "patent"
+      },
+      {
+        "title": "Sertifikat Juara PIMNAS - PKM Pi Alat Pengering Batik",
+        "url": "batik-dryer/SERTIF PIMNAS.pdf",
+        "type": "documentation"
+      }
+    ],
+    "achievements": "3rd Place in PKM - Application of Science and Technology PIMNAS 34"
+  },
+  {
+    "id": "smart-leveling",
+    "name": "Smart Leveling",
+    "category": "robotics",
+    "date": "Feb 2021 - Sep 2021",
+    "client": "Universitas Gadjah Mada (UGM)",
+    "thumbnail": "smart-leveling/thumb.jpg",
+    "shortDesc": "Robot utilizing inertia sensors and mecanum-driven wheels to detect and measure floor surface inclination.",
+    "fullDesc": "Tim mahasiswa dari Sekolah Vokasi UGM berhasil menciptakan robot pintar pemindai dan pengukur kemiringan permukaan lantai dengan teknologi sensor inersia dan mechanum-driven wheel yang mampu bergerak secara 3-DOF atau Degree of Freedom. Robot yang dinamakan Smart Leveling dapat digunakan untuk mempersingkat waktu pekerjaan pengecekan kerataan lantai keramik tanpa mengurangi kualitas pekerjaan sehingga mengurangi risiko terjadinya kerugian pemilik proyek maupun pelaksana proyek. Robot canggih ini merupakan salah satu produk unggulan dari Sekolah Vokasi UGM yang diikutsertakan dalam kompetisi Program Kreativitas Mahasiswa – Karya Inovatif (PKM-KI) dan mendapat pendanaan riset dari Dirjen Kemendikbud Ristek RI.",
+    "poster": "smart-leveling/poster.jpg",
+    "specs": [
+      "Inertia Measurement Unit (IMU) sensors",
+      "Mecanum-driven wheels",
+      "3-DOF movement capability (translasi maju-mundur, geser kanan-kiri, diagonal)",
+      "Real-time surface flatness detection",
+      "Automated data analysis",
+      "Remote control operation",
+      "Biaya produksi sekitar Rp9 juta",
+      "Bahan produksi lokal"
+    ],
+    "skills": ["Electrical Design", "IoT", "CAD", "Robotics", "Sensor Integration", "SolidWorks", "Proteus", "Fusion 360", "Arduino IDE"],
+    "images": [
+      "smart-leveling/thumb.jpg",
+      "smart-leveling/1.jpg",
+      "smart-leveling/2.jpg",
+      "smart-leveling/3.jpg",
+      "smart-leveling/4.jpg",
+      "smart-leveling/5.jpg",
+      "smart-leveling/6.jpg"
+    ],
+    "videos": [
+      {
+        "title": "Video Penjelasan Alat PKM KI Smart Leveling",
+        "url": "https://youtu.be/5NCpB_3Ww_8"
+      }
+    ],
+    "news": [
+      {
+        "title": "UGM - Mahasiswa UGM Ciptakan Robot Pengukur Kemiringan Lantai",
+        "url": "https://ugm.ac.id/id/berita/21610-mahasiswa-ugm-ciptakan-robot-pengukur-kemiringan-lantai/"
+      },
+      {
+        "title": "Liputan6 - Smart Leveling Robot Canggih Pengukur Kemiringan Lantai Buatan UGM",
+        "url": "https://www.liputan6.com/regional/read/4649234/smart-leveling-robot-canggih-pengukur-kemiringan-lantai-buatan-ugm"
+      },
+      {
+        "title": "Kompas Edukasi - Robot Pintar Karya Mahasiswa UGM Mampu Ukur Kemiringan Lantai",
+        "url": "https://edukasi.kompas.com/read/2021/08/31/145907871/robot-pintar-karya-mahasiswa-ugm-mampu-ukur-kemiringan-lantai"
+      },
+      {
+        "title": "Okezone Edukasi - Keren Mahasiswa UGM Ciptakan Robot Pengukur Kemiringan Lantai",
+        "url": "https://edukasi.okezone.com/read/2021/09/02/623/2464872/keren-mahasiswa-ugm-ciptakan-robot-pengukur-kemiringan-lantai"
+      },
+      {
+        "title": "Sindonews - Inovasi Keren Mahasiswa UGM Buat Robot Pengukur Kemiringan Lantai",
+        "url": "https://edukasi.sindonews.com/read/529310/211/inovasi-keren-mahasiswa-ugm-buat-robot-pengukur-kemiringan-lantai-1630552172"
+      }
+    ],
+    "resources": [
+      {
+        "title": "Jurnal - Smart Leveling Pendeteksi Kemiringan Permukaan Lantai Keramik",
+        "url": "https://www.researchgate.net/publication/369912763_Smart_Leveling_Pendeteksi_Kemiringan_Permukaan_Lantai_Keramik_Berbasis_Sensor_Inertia_Measurement_Unit_dengan_Mechanum-Driven_Technology",
+        "type": "journal"
+      },
+      {
+        "title": "Poster Publication - PIMNAS 34 PKM-KI",
+        "url": "https://www.researchgate.net/publication/369912873_Naufal_Rashad_Aryaputra_Poster_Smart_Leveling_for_PIMNAS_34_PKM-KI",
+        "type": "journal"
+      },
+      {
+        "title": "Sertifikat HKI - Alat Pendeteksi Kerataan Lantai Pintar",
+        "url": "smart-leveling/sertifikat ALAT PENDETEKSI KERATAAN LANTAI PINTAR.pdf",
+        "type": "patent"
+      }
+    ],
+    "achievements": "PKM-KI Pendanaan Riset - Dirjen Kemendikbud Ristek RI"
+  },
+  {
+    "id": "kandang-hewan-ventilasi",
+    "name": "Kandang Hewan Percobaan dengan Ventilasi Individu (IVC Cage)",
+    "category": "mechanical",
+    "date": "Sep 2023 - Mar 2024",
+    "client": "Universitas Gadjah Mada (UGM)",
+    "thumbnail": "kandang-ventilasi/1.jpg",
+    "shortDesc": "Individually Ventilated Cage (IVC) - Sistem kandang khusus hewan laboratorium dengan ventilasi udara terpisah.",
+    "fullDesc": "Kandang Hewan Percobaan dengan Ventilasi Individual (Individually Ventilated Cage/IVC) merupakan sistem pemeliharaan hewan laboratorium yang dilengkapi ventilasi udara terpisah pada setiap kandang. Udara bersih disuplai melalui sistem Air Handling Unit (AHU) dan disaring menggunakan HEPA filter sebelum didistribusikan ke masing-masing kandang. Sistem ini menjaga hewan tetap bebas dari kontaminasi mikroorganisme, mencegah infeksi silang antar kandang, serta memastikan kondisi lingkungan yang stabil sehingga menghasilkan data penelitian yang akurat, konsisten, dan dapat dipertanggungjawabkan. IVC banyak digunakan pada fasilitas penelitian biomedis, farmasi, dan laboratorium yang memelihara hewan dengan standar Specific Pathogen Free (SPF).",
+    "specs": [
+      "Individual ventilation control per cage (IVC)",
+      "HEPA Filter supply dan exhaust",
+      "Air Handling Unit (AHU) dengan blower",
+      "40-75 Air Changes per Hour (ACH)",
+      "Supply port dan exhaust port otomatis",
+      "Cage body material: PC/PSU",
+      "Mencegah cross contamination antar kandang",
+      "Menjaga status SPF (Specific Pathogen Free)"
+    ],
+    "skills": ["CAD", "Mechanical Design", "HVAC Systems", "Product Design", "HEPA Filtration"],
+    "images": [
+      "kandang-ventilasi/1.jpg",
+      "kandang-ventilasi/2.jpg",
+      "kandang-ventilasi/3.jpg",
+      "kandang-ventilasi/4.jpg",
+      "kandang-ventilasi/5.jpg",
+      "kandang-ventilasi/6.jpg",
+      "kandang-ventilasi/7.jpg",
+      "kandang-ventilasi/8.jpg",
+      "kandang-ventilasi/9.jpg",
+      "kandang-ventilasi/10.jpg",
+      "kandang-ventilasi/11.jpg",
+      "kandang-ventilasi/12.jpg"
+    ],
+    "resources": [
+      {
+        "title": "Sertifikat DI - Katup Saluran Udara Pengunci",
+        "url": "kandang-ventilasi/2. Sertifikat DI_Katup Saluran Udara Pengunci_Setyawan Bekti.pdf",
+        "type": "patent"
+      },
+      {
+        "title": "Sertifikat DI - Kandang Hewan Percobaan Dilengkapi Filter Udara",
+        "url": "kandang-ventilasi/IDD000074886_Kandang Hewan Percobaan Dilengkapi Filter Udara.pdf",
+        "type": "patent"
+      }
+    ]
+  },
+  {
+    "id": "kandang-hewan-filter",
+    "name": "Kandang Hewan Percobaan Filter Udara (IVC Rack System)",
+    "category": "mechanical",
+    "date": "Sep 2023 - Feb 2024",
+    "client": "Universitas Gadjah Mada (UGM)",
+    "thumbnail": "kandang-filter/thumb.jpg",
+    "shortDesc": "IVC Rack System - Sistem rak kandang hewan laboratorium dengan HEPA filter untuk udara bersih.",
+    "fullDesc": "Individually Ventilated Cage (IVC) merupakan sistem kandang khusus untuk hewan laboratorium (tikus, mencit, hamster, dll.) yang setiap kandangnya memiliki aliran udara bersih sendiri, sehingga antar kandang tidak saling mencemari. Berbeda dengan kandang biasa yang udara di dalam rak bercampur, pada IVC setiap kandang mendapatkan suplai udara yang telah disaring menggunakan HEPA Filter. HEPA mampu menyaring sekitar 99,97% partikel berukuran 0,3 mikron, sehingga bakteri, spora jamur, debu, dan sebagian besar aerosol biologis tertahan.",
+    "specs": [
+      "HEPA Filter 99,97% efficiency @ 0.3 mikron",
+      "Rak IVC dengan manifold distribusi udara",
+      "Supply dan Exhaust HEPA Filter terpisah",
+      "Differential Pressure Sensor",
+      "Pre-filter dan UV Lamp (opsional)",
+      "Monitoring tekanan dan airflow",
+      "Mencegah infeksi silang (cross contamination)",
+      "Menjaga status SPF (Specific Pathogen Free)"
+    ],
+    "skills": ["CAD", "Mechanical Design", "Filtration Systems", "Product Design", "HVAC"],
+    "images": [
+      "kandang-filter/thumb.jpg",
+      "kandang-filter/1.jpg",
+      "kandang-filter/2.jpg",
+      "kandang-filter/3.jpg",
+      "kandang-filter/4.jpg",
+      "kandang-filter/5.jpg"
+    ],
+    "resources": [
+      {
+        "title": "Sertifikat DI - Kandang Hewan Percobaan dengan Ventilasi Individu",
+        "url": "kandang-filter/IDD000075957_Kandang Hewan Percobaan dengan Ventilasi Individu.pdf",
+        "type": "patent"
+      }
+    ]
+  },
+  {
+    "id": "mesin-dosing-irigasi",
+    "name": "Mesin Dosing dan Irigasi Otomatis",
+    "category": "automation",
+    "date": "Dec 2023 - Feb 2024",
+    "client": "Universitas Gadjah Mada (UGM)",
+    "thumbnail": "dosing-irigasi/thumb.jpg",
+    "shortDesc": "Automatic dosing and irrigation machine to control mixing of plant nutrients and watering times in greenhouse.",
+    "fullDesc": "Perangkat untuk mengontrol pencampuran nutrisi tanaman dan waktu penyiraman pada green house. Sistem ini menggunakan sensor untuk memantau kondisi tanaman dan mengatur dosis nutrisi serta jadwal irigasi secara otomatis, meningkatkan efisiensi dan produktivitas pertanian.",
+    "specs": [
+      "Automatic nutrient mixing control",
+      "Scheduled irrigation system",
+      "Sensor-based monitoring",
+      "Greenhouse automation",
+      "Optimized plant nutrition delivery"
+    ],
+    "skills": ["CAD", "Digital Manufacturing", "Automation", "IoT", "Programming"],
+    "images": [
+      "dosing-irigasi/thumb.jpg",
+      "dosing-irigasi/1.jpg",
+      "dosing-irigasi/2.jpg",
+      "dosing-irigasi/3.jpg",
+      "dosing-irigasi/4.jpg",
+      "dosing-irigasi/5.jpg",
+      "dosing-irigasi/6.jpg",
+      "dosing-irigasi/7.jpg",
+      "dosing-irigasi/8.jpg",
+      "dosing-irigasi/9.jpg",
+      "dosing-irigasi/10.jpg",
+      "dosing-irigasi/11.jpg"
+    ],
+    "resources": [
+      {
+        "title": "UGM - Detail Invensi Penelitian",
+        "url": "https://acadstaff.ugm.ac.id/karya_files/mesin-dosing-dan-irigasi-otomatis-dcfcd07e645d245babe887e5e2daa016",
+        "type": "website"
+      },
+      {
+        "title": "Sertifikat HKI - Mesin Dosing dan Irigasi Otomatis",
+        "url": "dosing-irigasi/IDD000071849_Mesin Dosing dan Irigasi Otomatis.pdf",
+        "type": "patent"
+      }
+    ]
+  },
+  {
+    "id": "pemindai-luka-portabel",
+    "name": "Pemindai Dimensi Luka Portabel",
+    "category": "medical",
+    "date": "Jul 2023 - Dec 2023",
+    "client": "Universitas Gadjah Mada (UGM)",
+    "thumbnail": "wound-scanner/thumb.jpg",
+    "shortDesc": "Portable wound scanner that measures area and depth of external wounds non-invasively.",
+    "fullDesc": "The portable wound scanner measures the area and depth of external wounds non-invasively, aiding medical staff in monitoring and treating patients with accurate wound assessments for better care planning. Perangkat ini menggunakan teknologi pencitraan untuk mengukur dimensi luka secara presisi tanpa kontak langsung, memungkinkan pemantauan perkembangan penyembuhan luka secara objektif.",
+    "specs": [
+      "Non-invasive wound measurement",
+      "Area and depth calculation",
+      "Portable design for bedside use",
+      "Accurate wound dimension imaging",
+      "Digital wound assessment records"
+    ],
+    "skills": ["CAD", "Digital Manufacturing", "Medical Device Design", "Embedded Systems", "Prototyping"],
+    "images": [
+      "wound-scanner/thumb.jpg",
+      "wound-scanner/1.jpg",
+      "wound-scanner/2.jpg",
+      "wound-scanner/3.jpg",
+      "wound-scanner/4.jpg",
+      "wound-scanner/5.jpg",
+      "wound-scanner/6.jpg"
+    ],
+    "videos": [
+      {
+        "title": "Video Penjelasan Alat Pemindai Luka Portabel",
+        "url": "https://www.youtube.com/watch?v=7l8qh7RGLJ8"
+      }
+    ],
+    "resources": [
+      {
+        "title": "UGM - Detail Invensi Pemindai Luka Portabel",
+        "url": "https://acadstaff.ugm.ac.id/karya_files/alat-pemindai-luka-portabel-dcfcd07e645d245babe887e5e2daa016",
+        "type": "website"
+      },
+      {
+        "title": "UGM - Program Pemindai Gambar untuk Segmentasi Luka",
+        "url": "https://acadstaff.ugm.ac.id/karya_files/program-pemindai-gambar-untuk-segmentasi-luasan-dan-kedalaman-luka-dcfcd07e645d245babe887e5e2daa016",
+        "type": "documentation"
+      },
+      {
+        "title": "Sertifikat HKI - Pemindai Dimensi Luka Portabel",
+        "url": "wound-scanner/IDD000074135_Pemindai Dimensi Luka Portabel.pdf",
+        "type": "patent"
+      }
+    ]
+  },
+  {
+    "id": "hydroponic-tea-seeds",
+    "name": "Build Hydroponic Tea Seeds in Shipping Containers with IoT",
+    "category": "automation",
+    "date": "Dec 2021 - Feb 2022",
+    "client": "Universitas Gadjah Mada (UGM)",
+    "thumbnail": "hydroponic-tea/thumb.jpg",
+    "shortDesc": "Automatic tea seedling-growing hydroponic system implementing microprocessor and IoT.",
+    "fullDesc": "Creating an automatic tea seedling-growing hydroponic system by implementing a microprocessor and IoT as monitoring of hydroponic conditions in the container. Sistem ini memungkinkan pemantauan dan pengendalian kondisi hidroponik secara real-time melalui jaringan internet, memastikan optimalisasi pertumbuhan bibit teh dalam container.",
+    "specs": [
+      "Microprocessor-based control system",
+      "IoT monitoring and remote access",
+      "Automated nutrient delivery",
+      "Real-time environmental data",
+      "Shipping container integration"
+    ],
+    "skills": ["CAD", "Electrical Wiring", "IoT", "Microprocessor Programming"],
+    "images": [
+      "hydroponic-tea/thumb.jpg",
+      "hydroponic-tea/1.jpg",
+      "hydroponic-tea/2.jpg",
+      "hydroponic-tea/3.jpg",
+      "hydroponic-tea/4.jpg",
+      "hydroponic-tea/5.jpg",
+      "hydroponic-tea/6.jpg",
+      "hydroponic-tea/7.jpg"
+    ],
+    "resources": [
+      {
+        "title": "Sertifikat DI - Alat Otomasi dan Monitoring Budidaya",
+        "url": "hydroponic-tea/SERTIFIKAT DI Alat Otomasi dan Monitoring Budidaya.pdf",
+        "type": "patent"
+      },
+      {
+        "title": "Sertifikat DI - Media Tanam Pertanian Vertikal Hidroponik",
+        "url": "hydroponic-tea/Sertifikat DI Media Tanam Pertanian Vertikal Hidroponik.pdf",
+        "type": "patent"
+      }
+    ]
+  }
+]

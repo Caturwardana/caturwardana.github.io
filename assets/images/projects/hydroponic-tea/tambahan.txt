@@ -1,0 +1,6 @@
+Sertifikat Box kontrol hidroponik bibit teh:
+assets\images\projects\hydroponic-tea\SERTIFIKAT DI Alat Otomasi dan Monitoring Budidaya.pdf
+
+assets\images\projects\hydroponic-tea\Sertifikat DI Media Tanam Pertanian Vertikal Hidroponik.pdf
+
+dan tambah gambarnya ke json ya rename filenya jadi 123dst juga
