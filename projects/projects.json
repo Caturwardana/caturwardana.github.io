@@ -33,7 +33,7 @@
     "resources": [
       {
         "title": "Sertifikat HKI - Alat Inseminasi Buatan Berbasis Digital",
-        "url": "IB-GUN/Sertifikat DI ALAT INSEMINASI BUATAN BERBASIS DIGITAL.pdf",
+        "url": "assets/images/projects/IB-GUN/Sertifikat DI ALAT INSEMINASI BUATAN BERBASIS DIGITAL.pdf",
         "type": "patent"
       }
     ]
@@ -169,12 +169,12 @@
       },
       {
         "title": "Sertifikat DI - Alat Pengering Batik (24 Maret 2022)",
-        "url": "batik-dryer/sertifikat DI ALAT PENGERING BATIK 24 Maret 2022.pdf",
+        "url": "assets/images/projects/batik-dryer/sertifikat DI ALAT PENGERING BATIK 24 Maret 2022.pdf",
         "type": "patent"
       },
       {
         "title": "Sertifikat Juara PIMNAS - PKM Pi Alat Pengering Batik",
-        "url": "batik-dryer/SERTIF PIMNAS.pdf",
+        "url": "assets/images/projects/batik-dryer/SERTIF PIMNAS.pdf",
         "type": "documentation"
       }
     ],
@@ -251,7 +251,7 @@
       },
       {
         "title": "Sertifikat HKI - Alat Pendeteksi Kerataan Lantai Pintar",
-        "url": "smart-leveling/sertifikat ALAT PENDETEKSI KERATAAN LANTAI PINTAR.pdf",
+        "url": "assets/images/projects/smart-leveling/sertifikat ALAT PENDETEKSI KERATAAN LANTAI PINTAR.pdf",
         "type": "patent"
       }
     ],
@@ -294,12 +294,12 @@
     "resources": [
       {
         "title": "Sertifikat DI - Katup Saluran Udara Pengunci",
-        "url": "kandang-ventilasi/2. Sertifikat DI_Katup Saluran Udara Pengunci_Setyawan Bekti.pdf",
+        "url": "assets/images/projects/kandang-ventilasi/2. Sertifikat DI_Katup Saluran Udara Pengunci_Setyawan Bekti.pdf",
         "type": "patent"
       },
       {
         "title": "Sertifikat DI - Kandang Hewan Percobaan Dilengkapi Filter Udara",
-        "url": "kandang-ventilasi/IDD000074886_Kandang Hewan Percobaan Dilengkapi Filter Udara.pdf",
+        "url": "assets/images/projects/kandang-ventilasi/IDD000074886_Kandang Hewan Percobaan Dilengkapi Filter Udara.pdf",
         "type": "patent"
       }
     ]
@@ -335,7 +335,7 @@
     "resources": [
       {
         "title": "Sertifikat DI - Kandang Hewan Percobaan dengan Ventilasi Individu",
-        "url": "kandang-filter/IDD000075957_Kandang Hewan Percobaan dengan Ventilasi Individu.pdf",
+        "url": "assets/images/projects/kandang-filter/IDD000075957_Kandang Hewan Percobaan dengan Ventilasi Individu.pdf",
         "type": "patent"
       }
     ]
@@ -379,7 +379,7 @@
       },
       {
         "title": "Sertifikat HKI - Mesin Dosing dan Irigasi Otomatis",
-        "url": "dosing-irigasi/IDD000071849_Mesin Dosing dan Irigasi Otomatis.pdf",
+        "url": "assets/images/projects/dosing-irigasi/IDD000071849_Mesin Dosing dan Irigasi Otomatis.pdf",
         "type": "patent"
       }
     ]
@@ -429,7 +429,7 @@
       },
       {
         "title": "Sertifikat HKI - Pemindai Dimensi Luka Portabel",
-        "url": "wound-scanner/IDD000074135_Pemindai Dimensi Luka Portabel.pdf",
+        "url": "assets/images/projects/wound-scanner/IDD000074135_Pemindai Dimensi Luka Portabel.pdf",
         "type": "patent"
       }
     ]
@@ -464,12 +464,12 @@
     "resources": [
       {
         "title": "Sertifikat DI - Alat Otomasi dan Monitoring Budidaya",
-        "url": "hydroponic-tea/SERTIFIKAT DI Alat Otomasi dan Monitoring Budidaya.pdf",
+        "url": "assets/images/projects/hydroponic-tea/SERTIFIKAT DI Alat Otomasi dan Monitoring Budidaya.pdf",
         "type": "patent"
       },
       {
         "title": "Sertifikat DI - Media Tanam Pertanian Vertikal Hidroponik",
-        "url": "hydroponic-tea/Sertifikat DI Media Tanam Pertanian Vertikal Hidroponik.pdf",
+        "url": "assets/images/projects/hydroponic-tea/Sertifikat DI Media Tanam Pertanian Vertikal Hidroponik.pdf",
         "type": "patent"
       }
     ]

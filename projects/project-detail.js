@@ -107,8 +107,9 @@ function renderProject(project) {
                         'other': 'fas fa-link'
                     };
                     const icon = iconMap[item.type] || iconMap['other'];
+                    const resourceUrl = item.url.startsWith('assets/') ? `../${item.url}` : item.url;
                     return `
-                    <a href="${item.url}" target="_blank" class="resource-item">
+                    <a href="${resourceUrl}" target="_blank" class="resource-item">
                         <div class="resource-icon"><i class="${icon}"></i></div>
                         <div class="resource-info">
                             <span class="resource-type">${item.type.charAt(0).toUpperCase() + item.type.slice(1)}</span>
