@@ -1,82 +1,94 @@
 [
-    {
-        "name": "SolidWorks",
-        "icon": "https://img.icons8.com/color/48/000000/solidworks.png"
-    },
-    {
-        "name": "AutoCAD",
-        "icon": "https://img.icons8.com/color/48/000000/autocad.png"
-    },
-    {
-        "name": "Autodesk Inventor",
-        "icon": "https://img.icons8.com/color/48/000000/autodesk.png"
-    },
-    {
-        "name": "Fusion 360",
-        "icon": "https://img.icons8.com/color/48/000000/autodesk-fusion-360.png"
-    },
-    {
-        "name": "Ansys",
-        "icon": "https://img.icons8.com/fluency/48/simulation.png"
-    },
-    {
-        "name": "Abaqus",
-        "icon": "https://upload.wikimedia.org/wikipedia/en/e/e2/Abaqus_icon.png"
-    },
-    {
-        "name": "MasterCAM",
-        "icon": "https://img.icons8.com/fluency/48/cnc-machine.png"
-    },
-    {
-        "name": "Python",
-        "icon": "https://img.icons8.com/color/48/000000/python--v1.png"
-    },
-    {
-        "name": "C++",
-        "icon": "https://img.icons8.com/color/48/000000/c-plus-plus-logo.png"
-    },
-    {
-        "name": "C",
-        "icon": "https://img.icons8.com/color/48/000000/c.png"
-    },
-    {
-        "name": "Proteus",
-        "icon": "https://img.icons8.com/fluency/48/circuit.png"
-    },
-    {
-        "name": "EasyEDA",
-        "icon": "https://img.icons8.com/fluency/48/electronics.png"
-    },
-    {
-        "name": "Microsoft Office",
-        "icon": "https://img.icons8.com/color/48/000000/microsoft-office-2019.png"
-    },
-    {
-        "name": "CFD Analysis",
-        "icon": "https://img.icons8.com/fluency/48/wind.png"
-    },
-    {
-        "name": "FEA Analysis",
-        "icon": "https://img.icons8.com/fluency/48/mesh.png"
-    },
-    {
-        "name": "CAD Design",
-        "icon": "https://img.icons8.com/fluency/48/blueprint.png"
-    },
-    {
-        "name": "Rapid Prototyping",
-        "icon": "https://img.icons8.com/fluency/48/prototype.png"
-    },
-    {
-        "name": "UAV Engineering",
-        "icon": "https://img.icons8.com/color/48/000000/drone.png"
-    },
-    {
-        "name": "Robotics",
-        "icon": "https://img.icons8.com/color/48/000000/robot.png"
-    },
-    {
-        "name": "Electrical Design",
-        "icon": "https://img.icons8.com/color/48/000000/electrical.png"
-    }
+  {
+    "name": "SolidWorks",
+    "icon": "https://img.icons8.com/color/48/000000/solidworks.png"
+  },
+  {
+    "name": "AutoCAD",
+    "icon": "https://img.icons8.com/color/48/000000/autocad.png"
+  },
+  {
+    "name": "Autodesk Inventor",
+    "icon": "https://img.icons8.com/color/48/000000/autodesk.png"
+  },
+  {
+    "name": "Fusion 360",
+    "icon": "https://img.icons8.com/color/48/000000/autodesk-fusion-360.png"
+  },
+  {
+    "name": "Ansys",
+    "icon": "https://img.icons8.com/fluency/48/simulation.png"
+  },
+  {
+    "name": "Abaqus",
+    "icon": "https://upload.wikimedia.org/wikipedia/en/e/e2/Abaqus_icon.png"
+  },
+  {
+    "name": "MasterCAM",
+    "icon": "https://img.icons8.com/fluency/48/cnc-machine.png"
+  },
+  {
+    "name": "Python",
+    "icon": "https://img.icons8.com/color/48/000000/python--v1.png"
+  },
+  {
+    "name": "C++",
+    "icon": "https://img.icons8.com/color/48/000000/c-plus-plus-logo.png"
+  },
+  {
+    "name": "C",
+    "icon": "https://img.icons8.com/color/48/000000/c.png"
+  },
+  {
+    "name": "Proteus",
+    "icon": "https://img.icons8.com/fluency/48/circuit.png"
+  },
+  {
+    "name": "EasyEDA",
+    "icon": "https://img.icons8.com/fluency/48/electronics.png"
+  },
+  {
+    "name": "Microsoft Office",
+    "icon": "https://img.icons8.com/color/48/000000/microsoft-office-2019.png"
+  },
+  {
+    "name": "CFD Analysis",
+    "icon": "https://img.icons8.com/fluency/48/wind.png"
+  },
+  {
+    "name": "FEA Analysis",
+    "icon": "https://img.icons8.com/fluency/48/mesh.png"
+  },
+  {
+    "name": "CAD Design",
+    "icon": "https://img.icons8.com/fluency/48/blueprint.png"
+  },
+  {
+    "name": "Rapid Prototyping",
+    "icon": "https://img.icons8.com/fluency/48/prototype.png"
+  },
+  {
+    "name": "UAV Engineering",
+    "icon": "https://img.icons8.com/color/48/000000/drone.png"
+  },
+  {
+    "name": "Robotics",
+    "icon": "https://img.icons8.com/color/48/000000/robot.png"
+  },
+  {
+    "name": "Electrical Design",
+    "icon": "https://img.icons8.com/color/48/000000/electrical.png"
+  },
+  {
+    "name": "PCB Design",
+    "icon": "https://img.icons8.com/?size=100&id=UiguqhkFDSiA&format=png&color=000000"
+  },
+  {
+    "name": "CNC Router",
+    "icon": "https://img.icons8.com/?size=100&id=4sr4Q9JS4nTC&format=png&color=000000"
+  },
+  {
+    "name": "CNC Laser",
+    "icon": "https://img.icons8.com/?size=100&id=6m7XUOsoPLYN&format=png&color=000000"
+  }
 ]

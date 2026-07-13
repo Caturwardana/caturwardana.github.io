@@ -12,6 +12,8 @@
 
     h1 { font-size: 2rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem; }
     h1 small { font-size: 0.9rem; color: #666; font-weight: normal; }
+    hr { border: none; border-top: 2px solid #ddd; margin: 2rem 0; }
+    .section-title { font-size: 1.5rem; margin-bottom: 1rem; color: #333; display: flex; align-items: center; gap: 0.6rem; }
 
     .card { background: #fff; border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
     .card h2 { font-size: 1.3rem; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #0097e6; display: inline-block; }
@@ -75,7 +77,7 @@
 </head>
 <body>
   <div class="container">
-    <h1><i class="fas fa-tools"></i> Project Manager <small>— Admin Panel</small></h1>
+    <h1><i class="fas fa-tools"></i> Admin Panel <small>— Portfolio Manager</small></h1>
 
     <div id="status"></div>
 
@@ -208,7 +210,44 @@
         <p style="color:#888;">Klik "Buka Folder" dulu untuk melihat project yang ada.</p>
       </div>
     </div>
-  </div>
+
+    <hr>
+    <h2 class="section-title"><i class="fas fa-microchip"></i> Skills Manager</h2>
+
+    <div class="card">
+      <p style="margin-bottom:1rem;color:#666;">Data disimpan di <code>skills.json</code>. Skill icon bisa pake URL atau upload file ke <code>assets/images/skills/</code>.</p>
+
+        <div id="skillsManager"></div>
+
+        <div class="resource-item-row" style="margin-top:1rem;">
+          <input id="skillNameInput" placeholder="Nama Skill" style="flex:2;padding:0.5rem;border:1px solid #ddd;border-radius:4px;">
+          <input id="skillIconInput" placeholder="URL icon (https://...)" style="flex:3;padding:0.5rem;border:1px solid #ddd;border-radius:4px;">
+          <input id="skillFileInput" type="file" accept="image/*" style="display:none;" onchange="skillFileSelected(event)">
+          <button class="btn btn-secondary" onclick="document.getElementById('skillFileInput').click()" style="white-space:nowrap;"><i class="fas fa-upload"></i> Upload</button>
+          <button class="btn btn-success" onclick="addSkillItem()"><i class="fas fa-plus"></i> Tambah</button>
+        </div>
+        <p style="font-size:0.8rem;color:#888;margin-top:0.3rem;">Isi URL icon ATAU upload file. Prioritas: file upload.</p>
+
+        <div style="margin-top:1rem;text-align:center;">
+          <button class="btn btn-primary" onclick="saveSkills()"><i class="fas fa-save"></i> Simpan Skills</button>
+        </div>
+      </div>
+
+    <hr>
+    <h2 class="section-title"><i class="fas fa-briefcase"></i> Experience Manager</h2>
+
+    <div class="card">
+      <p style="margin-bottom:1rem;color:#666;">Data disimpan di <code>experience.json</code>. Add, edit, reorder pengalaman kerja.</p>
+
+      <div id="experienceManager"></div>
+
+      <div style="margin-top:1rem;text-align:center;">
+        <button class="btn btn-primary" onclick="addExperienceItem()"><i class="fas fa-plus"></i> Tambah Experience</button>
+        <button class="btn btn-success" onclick="saveExperiences()" style="margin-left:0.5rem;"><i class="fas fa-save"></i> Simpan Experience</button>
+      </div>
+    </div>
+
+  </div> <!-- end container -->
 
   <script>
     let projectDirHandle = null;
@@ -461,12 +500,18 @@
 
     // ==== FOLDER PICKER ====
     document.getElementById('btnOpenFolder').addEventListener('click', async () => {
+      if (!window.showDirectoryPicker) {
+        showStatus('Browser kamu tidak mendukung File System Access API. Gunakan <strong>Chrome</strong> atau <strong>Edge</strong> versi terbaru.', 'error');
+        return;
+      }
       try {
         projectDirHandle = await window.showDirectoryPicker({ mode: 'readwrite' });
         document.getElementById('folderStatus').textContent = 'Terpilih: ' + projectDirHandle.name;
         document.getElementById('folderStatus').style.color = '#27ae60';
         showStatus('Folder root repo berhasil dipilih: <strong>' + projectDirHandle.name + '</strong>', 'success');
         loadExistingProjects();
+        loadSkills();
+        loadExperiences();
       } catch (e) {
         if (e.name !== 'AbortError') {
           showStatus('Gagal membuka folder: ' + e.message, 'error');
@@ -750,6 +795,343 @@
       newsItems = [];
       selectedPoster = null;
     }
+
+    // ========================
+    // ==== SKILLS MANAGER ====
+    // ========================
+    let skillsList = [];
+    let skillFilesMap = {}; // index -> File for pending uploads
+
+    async function loadSkills() {
+      if (!projectDirHandle) return;
+      try {
+        const jsonHandle = await projectDirHandle.getFileHandle('skills.json');
+        const file = await jsonHandle.getFile();
+        skillsList = JSON.parse(await file.text());
+        skillFilesMap = {};
+        renderSkills();
+      } catch (e) {
+        console.error('loadSkills error:', e);
+        skillsList = [];
+        skillFilesMap = {};
+        document.getElementById('skillsManager').innerHTML = `<p style="color:#e74c3c;">Gagal load skills.json: ${e.message}</p>`;
+      }
+    }
+
+    function renderSkills() {
+      const el = document.getElementById('skillsManager');
+      if (!el) return;
+      if (skillsList.length === 0) {
+        el.innerHTML = '<p style="color:#888;">Belum ada skill. Tambah skill di bawah.</p>';
+        return;
+      }
+      el.innerHTML = skillsList.map((s, i) => `
+        <div class="resource-item-row" style="align-items:center;">
+          <img src="${escapeHtml(s.icon)}" style="width:32px;height:32px;object-fit:contain;border-radius:4px;" onerror="this.style.display='none'">
+          <span style="flex:1;font-weight:600;">${escapeHtml(s.name)}</span>
+          <button class="btn btn-secondary" onclick="editSkillItem(${i})" style="padding:0.3rem 0.6rem;font-size:0.8rem;"><i class="fas fa-edit"></i></button>
+          <button class="btn btn-danger" onclick="removeSkillItem(${i})" style="padding:0.3rem 0.6rem;font-size:0.8rem;"><i class="fas fa-trash"></i></button>
+        </div>
+      `).join('');
+    }
+
+    let editingSkillIndex = -1;
+
+    function skillFileSelected(event) {
+      const file = event.target.files[0];
+      if (file) {
+        // Store as pending file for next add/edit
+        const fileId = Date.now() + '_' + file.name.replace(/[^a-zA-Z0-9._-]/g, '_');
+        skillFilesMap['_pending'] = { file, fileName: fileId };
+        document.getElementById('skillIconInput').value = '';
+        document.getElementById('skillIconInput').placeholder = '📎 ' + file.name + ' (akan diupload)';
+      }
+    }
+
+    function addSkillItem() {
+      const name = document.getElementById('skillNameInput').value.trim();
+      if (!name) { showStatus('Nama skill harus diisi!', 'error'); return; }
+
+      let icon = document.getElementById('skillIconInput').value.trim();
+      const pending = skillFilesMap['_pending'] || null;
+
+      if (editingSkillIndex >= 0) {
+        const existing = skillsList[editingSkillIndex];
+        if (pending) {
+          icon = '__upload__';
+          skillFilesMap[editingSkillIndex] = pending;
+        } else if (!icon) {
+          icon = existing.icon;
+        }
+        skillsList[editingSkillIndex] = { name, icon: icon || existing.icon };
+        editingSkillIndex = -1;
+      } else {
+        if (pending) {
+          icon = '__upload__';
+          const newIdx = skillsList.length;
+          skillFilesMap[newIdx] = pending;
+        }
+        skillsList.push({ name, icon: icon || '' });
+      }
+
+      delete skillFilesMap['_pending'];
+      document.getElementById('skillNameInput').value = '';
+      document.getElementById('skillIconInput').value = '';
+      document.getElementById('skillIconInput').placeholder = 'URL icon (https://...)';
+      document.getElementById('skillFileInput').value = '';
+
+      showStatus('Skill ditambahkan. Klik "Simpan Skills" untuk menyimpan ke file.', 'info');
+      renderSkills();
+    }
+
+    function editSkillItem(index) {
+      const s = skillsList[index];
+      document.getElementById('skillNameInput').value = s.name;
+      document.getElementById('skillIconInput').value = s.icon && !s.icon.startsWith('assets/') ? s.icon : '';
+      document.getElementById('skillIconInput').placeholder = s.icon && s.icon.startsWith('assets/') ? '📎 ' + s.icon.split('/').pop() + ' (existing)' : 'URL icon (https://...)';
+      editingSkillIndex = index;
+      delete skillFilesMap['_pending'];
+      document.getElementById('skillFileInput').value = '';
+      window.scrollTo(0, document.getElementById('skillsManager').offsetTop - 100);
+    }
+
+    function removeSkillItem(index) {
+      if (!confirm('Hapus skill "' + skillsList[index].name + '"?')) return;
+      skillsList.splice(index, 1);
+      renderSkills();
+    }
+
+    async function saveSkills() {
+      if (!projectDirHandle) { showStatus('Pilih dulu folder root!', 'error'); return; }
+      showStatus('Menyimpan skills...', 'info');
+
+      try {
+        const skillsDir = await getNestedHandle(projectDirHandle, 'assets/images/skills', true);
+
+        // Process pending file uploads
+        for (const key of Object.keys(skillFilesMap)) {
+          if (key === '_pending') continue;
+          const idx = parseInt(key);
+          if (idx >= 0 && idx < skillsList.length && skillsList[idx].icon === '__upload__') {
+            const { file, fileName } = skillFilesMap[key];
+            await writeFileToHandle(skillsDir, fileName, file);
+            skillsList[idx].icon = 'assets/images/skills/' + fileName;
+          }
+        }
+
+        // Also handle _pending if it's still there (if addSkillItem wasn't called)
+        if (skillFilesMap['_pending']) {
+          const { file, fileName } = skillFilesMap['_pending'];
+          await writeFileToHandle(skillsDir, fileName, file);
+          // Add a new skill with this file
+          const name = document.getElementById('skillNameInput').value.trim() || 'Untitled';
+          skillsList.push({ name, icon: 'assets/images/skills/' + fileName });
+          document.getElementById('skillNameInput').value = '';
+        }
+
+        skillsList = skillsList.filter(s => s.name.trim());
+        const blob = new Blob([JSON.stringify(skillsList, null, 2)], { type: 'application/json' });
+        await writeFileToHandle(projectDirHandle, 'skills.json', blob);
+
+        skillFilesMap = {};
+        document.getElementById('skillFileInput').value = '';
+        showStatus('Skills berhasil disimpan ke <strong>skills.json</strong>!', 'success');
+        renderSkills();
+      } catch (e) {
+        showStatus('Error: ' + e.message, 'error');
+      }
+    }
+
+    // ============================
+    // ==== EXPERIENCE MANAGER ====
+    // ============================
+    let experiencesList = [];
+
+    async function loadExperiences() {
+      if (!projectDirHandle) return;
+      try {
+        const jsonHandle = await projectDirHandle.getFileHandle('experience.json');
+        const file = await jsonHandle.getFile();
+        const text = await file.text();
+        console.log('experience.json content:', text.substring(0,100));
+        experiencesList = JSON.parse(text);
+        renderExperiences();
+      } catch (e) {
+        console.error('loadExperiences error:', e);
+        experiencesList = [];
+        document.getElementById('experienceManager').innerHTML = `<p style="color:#e74c3c;">Gagal load experience.json: ${e.message}</p>`;
+      }
+    }
+
+    function renderExperiences() {
+      const el = document.getElementById('experienceManager');
+      if (experiencesList.length === 0) {
+        el.innerHTML = '<p style="color:#888;">Belum ada experience. Klik "Tambah Experience".</p>';
+        return;
+      }
+      el.innerHTML = experiencesList.map((exp, i) => `
+        <div data-exp-index="${i}" style="border:1px solid #ddd;border-radius:8px;padding:1rem;margin-bottom:1rem;background:#fafafa;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;">
+            <strong style="font-size:1.05rem;">${escapeHtml(exp.company)}</strong>
+            <div>
+              <button class="btn btn-secondary" onclick="editExperienceItem(${i})" style="padding:0.3rem 0.6rem;font-size:0.8rem;"><i class="fas fa-edit"></i></button>
+              <button class="btn btn-danger" onclick="removeExperienceItem(${i})" style="padding:0.3rem 0.6rem;font-size:0.8rem;"><i class="fas fa-trash"></i></button>
+            </div>
+          </div>
+          <div style="font-size:0.9rem;color:#555;margin-bottom:0.3rem;">${escapeHtml(exp.position)}</div>
+          <div style="font-size:0.85rem;color:#888;margin-bottom:0.5rem;">${escapeHtml(exp.date)} &middot; ${exp.side === 'left' ? 'Kiri' : 'Kanan'}</div>
+          ${exp.details && exp.details.length > 0 ? `
+            <ul style="margin:0;padding-left:1.2rem;font-size:0.85rem;color:#666;">
+              ${exp.details.map(d => `<li>${escapeHtml(d)}</li>`).join('')}
+            </ul>` : '<span style="font-size:0.85rem;color:#bbb;">(tidak ada detail)</span>'}
+        </div>
+      `).join('');
+    }
+
+    let editingExpIndex = -1;
+
+    function addExperienceItem(data) {
+      // Open a simple form dialog
+      const el = document.getElementById('experienceManager');
+      const idx = experiencesList.length;
+
+      const exp = data || { company: '', position: '', date: '', side: 'right', details: [] };
+
+      const wrapper = document.createElement('div');
+      wrapper.style.border = '2px solid #0097e6';
+      wrapper.style.borderRadius = '8px';
+      wrapper.style.padding = '1rem';
+      wrapper.style.marginBottom = '1rem';
+      wrapper.style.background = '#f0f8ff';
+      wrapper.innerHTML = `
+        <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:0.8rem;">
+          <input class="exp-company" placeholder="Nama Perusahaan/Institusi" value="${escapeHtml(exp.company)}" style="flex:2;min-width:200px;padding:0.5rem;border:1px solid #ddd;border-radius:4px;">
+          <input class="exp-position" placeholder="Posisi / Jabatan" value="${escapeHtml(exp.position)}" style="flex:2;min-width:200px;padding:0.5rem;border:1px solid #ddd;border-radius:4px;">
+        </div>
+        <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:0.8rem;">
+          <input class="exp-date" placeholder="Contoh: Jan 2020 - Des 2021" value="${escapeHtml(exp.date)}" style="flex:2;min-width:150px;padding:0.5rem;border:1px solid #ddd;border-radius:4px;">
+          <select class="exp-side" style="padding:0.5rem;border:1px solid #ddd;border-radius:4px;">
+            <option value="right" ${exp.side === 'right' ? 'selected' : ''}>Kanan</option>
+            <option value="left" ${exp.side === 'left' ? 'selected' : ''}>Kiri</option>
+          </select>
+        </div>
+        <div style="margin-bottom:0.5rem;">
+          <label style="font-size:0.9rem;font-weight:600;">Detail Pekerjaan:</label>
+          <div class="exp-details-container">
+            ${(exp.details || []).map((d, j) => `
+              <div class="exp-detail-row" style="display:flex;gap:0.3rem;margin-bottom:0.3rem;">
+                <input value="${escapeHtml(d)}" style="flex:1;padding:0.4rem;border:1px solid #ddd;border-radius:4px;">
+                <button class="btn btn-danger" onclick="this.parentElement.remove()" style="padding:0.3rem 0.6rem;font-size:0.8rem;"><i class="fas fa-times"></i></button>
+              </div>
+            `).join('')}
+          </div>
+          <button class="btn btn-secondary" onclick="addDetailRow(this)" style="font-size:0.85rem;padding:0.3rem 0.8rem;margin-top:0.3rem;"><i class="fas fa-plus"></i> Detail</button>
+        </div>
+        <div style="text-align:right;">
+          <button class="btn btn-success" onclick="saveExperienceItem(this)"><i class="fas fa-check"></i> Simpan</button>
+          <button class="btn btn-secondary" onclick="cancelExperienceEdit(this)">Batal</button>
+        </div>
+      `;
+
+      if (data) {
+        // Edit mode: find the existing card by data-exp-index
+        const existingCard = el.querySelector(`div[data-exp-index="${editingExpIndex}"]`);
+        if (existingCard) {
+          existingCard.style.display = 'none';
+          existingCard.after(wrapper);
+        } else {
+          el.prepend(wrapper);
+        }
+      } else {
+        el.prepend(wrapper);
+      }
+
+      window.scrollTo(0, wrapper.offsetTop - 100);
+    }
+
+    function addDetailRow(btn) {
+      const container = btn.closest('div').querySelector('.exp-details-container');
+      const row = document.createElement('div');
+      row.className = 'exp-detail-row';
+      row.style.cssText = 'display:flex;gap:0.3rem;margin-bottom:0.3rem;';
+      row.innerHTML = `
+        <input placeholder="Detail pekerjaan..." style="flex:1;padding:0.4rem;border:1px solid #ddd;border-radius:4px;">
+        <button class="btn btn-danger" onclick="this.parentElement.remove()" style="padding:0.3rem 0.6rem;font-size:0.8rem;"><i class="fas fa-times"></i></button>
+      `;
+      container.appendChild(row);
+      row.querySelector('input').focus();
+    }
+
+    function saveExperienceItem(btn) {
+      const wrapper = btn.closest('div[style*="border"]');
+      const company = wrapper.querySelector('.exp-company').value.trim();
+      const position = wrapper.querySelector('.exp-position').value.trim();
+      const date = wrapper.querySelector('.exp-date').value.trim();
+      const side = wrapper.querySelector('.exp-side').value;
+
+      const detailRows = wrapper.querySelectorAll('.exp-detail-row input');
+      const details = Array.from(detailRows).map(inp => inp.value.trim()).filter(v => v);
+
+      if (!company || !position) {
+        showStatus('Nama perusahaan dan posisi harus diisi!', 'error');
+        return;
+      }
+
+      const entry = { company, position, date, side, details };
+
+      if (editingExpIndex >= 0 && editingExpIndex < experiencesList.length) {
+        experiencesList[editingExpIndex] = entry;
+        editingExpIndex = -1;
+      } else {
+        experiencesList.push(entry);
+      }
+
+      wrapper.remove();
+      // Restore hidden card
+      const hiddenCard = document.querySelector('#experienceManager div[data-exp-index][style*="display: none"]');
+      if (hiddenCard) hiddenCard.style.display = '';
+      renderExperiences();
+      showStatus('Experience saved. Klik "Simpan Experience" untuk menulis ke file.', 'info');
+    }
+
+    function cancelExperienceEdit(btn) {
+      const wrapper = btn.closest('div[style*="border"]');
+      // Restore hidden card
+      const hiddenCard = document.querySelector('#experienceManager div[data-exp-index][style*="display: none"]');
+      if (hiddenCard) hiddenCard.style.display = '';
+      wrapper.remove();
+      editingExpIndex = -1;
+    }
+
+    function editExperienceItem(index) {
+      editingExpIndex = index;
+      addExperienceItem(experiencesList[index]);
+    }
+
+    function removeExperienceItem(index) {
+      if (!confirm('Hapus experience "' + experiencesList[index].company + ' - ' + experiencesList[index].position + '"?')) return;
+      experiencesList.splice(index, 1);
+      renderExperiences();
+    }
+
+    async function saveExperiences() {
+      if (!projectDirHandle) { showStatus('Pilih dulu folder root!', 'error'); return; }
+      showStatus('Menyimpan experience...', 'info');
+
+      try {
+        experiencesList = experiencesList.filter(e => e.company.trim() && e.position.trim());
+        const blob = new Blob([JSON.stringify(experiencesList, null, 2)], { type: 'application/json' });
+        await writeFileToHandle(projectDirHandle, 'experience.json', blob);
+        showStatus('Experience berhasil disimpan ke <strong>experience.json</strong>!', 'success');
+        renderExperiences();
+      } catch (e) {
+        showStatus('Error: ' + e.message, 'error');
+      }
+    }
+
+    // Load skills & experience after folder is selected
+    // (Handled in btnOpenFolder click handler above)
+
   </script>
 </body>
 </html>

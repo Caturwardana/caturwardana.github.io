@@ -1,0 +1,103 @@
+[
+  {
+    "company": "FROGS INDONESIA",
+    "position": "Mechanical Design and Analysis Supervisor",
+    "date": "Apr 2026 - Present",
+    "side": "left",
+    "details": [
+      "Leading Mechanical Engineering Team",
+      "Product R&D, CAD/CAE Analysis",
+      "Design Review & Prototype Development",
+      "Manufacturing Support & Project Coordination",
+      "Technical Decision Making"
+    ]
+  },
+  {
+    "company": "FROGS INDONESIA",
+    "position": "Mechanical Design & Analysis Engineer",
+    "date": "Sep 2024 - Mar 2026",
+    "side": "right",
+    "details": [
+      "Mechanical System Design",
+      "CAD/CAE Analysis",
+      "Product R&D & Prototype Development",
+      "Design Optimization & Manufacturing Support",
+      "UAV & Robotics Engineering"
+    ]
+  },
+  {
+    "company": "Universitas Gadjah Mada (UGM)",
+    "position": "Laboratory Research Assistant",
+    "date": "Aug 2023 - Aug 2024",
+    "side": "left",
+    "details": [
+      "Computer-Aided Design (CAD)",
+      "Digital Manufacturing",
+      "Python & C Wrapper Programming",
+      "Electrical Design & Automation",
+      "Product R&D"
+    ]
+  },
+  {
+    "company": "PT. Pindad (Persero)",
+    "position": "Engineering Division - Special Vehicles | Internship",
+    "date": "Aug 2022 - Nov 2022",
+    "side": "right",
+    "details": [
+      "Computational Fluid Dynamics (CFD)",
+      "Finite Element Analysis (FEA)",
+      "Computer-Aided Design (CAD)",
+      "Mechanical & Automotive Engineering"
+    ]
+  },
+  {
+    "company": "YPTI GROUP",
+    "position": "Product Planning Control | Internship",
+    "date": "Dec 2022 - Feb 2023",
+    "side": "left",
+    "details": [
+      "Product Planning",
+      "Mechanical Engineering",
+      "2D Drawing & 3D Design"
+    ]
+  },
+  {
+    "company": "PKM Center Universitas Gadjah Mada",
+    "position": "Database Administrator",
+    "date": "Jan 2022 - Dec 2022",
+    "side": "right",
+    "details": [
+      "Data Management for UGM PKM Contingent"
+    ]
+  },
+  {
+    "company": "YACARANDA UGM",
+    "position": "Head of Drive & Power Train Division",
+    "date": "Dec 2020 - Dec 2021",
+    "side": "left",
+    "details": [
+      "Responsible for construction, strength, and power forwarding calculations",
+      "Coordinate drive and power train division members",
+      "Decide construction design of drive and power train",
+      "Plan and manage cost budget for the division"
+    ]
+  },
+  {
+    "company": "YACARANDA UGM",
+    "position": "Member of Drive & Power Train Division",
+    "date": "Dec 2019 - Nov 2020",
+    "side": "right",
+    "details": [
+      "Designing electric vehicle systems: Suspension, Braking, Steering, and Power Train"
+    ]
+  },
+  {
+    "company": "KMDTM UGM",
+    "position": "Staff of Research and Technology",
+    "date": "Nov 2019 - Dec 2021",
+    "side": "left",
+    "details": [
+      "Research and Technology Development"
+    ]
+  }
+]

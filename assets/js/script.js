@@ -63,11 +63,14 @@ var typed = new Typed(".typing-text", {
 // <!-- typed js effect ends -->
 
 async function fetchData(type = "skills") {
-    let response
-    type === "skills" ?
-        response = await fetch("skills.json")
-        :
-        response = await fetch("./projects/projects.json")
+    let response;
+    if (type === "skills") {
+        response = await fetch("skills.json");
+    } else if (type === "experience") {
+        response = await fetch("experience.json");
+    } else {
+        response = await fetch("./projects/projects.json");
+    }
     const data = await response.json();
     return data;
 }
@@ -85,6 +88,29 @@ function showSkills(skills) {
             </div>`
     });
     skillsContainer.innerHTML = skillHTML;
+}
+
+function showExperience(experiences) {
+    const timeline = document.querySelector("#experience .timeline");
+    if (!timeline) return;
+    const h = (s) => { const d = document.createElement('div'); d.textContent = s; return d.innerHTML; };
+    const items = experiences.slice(0, 5);
+    timeline.innerHTML = items.map((exp, i) => `
+        <div class="container ${exp.side || 'right'}">
+            <div class="content">
+                <div class="tag">
+                    <h2>${h(exp.company)}</h2>
+                </div>
+                <div class="desc">
+                    <h3>${h(exp.position)}</h3>
+                    <p>${h(exp.date)}</p>
+                </div>
+            </div>
+        </div>
+    `).join('');
+    if (typeof srtop !== 'undefined') {
+        srtop.reveal('.experience .timeline .container', { interval: 400 });
+    }
 }
 
 function showProjects(projects) {
@@ -134,6 +160,10 @@ fetchData().then(data => {
 
 fetchData("projects").then(data => {
     showProjects(data);
+});
+
+fetchData("experience").then(data => {
+    showExperience(data);
 });
 
 // <!-- tilt js effect starts -->

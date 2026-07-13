@@ -15,7 +15,48 @@ $(document).ready(function(){
             document.querySelector('#scroll-top').classList.remove('active');
         }
     });
+
+    loadExperiences();
 });
+
+async function loadExperiences() {
+    try {
+        const response = await fetch('../experience.json');
+        const experiences = await response.json();
+        renderExperiences(experiences);
+    } catch (error) {
+        console.error('Error loading experiences:', error);
+    }
+}
+
+function renderExperiences(experiences) {
+    const timeline = document.querySelector('.timeline');
+    if (!timeline) return;
+
+    timeline.innerHTML = experiences.map(exp => `
+        <div class="container ${exp.side || 'right'}">
+            <div class="content">
+                <div class="tag">
+                    <h2>${escapeHtml(exp.company)}</h2>
+                </div>
+                <div class="desc">
+                    <h3>${escapeHtml(exp.position)}</h3>
+                    <p>${escapeHtml(exp.date)}</p>
+                    ${exp.details && exp.details.length > 0 ? `
+                    <ul class="experience-list">
+                        ${exp.details.map(d => `<li>${escapeHtml(d)}</li>`).join('')}
+                    </ul>` : ''}
+                </div>
+            </div>
+        </div>
+    `).join('');
+}
+
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
 
 /* ===== SCROLL REVEAL ANIMATION ===== */
 const srtop = ScrollReveal({
