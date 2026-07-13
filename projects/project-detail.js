@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $('#menu').click(function () {
+    $(document).on('click', '#menu', function () {
         $(this).toggleClass('fa-times');
         $('.navbar').toggleClass('nav-toggle');
     });

@@ -598,10 +598,11 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.95);
+    background: rgba(0,0,0,0.3);
     z-index: 9999;
     justify-content: center;
     align-items: center;
+    backdrop-filter: blur(2px);
 }
 
 .file-viewer.active {
@@ -635,6 +636,8 @@
     height: 90vh;
     border: none;
     border-radius: 8px;
+    background: rgba(0,0,0,0.85);
+    padding: 1rem;
 }
 
 .file-viewer .loading {
@@ -660,15 +663,15 @@
 }
 
 .file-viewer-img {
-    max-width: 90%;
-    max-height: 90vh;
+    max-width: 100%;
+    max-height: 85vh;
     object-fit: contain;
     border-radius: 5px;
 }
 
 .file-viewer-pdf {
-    width: 90%;
-    height: 90vh;
+    width: 100%;
+    height: 85vh;
     border: none;
     border-radius: 8px;
 }

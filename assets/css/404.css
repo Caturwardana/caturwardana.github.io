@@ -235,12 +235,15 @@ header .navbar ul li a:hover{
 .footer .box-container .box p{
   font-size: 1.5rem;
   color: #ccc;
-  padding: .7rem 0;
+  padding: .5rem 0;
   text-transform: none;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 .footer .box-container .box p i{
-  padding-right: 1rem;
   color: #ffae00;
+  flex-shrink: 0;
 }
 .footer .box-container .box a{
   font-size: 1.5rem;
