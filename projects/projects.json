@@ -15,7 +15,14 @@
       "Digital heat cycle detection",
       "Pregnancy detection capability"
     ],
-    "skills": ["Electrical Design", "CAD", "Embedded Systems", "Sensor Integration", "Product Design", "Prototyping"],
+    "skills": [
+      "Electrical Design",
+      "CAD",
+      "Embedded Systems",
+      "Sensor Integration",
+      "Product Design",
+      "Prototyping"
+    ],
     "images": [
       "IB-GUN/thumb.jpg",
       "IB-GUN/1.jpg",
@@ -54,7 +61,13 @@
       "Aerodynamic body design",
       "Formula Student FESC IIMS 2022"
     ],
-    "skills": ["Mechanical Design", "Automotive Engineering", "Power Train Systems", "CAD/CAE", "Structural Analysis"],
+    "skills": [
+      "Mechanical Design",
+      "Automotive Engineering",
+      "Power Train Systems",
+      "CAD/CAE",
+      "Structural Analysis"
+    ],
     "images": [
       "ev3-evo/thumb.jpg",
       "ev3-evo/1.jpg",
@@ -84,7 +97,12 @@
       "Aerodynamic optimization",
       "KMHE 2023 competition ready"
     ],
-    "skills": ["CAD", "Power Train", "Mechanical Design", "Automotive Engineering"],
+    "skills": [
+      "CAD",
+      "Power Train",
+      "Mechanical Design",
+      "Automotive Engineering"
+    ],
     "images": [
       "et-1/thumb.jpg",
       "et-1/1.jpg",
@@ -114,7 +132,12 @@
       "Centralized system integration",
       "Preserves batik fabric quality"
     ],
-    "skills": ["Mechanical Engineering", "Thermal Systems", "Automation", "Product Design"],
+    "skills": [
+      "Mechanical Engineering",
+      "Thermal Systems",
+      "Automation",
+      "Product Design"
+    ],
     "images": [
       "batik-dryer/thumb.jpg",
       "batik-dryer/1.jpg",
@@ -200,7 +223,17 @@
       "Biaya produksi sekitar Rp9 juta",
       "Bahan produksi lokal"
     ],
-    "skills": ["Electrical Design", "IoT", "CAD", "Robotics", "Sensor Integration", "SolidWorks", "Proteus", "Fusion 360", "Arduino IDE"],
+    "skills": [
+      "Electrical Design",
+      "IoT",
+      "CAD",
+      "Robotics",
+      "Sensor Integration",
+      "SolidWorks",
+      "Proteus",
+      "Fusion 360",
+      "Arduino IDE"
+    ],
     "images": [
       "smart-leveling/thumb.jpg",
       "smart-leveling/1.jpg",
@@ -276,7 +309,13 @@
       "Mencegah cross contamination antar kandang",
       "Menjaga status SPF (Specific Pathogen Free)"
     ],
-    "skills": ["CAD", "Mechanical Design", "HVAC Systems", "Product Design", "HEPA Filtration"],
+    "skills": [
+      "CAD",
+      "Mechanical Design",
+      "HVAC Systems",
+      "Product Design",
+      "HEPA Filtration"
+    ],
     "images": [
       "kandang-ventilasi/1.jpg",
       "kandang-ventilasi/2.jpg",
@@ -323,7 +362,13 @@
       "Mencegah infeksi silang (cross contamination)",
       "Menjaga status SPF (Specific Pathogen Free)"
     ],
-    "skills": ["CAD", "Mechanical Design", "Filtration Systems", "Product Design", "HVAC"],
+    "skills": [
+      "CAD",
+      "Mechanical Design",
+      "Filtration Systems",
+      "Product Design",
+      "HVAC"
+    ],
     "images": [
       "kandang-filter/thumb.jpg",
       "kandang-filter/1.jpg",
@@ -356,7 +401,13 @@
       "Greenhouse automation",
       "Optimized plant nutrition delivery"
     ],
-    "skills": ["CAD", "Digital Manufacturing", "Automation", "IoT", "Programming"],
+    "skills": [
+      "CAD",
+      "Digital Manufacturing",
+      "Automation",
+      "IoT",
+      "Programming"
+    ],
     "images": [
       "dosing-irigasi/thumb.jpg",
       "dosing-irigasi/1.jpg",
@@ -400,7 +451,13 @@
       "Accurate wound dimension imaging",
       "Digital wound assessment records"
     ],
-    "skills": ["CAD", "Digital Manufacturing", "Medical Device Design", "Embedded Systems", "Prototyping"],
+    "skills": [
+      "CAD",
+      "Digital Manufacturing",
+      "Medical Device Design",
+      "Embedded Systems",
+      "Prototyping"
+    ],
     "images": [
       "wound-scanner/thumb.jpg",
       "wound-scanner/1.jpg",
@@ -450,7 +507,12 @@
       "Real-time environmental data",
       "Shipping container integration"
     ],
-    "skills": ["CAD", "Electrical Wiring", "IoT", "Microprocessor Programming"],
+    "skills": [
+      "CAD",
+      "Electrical Wiring",
+      "IoT",
+      "Microprocessor Programming"
+    ],
     "images": [
       "hydroponic-tea/thumb.jpg",
       "hydroponic-tea/1.jpg",
@@ -471,6 +533,57 @@
         "title": "Sertifikat DI - Media Tanam Pertanian Vertikal Hidroponik",
         "url": "assets/images/projects/hydroponic-tea/Sertifikat DI Media Tanam Pertanian Vertikal Hidroponik.pdf",
         "type": "patent"
+      }
+    ]
+  },
+  {
+    "id": "mortar-dropper-drone",
+    "name": "SA-6 Mortar Dropper Tactical UAV",
+    "category": "robotics",
+    "date": "Jan 2025 - Jul 2025",
+    "client": "Frogs Indonesia",
+    "thumbnail": "mortar-dropper-drone/thumb.jpg",
+    "shortDesc": "Development of a tactical multirotor UAV capable of carrying and deploying mortar payloads with high stability, precision, and mission readiness for defense applications.",
+    "fullDesc": "The SA-6 Mortar Dropper is a tactical multirotor unmanned aerial vehicle (UAV) developed by Frogs Indonesia to support modern defense operations. The platform is designed to transport and accurately deploy mortar payloads while maintaining stable flight performance under demanding operational conditions.\n\nAs a Mechanical Design Engineer, I was responsible for designing and developing mechanical components of the aircraft, including structural assemblies, payload integration systems, mounting mechanisms, and manufacturing-ready parts. The design process involved CAD modeling, mechanical analysis, rapid prototyping, fabrication support, and collaboration with electrical and flight control teams to ensure seamless system integration.\n\nThe platform was successfully showcased during Indo Defence 2025 Expo & Forum, Indonesia's largest international defense exhibition, demonstrating the capability of locally developed tactical UAV technology for military applications.",
+    "specs": [
+      "Tactical multirotor UAV platform",
+      "Mortar payload deployment mechanism",
+      "Custom carbon fiber airframe",
+      "High payload capacity",
+      "Precision payload release",
+      "Modular mechanical design",
+      "Mission-ready structural assembly",
+      "Designed for military support operations"
+    ],
+    "skills": [
+      "Mechanical Design",
+      "SolidWorks",
+      "CAD Modeling",
+      "Composite Structure Design",
+      "Payload Integration",
+      "Rapid Prototyping",
+      "DFM (Design for Manufacturing)",
+      "Mechanical Assembly",
+      "3D Printing",
+      "Mechanical AssemblyDefense UAV"
+    ],
+    "images": [
+      "mortar-dropper-drone/thumb.jpg"
+    ],
+    "videos": [
+      {
+        "title": "Mortar Dropper",
+        "url": "https://youtube.com/shorts/HSHYVylMnvc?si=VlPwieKLfJKQ-Ibr"
+      }
+    ],
+    "news": [
+      {
+        "title": "Frogs Indonesia Tampil di Indo Defence 2025",
+        "url": "https://www.frogs.id/2026/03/02/frogs-indonesia-tampil-di-indo-defence-2025-pamerkan-drone-tempur-karya-anak-bangsa/"
+      },
+      {
+        "title": "Drone Tempur Frogs Indonesia Tampil di Pameran Pertahanan Terbesar Asia Tenggara",
+        "url": "https://timesindonesia.co.id/peristiwa-daerah/543268/drone-tempur-frogs-indonesia-tampil-di-pameran-pertahanan-terbesar-asia-tenggara"
       }
     ]
   }
