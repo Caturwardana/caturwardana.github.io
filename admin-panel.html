@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel - Project Manager</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: system-ui, -apple-system, sans-serif; background: #f0f2f5; color: #333; padding: 2rem; }
+    .container { max-width: 1100px; margin: 0 auto; }
+
+    h1 { font-size: 2rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem; }
+    h1 small { font-size: 0.9rem; color: #666; font-weight: normal; }
+
+    .card { background: #fff; border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .card h2 { font-size: 1.3rem; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #0097e6; display: inline-block; }
+
+    .form-row { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem; }
+    .form-group { flex: 1; min-width: 200px; }
+    .form-group label { display: block; font-weight: 600; margin-bottom: 0.3rem; font-size: 0.9rem; color: #555; }
+    .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 0.7rem; border: 1px solid #ddd; border-radius: 6px; font-size: 0.95rem; }
+    .form-group textarea { resize: vertical; }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: #0097e6; }
+
+    .slug-preview { font-size: 0.85rem; color: #888; margin-top: 0.2rem; }
+
+    .btn { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.7rem 1.4rem; border: none; border-radius: 6px; font-size: 0.95rem; cursor: pointer; transition: all 0.2s; }
+    .btn-primary { background: #0097e6; color: #fff; }
+    .btn-primary:hover { background: #0078c2; }
+    .btn-danger { background: #e74c3c; color: #fff; }
+    .btn-danger:hover { background: #c0392b; }
+    .btn-success { background: #27ae60; color: #fff; }
+    .btn-success:hover { background: #219a52; }
+    .btn-secondary { background: #95a5a6; color: #fff; }
+    .btn-secondary:hover { background: #7f8c8d; }
+
+    .file-list { margin-top: 0.5rem; }
+    .file-item { display: flex; align-items: center; gap: 0.5rem; padding: 0.4rem 0; font-size: 0.85rem; color: #555; }
+    .file-item i { width: 16px; text-align: center; }
+    .file-item .remove-file { color: #e74c3c; cursor: pointer; margin-left: auto; }
+
+    .array-input { display: flex; gap: 0.5rem; margin-bottom: 0.5rem; }
+    .array-input input { flex: 1; padding: 0.5rem; border: 1px solid #ddd; border-radius: 4px; }
+    .tag-list { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .tag { display: inline-flex; align-items: center; gap: 0.3rem; background: #e8f4fd; color: #0097e6; padding: 0.3rem 0.6rem; border-radius: 4px; font-size: 0.85rem; }
+    .tag .remove-tag { cursor: pointer; font-weight: bold; color: #e74c3c; }
+
+    .preview-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 0.5rem; margin-top: 0.5rem; }
+    .preview-grid img { width: 100%; height: 80px; object-fit: cover; border-radius: 4px; border: 1px solid #ddd; }
+
+    #status { padding: 1rem; border-radius: 8px; margin-bottom: 1rem; display: none; }
+    #status.success { display: block; background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+    #status.error { display: block; background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+    #status.info { display: block; background: #d1ecf1; color: #0c5460; border: 1px solid #bee5eb; }
+
+    .existing-projects { max-height: 300px; overflow-y: auto; }
+    .existing-projects table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+    .existing-projects th, .existing-projects td { padding: 0.5rem; text-align: left; border-bottom: 1px solid #eee; }
+    .existing-projects th { background: #f8f9fa; position: sticky; top: 0; }
+
+    .resource-item-row { display: flex; gap: 0.5rem; align-items: center; margin-bottom: 0.5rem; padding: 0.5rem; background: #f8f9fa; border-radius: 6px; }
+    .resource-item-row input, .resource-item-row select { padding: 0.4rem; border: 1px solid #ddd; border-radius: 4px; font-size: 0.85rem; }
+    .resource-item-row .res-title { flex: 2; }
+    .resource-item-row .res-url { flex: 3; }
+    .resource-item-row .res-type { flex: 1; }
+    .resource-item-row .res-file { flex: 2; }
+
+    @media (max-width: 768px) {
+      body { padding: 1rem; }
+      .form-row { flex-direction: column; }
+      .form-group { min-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1><i class="fas fa-tools"></i> Project Manager <small>— Admin Panel</small></h1>
+
+    <div id="status"></div>
+
+    <div class="card">
+      <h2><i class="fas fa-folder-open"></i> 1. Buka Folder Portfolio</h2>
+      <p style="margin-bottom:1rem;color:#666;">Pilih folder <strong>root repository</strong> (folder utama caturwardana.github.io). Data akan ditulis ke <code>assets/images/projects/{slug}/</code> dan <code>projects/projects.json</code>.</p>
+      <button class="btn btn-primary" id="btnOpenFolder"><i class="fas fa-folder-open"></i> Buka Folder Repository</button>
+      <span id="folderStatus" style="margin-left:1rem;font-size:0.9rem;color:#888;">Belum dipilih</span>
+    </div>
+
+    <div class="card">
+      <h2><i class="fas fa-plus-circle"></i> 2. Data Project</h2>
+
+      <div class="form-row">
+        <div class="form-group" style="flex:2;">
+          <label>Nama Project</label>
+          <input type="text" id="projectName" placeholder="Contoh: Digital Artificial Insemination Gun (IB-G2)" oninput="generateSlug()">
+        </div>
+        <div class="form-group" style="flex:1;">
+          <label>Slug (ID Folder)</label>
+          <input type="text" id="projectSlug" placeholder="ib-gun">
+          <div class="slug-preview">Folder: assets/images/projects/<span id="slugPath">slug</span>/</div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Kategori</label>
+          <select id="projectCategory">
+            <option value="mechanical">Mechanical</option>
+            <option value="automotive">Automotive</option>
+            <option value="robotics">Robotics</option>
+            <option value="automation">Automation</option>
+            <option value="medical">Medical</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Tanggal</label>
+          <input type="text" id="projectDate" placeholder="Jan 2024 - Jun 2024">
+        </div>
+        <div class="form-group">
+          <label>Client</label>
+          <input type="text" id="projectClient" placeholder="Universitas Gadjah Mada (UGM)">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Deskripsi Singkat</label>
+        <input type="text" id="shortDesc" placeholder="Brief one-line description">
+      </div>
+      <div class="form-group">
+        <label>Deskripsi Lengkap</label>
+        <textarea id="fullDesc" rows="4" placeholder="Full detailed description..."></textarea>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2><i class="fas fa-microchip"></i> 3. Skills</h2>
+      <div class="array-input">
+        <input type="text" id="skillInput" placeholder="Contoh: CAD" onkeypress="if(event.key==='Enter')addSkill()">
+        <button class="btn btn-primary" onclick="addSkill()">Tambah</button>
+      </div>
+      <div class="tag-list" id="skillList"></div>
+    </div>
+
+    <div class="card">
+      <h2><i class="fas fa-list"></i> 4. Key Features & Specifications</h2>
+      <div class="array-input">
+        <input type="text" id="specInput" placeholder="Contoh: High-resolution camera" onkeypress="if(event.key==='Enter')addSpec()">
+        <button class="btn btn-primary" onclick="addSpec()">Tambah</button>
+      </div>
+      <div class="tag-list" id="specList"></div>
+    </div>
+
+    <div class="card">
+      <h2><i class="fas fa-images"></i> 5. Gambar Project</h2>
+      <p style="margin-bottom:0.5rem;color:#666;">Pilih semua gambar project (thumbnail akan otomatis dari gambar pertama).</p>
+      <input type="file" id="imageFiles" multiple accept="image/*" onchange="previewImages(event)">
+      <div class="preview-grid" id="imagePreview"></div>
+    </div>
+
+    <div class="card">
+      <h2><i class="fas fa-image"></i> 6. Poster (Opsional)</h2>
+      <input type="file" id="posterFile" accept="image/*" onchange="previewPoster(event)">
+      <div id="posterPreview" style="margin-top:0.5rem;"></div>
+    </div>
+
+    <div class="card">
+      <h2><i class="fas fa-video"></i> 7. Video (YouTube)</h2>
+      <div id="videoList"></div>
+      <div class="array-input">
+        <input type="text" id="videoTitle" placeholder="Judul Video" style="flex:1">
+        <input type="url" id="videoUrl" placeholder="https://youtu.be/xxxxx" style="flex:2">
+        <button class="btn btn-primary" onclick="addVideo()">Tambah</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2><i class="fas fa-external-link-alt"></i> 8. Resources & Links</h2>
+      <div id="resourcesList"></div>
+      <div class="resource-item-row" id="resourceTemplate" style="display:none;">
+        <input class="res-title" placeholder="Judul">
+        <input class="res-url" placeholder="URL eksternal (https://...)">
+        <select class="res-type">
+          <option value="journal">Journal</option>
+          <option value="patent">Patent</option>
+          <option value="documentation">Documentation</option>
+          <option value="report">Report</option>
+          <option value="github">GitHub</option>
+          <option value="website">Website</option>
+          <option value="other">Other</option>
+        </select>
+        <input class="res-file" type="file" accept=".pdf,image/*">
+        <button class="btn btn-danger" onclick="this.parentElement.remove()" style="padding:0.4rem 0.6rem;font-size:0.8rem;"><i class="fas fa-times"></i></button>
+      </div>
+      <button class="btn btn-secondary" onclick="addResource()"><i class="fas fa-plus"></i> Tambah Resource</button>
+    </div>
+
+    <div class="card">
+      <h2><i class="fas fa-newspaper"></i> 9. News & Media Coverage</h2>
+      <div id="newsList"></div>
+      <div class="array-input">
+        <input type="text" id="newsTitle" placeholder="Judul Berita" style="flex:2">
+        <input type="url" id="newsUrl" placeholder="URL Berita" style="flex:3">
+        <button class="btn btn-primary" onclick="addNews()">Tambah</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2><i class="fas fa-trophy"></i> 10. Achievements (Opsional)</h2>
+      <input type="text" id="achievements" placeholder="Contoh: 3rd Place in PKM PIMNAS 34" style="width:100%;padding:0.7rem;border:1px solid #ddd;border-radius:6px;">
+    </div>
+
+    <div class="card" style="text-align:center;">
+      <button class="btn btn-success" id="btnSave" onclick="saveProject()" style="font-size:1.1rem;padding:1rem 2rem;">
+        <i class="fas fa-save"></i> Simpan Project
+      </button>
+      <p style="margin-top:0.5rem;color:#888;font-size:0.85rem;">Semua file akan ditulis ke folder yang dipilih. JSON akan di-update otomatis.</p>
+    </div>
+
+    <div class="card">
+      <h2><i class="fas fa-list-ul"></i> Existing Projects</h2>
+      <div class="existing-projects" id="existingProjects">
+        <p style="color:#888;">Klik "Buka Folder" dulu untuk melihat project yang ada.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let projectDirHandle = null;
+    let selectedImages = [];
+    let selectedPoster = null;
+    let selectedResources = [];
+
+    let skills = [];
+    let specs = [];
+    let videos = [];
+    let newsItems = [];
+    let resources = [];
+
+    function showStatus(msg, type) {
+      const el = document.getElementById('status');
+      el.className = type;
+      el.innerHTML = msg;
+    }
+
+    function generateSlug() {
+      const name = document.getElementById('projectName').value;
+      const slug = name.toLowerCase()
+        .replace(/[^a-z0-9\s-]/g, '')
+        .replace(/\s+/g, '-')
+        .replace(/-+/g, '-')
+        .replace(/^-|-$/g, '');
+      document.getElementById('projectSlug').value = slug;
+      document.getElementById('slugPath').textContent = slug || 'slug';
+    }
+
+    function addSkill() {
+      const input = document.getElementById('skillInput');
+      const v = input.value.trim();
+      if (!v || skills.includes(v)) return;
+      skills.push(v);
+      renderTags('skillList', skills, 'removeSkill');
+      input.value = '';
+    }
+    function removeSkill(i) { skills.splice(i,1); renderTags('skillList', skills, 'removeSkill'); }
+
+    function addSpec() {
+      const input = document.getElementById('specInput');
+      const v = input.value.trim();
+      if (!v) return;
+      specs.push(v);
+      renderTags('specList', specs, 'removeSpec');
+      input.value = '';
+    }
+    function removeSpec(i) { specs.splice(i,1); renderTags('specList', specs, 'removeSpec'); }
+
+    function renderTags(elId, arr, fnName) {
+      const el = document.getElementById(elId);
+      el.innerHTML = arr.map((v,i) => `<span class="tag">${escapeHtml(v)} <span class="remove-tag" onclick="${fnName}(${i})">&times;</span></span>`).join('');
+    }
+
+    function addVideo() {
+      const title = document.getElementById('videoTitle').value.trim();
+      const url = document.getElementById('videoUrl').value.trim();
+      if (!title || !url) return;
+      videos.push({ title, url });
+      renderVideos();
+      document.getElementById('videoTitle').value = '';
+      document.getElementById('videoUrl').value = '';
+    }
+    function removeVideo(i) { videos.splice(i,1); renderVideos(); }
+    function renderVideos() {
+      const el = document.getElementById('videoList');
+      el.innerHTML = videos.map((v,i) => `
+        <div class="resource-item-row">
+          <span style="flex:2">${escapeHtml(v.title)}</span>
+          <span style="flex:3;color:#888;font-size:0.85rem;">${escapeHtml(v.url)}</span>
+          <button class="btn btn-danger" onclick="removeVideo(${i})" style="padding:0.4rem 0.6rem;font-size:0.8rem;"><i class="fas fa-times"></i></button>
+        </div>
+      `).join('');
+    }
+
+    function addNews() {
+      const title = document.getElementById('newsTitle').value.trim();
+      const url = document.getElementById('newsUrl').value.trim();
+      if (!title || !url) return;
+      newsItems.push({ title, url });
+      renderNews();
+      document.getElementById('newsTitle').value = '';
+      document.getElementById('newsUrl').value = '';
+    }
+    function removeNews(i) { newsItems.splice(i,1); renderNews(); }
+    function renderNews() {
+      const el = document.getElementById('newsList');
+      el.innerHTML = newsItems.map((v,i) => `
+        <div class="resource-item-row">
+          <span style="flex:2">${escapeHtml(v.title)}</span>
+          <span style="flex:3;color:#888;font-size:0.85rem;">${escapeHtml(v.url)}</span>
+          <button class="btn btn-danger" onclick="removeNews(${i})" style="padding:0.4rem 0.6rem;font-size:0.8rem;"><i class="fas fa-times"></i></button>
+        </div>
+      `).join('');
+    }
+
+    function addResource() {
+      const container = document.getElementById('resourcesList');
+      const clone = document.getElementById('resourceTemplate').cloneNode(true);
+      clone.style.display = 'flex';
+      clone.id = '';
+      const btn = clone.querySelector('.btn-danger');
+      btn.onclick = () => clone.remove();
+      container.appendChild(clone);
+    }
+
+    function previewImages(event) {
+      selectedImages = Array.from(event.target.files);
+      const el = document.getElementById('imagePreview');
+      el.innerHTML = selectedImages.map((f,i) => {
+        const url = URL.createObjectURL(f);
+        return `<div><img src="${url}"><div style="font-size:0.75rem;text-align:center;">${escapeHtml(f.name)}</div></div>`;
+      }).join('');
+    }
+
+    function previewPoster(event) {
+      selectedPoster = event.target.files[0];
+      const el = document.getElementById('posterPreview');
+      if (selectedPoster) {
+        el.innerHTML = `<img src="${URL.createObjectURL(selectedPoster)}" style="max-width:200px;max-height:150px;border-radius:4px;border:1px solid #ddd;">`;
+      } else {
+        el.innerHTML = '';
+      }
+    }
+
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    // ==== FOLDER PICKER ====
+    document.getElementById('btnOpenFolder').addEventListener('click', async () => {
+      try {
+        projectDirHandle = await window.showDirectoryPicker({ mode: 'readwrite' });
+        document.getElementById('folderStatus').textContent = 'Terpilih: ' + projectDirHandle.name;
+        document.getElementById('folderStatus').style.color = '#27ae60';
+        showStatus('Folder root repo berhasil dipilih: <strong>' + projectDirHandle.name + '</strong>', 'success');
+        loadExistingProjects();
+      } catch (e) {
+        if (e.name !== 'AbortError') {
+          showStatus('Gagal membuka folder: ' + e.message, 'error');
+        }
+      }
+    });
+
+    async function getNestedHandle(dir, path, create = false) {
+      const parts = path.split('/').filter(Boolean);
+      let handle = dir;
+      for (const part of parts) {
+        try {
+          handle = await handle.getDirectoryHandle(part, { create });
+        } catch {
+          return null;
+        }
+      }
+      return handle;
+    }
+
+    async function writeFileToHandle(dirHandle, fileName, blob) {
+      const fileHandle = await dirHandle.getFileHandle(fileName, { create: true });
+      const writable = await fileHandle.createWritable();
+      await writable.write(blob);
+      await writable.close();
+    }
+
+    async function loadExistingProjects() {
+      const el = document.getElementById('existingProjects');
+      try {
+        // Navigate to projects/projects.json
+        const projectsDir = await getNestedHandle(projectDirHandle, 'projects');
+        if (!projectsDir) {
+          el.innerHTML = '<p style="color:#888;">Folder <code>projects/</code> tidak ditemukan.</p>';
+          return [];
+        }
+        let jsonHandle;
+        try {
+          jsonHandle = await projectsDir.getFileHandle('projects.json');
+        } catch { /* not found */ }
+        if (!jsonHandle) {
+          el.innerHTML = '<p style="color:#888;">File projects.json belum ada. Nanti akan dibuat otomatis.</p>';
+          return [];
+        }
+        const file = await jsonHandle.getFile();
+        const text = await file.text();
+        const projects = JSON.parse(text);
+        el.innerHTML = `
+          <table>
+            <thead><tr><th>No</th><th>Slug</th><th>Nama Project</th><th>Category</th></tr></thead>
+            <tbody>
+              ${projects.map((p,i) => `
+                <tr>
+                  <td>${i+1}</td>
+                  <td><code>${escapeHtml(p.id)}</code></td>
+                  <td>${escapeHtml(p.name)}</td>
+                  <td>${escapeHtml(p.category)}</td>
+                </tr>
+              `).join('')}
+            </tbody>
+          </table>
+          <p style="margin-top:0.5rem;font-size:0.85rem;color:#888;">Total: ${projects.length} project</p>
+        `;
+        return projects;
+      } catch (e) {
+        el.innerHTML = '<p style="color:#e74c3c;">Gagal load: ' + e.message + '</p>';
+        return [];
+      }
+    }
+
+    // ==== SAVE ====
+    async function saveProject() {
+      if (!projectDirHandle) {
+        showStatus('Pilih dulu folder root repository!', 'error');
+        return;
+      }
+
+      const slug = document.getElementById('projectSlug').value.trim();
+      const name = document.getElementById('projectName').value.trim();
+      if (!slug || !name) {
+        showStatus('Nama project dan slug harus diisi!', 'error');
+        return;
+      }
+
+      showStatus('Menyimpan project...', 'info');
+
+      try {
+        // 1. Create slug folder in assets/images/projects/
+        const assetsDir = await getNestedHandle(projectDirHandle, 'assets/images/projects', true);
+        const slugDir = await getNestedHandle(projectDirHandle, `assets/images/projects/${slug}`, true);
+
+        // 2. Save images - rename sequentially
+        const imageFiles = document.getElementById('imageFiles').files;
+        const imagesArr = [];
+
+        for (let i = 0; i < imageFiles.length; i++) {
+          const ext = imageFiles[i].name.split('.').pop();
+          const fileName = i === 0 ? `thumb.${ext}` : `${i}.${ext}`;
+          await writeFileToHandle(slugDir, fileName, imageFiles[i]);
+          imagesArr.push(`${slug}/${fileName}`);
+        }
+
+        // 3. Save poster if any
+        let poster = '';
+        if (selectedPoster) {
+          const ext = selectedPoster.name.split('.').pop();
+          const fileName = `poster.${ext}`;
+          await writeFileToHandle(slugDir, fileName, selectedPoster);
+          poster = `${slug}/${fileName}`;
+        }
+
+        // 4. Save resource files
+        const resourceItems = [];
+        const resourceContainers = document.getElementById('resourcesList').querySelectorAll('.resource-item-row');
+
+        for (const container of resourceContainers) {
+          const title = container.querySelector('.res-title').value.trim();
+          const url = container.querySelector('.res-url').value.trim();
+          const type = container.querySelector('.res-type').value;
+          const fileInput = container.querySelector('.res-file');
+          const file = fileInput.files[0];
+
+          if (title && (url || file)) {
+            if (file) {
+              const fileName = file.name;
+              await writeFileToHandle(slugDir, fileName, file);
+              resourceItems.push({
+                title,
+                url: `assets/images/projects/${slug}/${fileName}`,
+                type
+              });
+            } else {
+              resourceItems.push({ title, url, type });
+            }
+          }
+        }
+
+        // 5. Build project object
+        const project = {
+          id: slug,
+          name,
+          category: document.getElementById('projectCategory').value,
+          date: document.getElementById('projectDate').value.trim(),
+          client: document.getElementById('projectClient').value.trim(),
+          thumbnail: imagesArr.length > 0 ? imagesArr[0] : `${slug}/thumb.jpg`,
+          shortDesc: document.getElementById('shortDesc').value.trim(),
+          fullDesc: document.getElementById('fullDesc').value.trim(),
+          specs: specs,
+          skills: skills,
+          images: imagesArr,
+          poster: poster || undefined,
+          videos: videos.length > 0 ? videos : undefined,
+          resources: resourceItems.length > 0 ? resourceItems : undefined,
+          news: newsItems.length > 0 ? newsItems : undefined,
+          achievements: document.getElementById('achievements').value.trim() || undefined
+        };
+
+        // Clean undefined
+        Object.keys(project).forEach(k => project[k] === undefined && delete project[k]);
+        if (project.images.length === 0) delete project.images;
+
+        // 6. Update projects.json
+        const projectsDir = await getNestedHandle(projectDirHandle, 'projects', true);
+        let existingProjects = [];
+
+        try {
+          const jsonHandle = await projectsDir.getFileHandle('projects.json');
+          const file = await jsonHandle.getFile();
+          existingProjects = JSON.parse(await file.text());
+        } catch { /* file doesn't exist yet */ }
+
+        // Replace if slug exists, otherwise append
+        const existingIndex = existingProjects.findIndex(p => p.id === slug);
+        if (existingIndex >= 0) {
+          existingProjects[existingIndex] = project;
+        } else {
+          existingProjects.push(project);
+        }
+
+        const jsonBlob = new Blob([JSON.stringify(existingProjects, null, 2)], { type: 'application/json' });
+        await writeFileToHandle(projectsDir, 'projects.json', jsonBlob);
+
+        showStatus(
+          `Project <strong>${escapeHtml(name)}</strong> berhasil disimpan!<br>
+          <i class="fas fa-folder"></i> assets/images/projects/${slug}/ — ${imagesArr.length} gambar disimpan<br>
+          <i class="fas fa-file-code"></i> projects/projects.json — diupdate`,
+          'success'
+        );
+
+        // Refresh list
+        loadExistingProjects();
+
+        // Reset form
+        resetForm();
+
+      } catch (e) {
+        showStatus('Error: ' + e.message, 'error');
+        console.error(e);
+      }
+    }
+
+    function resetForm() {
+      document.getElementById('projectName').value = '';
+      document.getElementById('projectSlug').value = '';
+      document.getElementById('shortDesc').value = '';
+      document.getElementById('fullDesc').value = '';
+      document.getElementById('projectDate').value = '';
+      document.getElementById('projectClient').value = '';
+      document.getElementById('achievements').value = '';
+      document.getElementById('skillInput').value = '';
+      document.getElementById('specInput').value = '';
+      document.getElementById('imageFiles').value = '';
+      document.getElementById('posterFile').value = '';
+      document.getElementById('imagePreview').innerHTML = '';
+      document.getElementById('posterPreview').innerHTML = '';
+      document.getElementById('videoTitle').value = '';
+      document.getElementById('videoUrl').value = '';
+      document.getElementById('newsTitle').value = '';
+      document.getElementById('newsUrl').value = '';
+      document.getElementById('resourcesList').innerHTML = '';
+      document.getElementById('skillList').innerHTML = '';
+      document.getElementById('specList').innerHTML = '';
+      document.getElementById('videoList').innerHTML = '';
+      document.getElementById('newsList').innerHTML = '';
+      skills = [];
+      specs = [];
+      videos = [];
+      newsItems = [];
+      resources = [];
+      selectedImages = [];
+      selectedPoster = null;
+    }
+  </script>
+</body>
+</html>
