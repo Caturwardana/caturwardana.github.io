@@ -152,8 +152,9 @@
 
     <div class="card">
       <h2><i class="fas fa-images"></i> 5. Gambar Project</h2>
-      <p style="margin-bottom:0.5rem;color:#666;">Pilih semua gambar project (thumbnail akan otomatis dari gambar pertama).</p>
-      <input type="file" id="imageFiles" multiple accept="image/*" onchange="previewImages(event)">
+      <p style="margin-bottom:0.5rem;color:#666;">Klik tombol di bawah untuk menambah gambar. Thumbnail otomatis dari gambar pertama.</p>
+      <button class="btn btn-secondary" onclick="addImagePicker()"><i class="fas fa-plus"></i> Tambah Gambar</button>
+      <div id="imagePickers"></div>
       <div class="preview-grid" id="imagePreview"></div>
     </div>
 
@@ -176,21 +177,6 @@
     <div class="card">
       <h2><i class="fas fa-external-link-alt"></i> 8. Resources & Links</h2>
       <div id="resourcesList"></div>
-      <div class="resource-item-row" id="resourceTemplate" style="display:none;">
-        <input class="res-title" placeholder="Judul">
-        <input class="res-url" placeholder="URL eksternal (https://...)">
-        <select class="res-type">
-          <option value="journal">Journal</option>
-          <option value="patent">Patent</option>
-          <option value="documentation">Documentation</option>
-          <option value="report">Report</option>
-          <option value="github">GitHub</option>
-          <option value="website">Website</option>
-          <option value="other">Other</option>
-        </select>
-        <input class="res-file" type="file" accept=".pdf,image/*">
-        <button class="btn btn-danger" onclick="this.parentElement.remove()" style="padding:0.4rem 0.6rem;font-size:0.8rem;"><i class="fas fa-times"></i></button>
-      </div>
       <button class="btn btn-secondary" onclick="addResource()"><i class="fas fa-plus"></i> Tambah Resource</button>
     </div>
 
@@ -226,15 +212,12 @@
 
   <script>
     let projectDirHandle = null;
-    let selectedImages = [];
+    let imagePickers = [];
     let selectedPoster = null;
-    let selectedResources = [];
-
     let skills = [];
     let specs = [];
     let videos = [];
     let newsItems = [];
-    let resources = [];
 
     function showStatus(msg, type) {
       const el = document.getElementById('status');
@@ -248,7 +231,7 @@
         .replace(/[^a-z0-9\s-]/g, '')
         .replace(/\s+/g, '-')
         .replace(/-+/g, '-')
-        .replace(/^-|-$/g, '');
+        .replace(/^-|$/g, '');
       document.getElementById('projectSlug').value = slug;
       document.getElementById('slugPath').textContent = slug || 'slug';
     }
@@ -320,22 +303,72 @@
       `).join('');
     }
 
-    function addResource() {
-      const container = document.getElementById('resourcesList');
-      const clone = document.getElementById('resourceTemplate').cloneNode(true);
-      clone.style.display = 'flex';
-      clone.id = '';
-      const btn = clone.querySelector('.btn-danger');
-      btn.onclick = () => clone.remove();
-      container.appendChild(clone);
+    // === IMAGE PICKERS (add multiple, no overwrite) ===
+    function addImagePicker(file) {
+      const container = document.getElementById('imagePickers');
+      const index = imagePickers.length;
+      const wrapper = document.createElement('div');
+      wrapper.className = 'resource-item-row';
+      wrapper.dataset.index = index;
+
+      const fileLabel = document.createElement('span');
+      fileLabel.style.flex = '1';
+      fileLabel.textContent = file ? file.name : 'Pilih gambar...';
+
+      const input = document.createElement('input');
+      input.type = 'file';
+      input.accept = 'image/*';
+      input.style.display = 'none';
+      input.addEventListener('change', function() {
+        if (this.files.length > 0) {
+          imagePickers[index] = this.files[0];
+          fileLabel.textContent = this.files[0].name;
+          renderImagePreviews();
+        }
+      });
+
+      const btn = document.createElement('button');
+      btn.className = 'btn btn-primary';
+      btn.textContent = 'Pilih File';
+      btn.style.padding = '0.4rem 0.8rem';
+      btn.style.fontSize = '0.85rem';
+      btn.onclick = () => input.click();
+
+      const removeBtn = document.createElement('button');
+      removeBtn.className = 'btn btn-danger';
+      removeBtn.innerHTML = '<i class="fas fa-times"></i>';
+      removeBtn.style.padding = '0.4rem 0.6rem';
+      removeBtn.style.fontSize = '0.8rem';
+      removeBtn.onclick = () => {
+        wrapper.remove();
+        imagePickers[index] = null;
+        renderImagePreviews();
+      };
+
+      wrapper.appendChild(fileLabel);
+      wrapper.appendChild(input);
+      wrapper.appendChild(btn);
+      wrapper.appendChild(removeBtn);
+      container.appendChild(wrapper);
+
+      if (file) {
+        const dt = new DataTransfer();
+        dt.items.add(file);
+        input.files = dt.files;
+        imagePickers[index] = file;
+        fileLabel.textContent = file.name;
+      }
+
+      renderImagePreviews();
     }
 
-    function previewImages(event) {
-      selectedImages = Array.from(event.target.files);
+    function renderImagePreviews() {
       const el = document.getElementById('imagePreview');
-      el.innerHTML = selectedImages.map((f,i) => {
+      const files = imagePickers.filter(f => f !== null);
+      if (files.length === 0) { el.innerHTML = ''; return; }
+      el.innerHTML = files.map((f, i) => {
         const url = URL.createObjectURL(f);
-        return `<div><img src="${url}"><div style="font-size:0.75rem;text-align:center;">${escapeHtml(f.name)}</div></div>`;
+        return `<div><img src="${url}"><div style="font-size:0.75rem;text-align:center;word-break:break-all;">${i===0?'<b>THUMB</b> ':''}${escapeHtml(f.name)}</div></div>`;
       }).join('');
     }
 
@@ -347,6 +380,77 @@
       } else {
         el.innerHTML = '';
       }
+    }
+
+    // === RESOURCES ===
+    function addResource(data) {
+      const container = document.getElementById('resourcesList');
+      const wrapper = document.createElement('div');
+      wrapper.className = 'resource-item-row';
+
+      const titleInput = document.createElement('input');
+      titleInput.className = 'res-title';
+      titleInput.placeholder = 'Judul';
+      if (data?.title) titleInput.value = data.title;
+
+      const urlInput = document.createElement('input');
+      urlInput.className = 'res-url';
+      urlInput.placeholder = 'URL (kosongkan jika upload file)';
+      if (data?.url && !data.url.startsWith('assets/')) urlInput.value = data.url;
+
+      const typeSelect = document.createElement('select');
+      typeSelect.className = 'res-type';
+      ['journal','patent','documentation','report','github','website','other'].forEach(t => {
+        const opt = document.createElement('option');
+        opt.value = t;
+        opt.textContent = t.charAt(0).toUpperCase() + t.slice(1);
+        if (data?.type === t) opt.selected = true;
+        typeSelect.appendChild(opt);
+      });
+
+      const fileLabel = document.createElement('span');
+      fileLabel.style.flex = '2';
+      fileLabel.style.fontSize = '0.85rem';
+      fileLabel.style.color = '#888';
+      if (data?.url && data.url.startsWith('assets/')) {
+        fileLabel.textContent = '📎 ' + data.url.split('/').pop() + ' (existing)';
+      } else {
+        fileLabel.textContent = 'Upload file...';
+      }
+
+      const fileInput = document.createElement('input');
+      fileInput.type = 'file';
+      fileInput.accept = '.pdf,image/*';
+      fileInput.style.display = 'none';
+      fileInput.addEventListener('change', function() {
+        if (this.files.length > 0) {
+          fileLabel.textContent = '📎 ' + this.files[0].name;
+          urlInput.value = '';
+        }
+      });
+
+      const fileBtn = document.createElement('button');
+      fileBtn.className = 'btn btn-secondary';
+      fileBtn.textContent = 'Upload File';
+      fileBtn.style.padding = '0.4rem 0.8rem';
+      fileBtn.style.fontSize = '0.85rem';
+      fileBtn.onclick = () => fileInput.click();
+
+      const removeBtn = document.createElement('button');
+      removeBtn.className = 'btn btn-danger';
+      removeBtn.innerHTML = '<i class="fas fa-times"></i>';
+      removeBtn.style.padding = '0.4rem 0.6rem';
+      removeBtn.style.fontSize = '0.8rem';
+      removeBtn.onclick = () => wrapper.remove();
+
+      wrapper.appendChild(titleInput);
+      wrapper.appendChild(urlInput);
+      wrapper.appendChild(typeSelect);
+      wrapper.appendChild(fileLabel);
+      wrapper.appendChild(fileInput);
+      wrapper.appendChild(fileBtn);
+      wrapper.appendChild(removeBtn);
+      container.appendChild(wrapper);
     }
 
     function escapeHtml(text) {
@@ -393,7 +497,6 @@
     async function loadExistingProjects() {
       const el = document.getElementById('existingProjects');
       try {
-        // Navigate to projects/projects.json
         const projectsDir = await getNestedHandle(projectDirHandle, 'projects');
         if (!projectsDir) {
           el.innerHTML = '<p style="color:#888;">Folder <code>projects/</code> tidak ditemukan.</p>';
@@ -404,7 +507,7 @@
           jsonHandle = await projectsDir.getFileHandle('projects.json');
         } catch { /* not found */ }
         if (!jsonHandle) {
-          el.innerHTML = '<p style="color:#888;">File projects.json belum ada. Nanti akan dibuat otomatis.</p>';
+          el.innerHTML = '<p style="color:#888;">File projects.json belum ada.</p>';
           return [];
         }
         const file = await jsonHandle.getFile();
@@ -412,7 +515,7 @@
         const projects = JSON.parse(text);
         el.innerHTML = `
           <table>
-            <thead><tr><th>No</th><th>Slug</th><th>Nama Project</th><th>Category</th></tr></thead>
+            <thead><tr><th>No</th><th>Slug</th><th>Nama</th><th>Category</th><th>Aksi</th></tr></thead>
             <tbody>
               ${projects.map((p,i) => `
                 <tr>
@@ -420,16 +523,88 @@
                   <td><code>${escapeHtml(p.id)}</code></td>
                   <td>${escapeHtml(p.name)}</td>
                   <td>${escapeHtml(p.category)}</td>
+                  <td><button class="btn btn-primary" style="padding:0.3rem 0.6rem;font-size:0.8rem;" onclick="editProject('${p.id}')">Edit</button></td>
                 </tr>
               `).join('')}
             </tbody>
           </table>
-          <p style="margin-top:0.5rem;font-size:0.85rem;color:#888;">Total: ${projects.length} project</p>
+          <p style="margin-top:0.5rem;font-size:0.85rem;color:#888;">Total: ${projects.length} project. Klik Edit untuk mengubah project yang ada.</p>
         `;
         return projects;
       } catch (e) {
         el.innerHTML = '<p style="color:#e74c3c;">Gagal load: ' + e.message + '</p>';
         return [];
+      }
+    }
+
+    // ==== EDIT MODE ====
+    async function editProject(slug) {
+      try {
+        const projectsDir = await getNestedHandle(projectDirHandle, 'projects');
+        const jsonHandle = await projectsDir.getFileHandle('projects.json');
+        const file = await jsonHandle.getFile();
+        const projects = JSON.parse(await file.text());
+        const project = projects.find(p => p.id === slug);
+        if (!project) { showStatus('Project tidak ditemukan!', 'error'); return; }
+
+        resetForm();
+        imagePickers = [];
+        document.getElementById('imagePickers').innerHTML = '';
+        document.getElementById('imagePreview').innerHTML = '';
+
+        document.getElementById('projectName').value = project.name || '';
+        document.getElementById('projectSlug').value = project.id || '';
+        document.getElementById('slugPath').textContent = project.id || 'slug';
+        document.getElementById('projectCategory').value = project.category || 'mechanical';
+        document.getElementById('projectDate').value = project.date || '';
+        document.getElementById('projectClient').value = project.client || '';
+        document.getElementById('shortDesc').value = project.shortDesc || '';
+        document.getElementById('fullDesc').value = project.fullDesc || '';
+        document.getElementById('achievements').value = project.achievements || '';
+
+        if (project.skills) { skills = [...project.skills]; renderTags('skillList', skills, 'removeSkill'); }
+        if (project.specs) { specs = [...project.specs]; renderTags('specList', specs, 'removeSpec'); }
+        if (project.videos) { videos = [...project.videos]; renderVideos(); }
+        if (project.news) { newsItems = [...project.news]; renderNews(); }
+
+        if (project.resources) {
+          for (const res of project.resources) {
+            addResource(res);
+          }
+        }
+
+        // Load images using the path from project.images (which has the actual folder name)
+        if (project.images && project.images.length > 0) {
+          // Get folder name from first image path e.g. "IB-GUN/thumb.jpg" -> "IB-GUN"
+          const firstPath = project.images[0];
+          const imageFolder = firstPath.split('/')[0];
+
+          const imgDir = await getNestedHandle(projectDirHandle, `assets/images/projects/${imageFolder}`);
+          if (imgDir) {
+            for (const imgPath of project.images) {
+              const fileName = imgPath.split('/').pop();
+              try {
+                const fileHandle = await imgDir.getFileHandle(fileName);
+                const imgFile = await fileHandle.getFile();
+                addImagePicker(imgFile);
+              } catch {
+                // file missing, skip
+              }
+            }
+          }
+        }
+        if (imagePickers.filter(f => f !== null).length === 0) {
+          addImagePicker();
+        }
+
+        if (project.poster) {
+          document.getElementById('posterPreview').innerHTML = '<p style="color:#888;">Poster existing: ' + escapeHtml(project.poster) + '</p>';
+        }
+
+        window.scrollTo(0,0);
+        showStatus('Mode Edit: <strong>' + escapeHtml(project.name) + '</strong>. Ubah data lalu klik Simpan.', 'info');
+      } catch (e) {
+        showStatus('Gagal load project: ' + e.message, 'error');
       }
     }
 
@@ -450,22 +625,21 @@
       showStatus('Menyimpan project...', 'info');
 
       try {
-        // 1. Create slug folder in assets/images/projects/
-        const assetsDir = await getNestedHandle(projectDirHandle, 'assets/images/projects', true);
         const slugDir = await getNestedHandle(projectDirHandle, `assets/images/projects/${slug}`, true);
 
-        // 2. Save images - rename sequentially
-        const imageFiles = document.getElementById('imageFiles').files;
+        // Save images
         const imagesArr = [];
+        const validPickers = imagePickers.filter(f => f !== null);
 
-        for (let i = 0; i < imageFiles.length; i++) {
-          const ext = imageFiles[i].name.split('.').pop();
+        for (let i = 0; i < validPickers.length; i++) {
+          const file = validPickers[i];
+          const ext = file.name.split('.').pop();
           const fileName = i === 0 ? `thumb.${ext}` : `${i}.${ext}`;
-          await writeFileToHandle(slugDir, fileName, imageFiles[i]);
+          await writeFileToHandle(slugDir, fileName, file);
           imagesArr.push(`${slug}/${fileName}`);
         }
 
-        // 3. Save poster if any
+        // Save poster
         let poster = '';
         if (selectedPoster) {
           const ext = selectedPoster.name.split('.').pop();
@@ -474,7 +648,7 @@
           poster = `${slug}/${fileName}`;
         }
 
-        // 4. Save resource files
+        // Save resources
         const resourceItems = [];
         const resourceContainers = document.getElementById('resourcesList').querySelectorAll('.resource-item-row');
 
@@ -482,25 +656,21 @@
           const title = container.querySelector('.res-title').value.trim();
           const url = container.querySelector('.res-url').value.trim();
           const type = container.querySelector('.res-type').value;
-          const fileInput = container.querySelector('.res-file');
-          const file = fileInput.files[0];
+          const fileInput = container.querySelector('input[type=file]');
+          const file = fileInput?.files?.[0];
 
           if (title && (url || file)) {
             if (file) {
               const fileName = file.name;
               await writeFileToHandle(slugDir, fileName, file);
-              resourceItems.push({
-                title,
-                url: `assets/images/projects/${slug}/${fileName}`,
-                type
-              });
+              resourceItems.push({ title, url: `assets/images/projects/${slug}/${fileName}`, type });
             } else {
               resourceItems.push({ title, url, type });
             }
           }
         }
 
-        // 5. Build project object
+        // Build project object
         const project = {
           id: slug,
           name,
@@ -520,21 +690,17 @@
           achievements: document.getElementById('achievements').value.trim() || undefined
         };
 
-        // Clean undefined
         Object.keys(project).forEach(k => project[k] === undefined && delete project[k]);
         if (project.images.length === 0) delete project.images;
 
-        // 6. Update projects.json
+        // Update projects.json
         const projectsDir = await getNestedHandle(projectDirHandle, 'projects', true);
         let existingProjects = [];
-
         try {
           const jsonHandle = await projectsDir.getFileHandle('projects.json');
-          const file = await jsonHandle.getFile();
-          existingProjects = JSON.parse(await file.text());
-        } catch { /* file doesn't exist yet */ }
+          existingProjects = JSON.parse(await (await jsonHandle.getFile()).text());
+        } catch { /* not exists */ }
 
-        // Replace if slug exists, otherwise append
         const existingIndex = existingProjects.findIndex(p => p.id === slug);
         if (existingIndex >= 0) {
           existingProjects[existingIndex] = project;
@@ -547,17 +713,16 @@
 
         showStatus(
           `Project <strong>${escapeHtml(name)}</strong> berhasil disimpan!<br>
-          <i class="fas fa-folder"></i> assets/images/projects/${slug}/ — ${imagesArr.length} gambar disimpan<br>
+          <i class="fas fa-folder"></i> assets/images/projects/${slug}/ — ${imagesArr.length} gambar<br>
           <i class="fas fa-file-code"></i> projects/projects.json — diupdate`,
           'success'
         );
 
-        // Refresh list
         loadExistingProjects();
-
-        // Reset form
         resetForm();
-
+        imagePickers = [];
+        document.getElementById('imagePickers').innerHTML = '';
+        document.getElementById('imagePreview').innerHTML = '';
       } catch (e) {
         showStatus('Error: ' + e.message, 'error');
         console.error(e);
@@ -572,27 +737,17 @@
       document.getElementById('projectDate').value = '';
       document.getElementById('projectClient').value = '';
       document.getElementById('achievements').value = '';
-      document.getElementById('skillInput').value = '';
-      document.getElementById('specInput').value = '';
-      document.getElementById('imageFiles').value = '';
       document.getElementById('posterFile').value = '';
-      document.getElementById('imagePreview').innerHTML = '';
       document.getElementById('posterPreview').innerHTML = '';
-      document.getElementById('videoTitle').value = '';
-      document.getElementById('videoUrl').value = '';
-      document.getElementById('newsTitle').value = '';
-      document.getElementById('newsUrl').value = '';
-      document.getElementById('resourcesList').innerHTML = '';
       document.getElementById('skillList').innerHTML = '';
       document.getElementById('specList').innerHTML = '';
       document.getElementById('videoList').innerHTML = '';
       document.getElementById('newsList').innerHTML = '';
+      document.getElementById('resourcesList').innerHTML = '';
       skills = [];
       specs = [];
       videos = [];
       newsItems = [];
-      resources = [];
-      selectedImages = [];
       selectedPoster = null;
     }
   </script>
