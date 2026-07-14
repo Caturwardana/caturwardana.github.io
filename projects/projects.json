@@ -722,5 +722,54 @@
       "smart-npk-analyzer/4.jpg",
       "smart-npk-analyzer/5.jpg"
     ]
+  },
+  {
+    "id": "pet-bottle-filament-maker",
+    "name": "PET Bottle Filament Maker",
+    "category": "mechanical",
+    "date": "Jan 2024 - Mar 2024",
+    "client": "Universitas Gadjah Mada",
+    "thumbnail": "pet-bottle-filament-maker/thumb.jpg",
+    "shortDesc": "PET Bottle Filament Maker For 3D Printing",
+    "fullDesc": "# PET Bottle Filament Maker\n\nThe **PET Bottle Filament Maker** is an innovative recycling machine developed at the **Industrial Equipment Laboratory, Department of Mechanical Engineering, Vocational College, Universitas Gadjah Mada (UGM)**. The system is designed to convert discarded polyethylene terephthalate (PET) bottles into high-quality 3D printing filament, providing an environmentally friendly solution for plastic waste management while promoting sustainable manufacturing practices.\n\nThe machine integrates multiple processing stages—including **bottle slicing, filament extrusion, cooling, and automatic filament winding**—into a single compact system. This integrated design streamlines the recycling workflow, minimizes manual handling, and improves production efficiency. By transforming plastic waste into reusable engineering material, the project supports the principles of the **circular economy** and contributes to the **United Nations Sustainable Development Goals (SDGs)** by encouraging responsible consumption and sustainable production.\n\nTo ensure stable filament quality, the extrusion process is regulated using a **PID (Proportional–Integral–Derivative) temperature control system**, maintaining consistent thermal conditions throughout operation. The bottle slicer supports multiple strip-width configurations (**6 mm, 8 mm, 10 mm, and 12 mm**) to accommodate various PET bottle dimensions and optimize material feeding. An integrated **automatic winding mechanism** produces neatly spooled filament, while a **touchscreen Human-Machine Interface (HMI)** provides an intuitive interface for machine operation, monitoring, and parameter adjustment.\n\nDeveloped as a **Research and Development (R&D) prototype**, the PET Bottle Filament Maker demonstrates the feasibility of converting post-consumer PET waste into valuable additive manufacturing material. The system has been designed with a **modular and scalable architecture**, allowing future enhancements in production capacity, process automation, quality control, and industrial-scale implementation.\n\nBeyond its technical functionality, the machine serves as an educational and research platform for sustainable manufacturing, polymer recycling, mechanical system design, and embedded control engineering. The project highlights how engineering innovation can create practical solutions for environmental challenges by converting plastic waste into a valuable resource for additive manufacturing.\n\n---\n\n## Technologies Used\n\n- Mechanical System Design\n- Polymer Extrusion\n- PET Recycling Technology\n- PID Temperature Control\n- Embedded Control System\n- Human-Machine Interface (HMI)\n- Sustainable Manufacturing\n- Additive Manufacturing\n- Product Research & Development (R&D)",
+    "specs": [
+      "Developed at the Industrial Equipment Laboratory, Department of Mechanical Engineering, Vocational College, Universitas Gadjah Mada (UGM)",
+      "Converts discarded PET bottles into reusable 3D printing filament",
+      "Fully integrated bottle slicer, extruder, cooling, and automatic spooling system",
+      "PID-based extruder temperature control for stable processing",
+      "Multiple bottle slicing width options (6 mm, 8 mm, 10 mm, and 12 mm)",
+      "Automatic filament winding for neat and consistent spooling",
+      "Touchscreen Human-Machine Interface (HMI)",
+      "Modular and scalable prototype architecture",
+      "Supports plastic waste recycling, circular economy, and SDGs initiatives",
+      "Designed as a research platform for sustainable manufacturing and additive manufacturing technologies"
+    ],
+    "skills": [
+      "3D Printing",
+      "CAD Modeling",
+      "Digital Manufacturing",
+      "Electronics Integration",
+      "Electrical Wiring",
+      "Sensor Integration",
+      "SolidWorks",
+      "Temperature Control",
+      "Prototyping",
+      "Microprocessor Programming"
+    ],
+    "images": [
+      "pet-bottle-filament-maker/thumb.jpg",
+      "pet-bottle-filament-maker/1.jpg",
+      "pet-bottle-filament-maker/2.jpg",
+      "pet-bottle-filament-maker/3.jpg",
+      "pet-bottle-filament-maker/4.jpg",
+      "pet-bottle-filament-maker/5.jpg"
+    ],
+    "resources": [
+      {
+        "title": "HKI IDD000071691_Alat pembuat Filamen Botol PET",
+        "url": "assets/images/projects/pet-bottle-filament-maker/IDD000071691_Alat pembuat Filamen Botol PET.pdf",
+        "type": "patent"
+      }
+    ]
   }
 ]
