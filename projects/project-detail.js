@@ -164,7 +164,7 @@ function renderProject(project) {
 
         <div class="project-description">
             <h2>Overview</h2>
-            <p>${project.fullDesc}</p>
+            <p>${marked.parse(project.fullDesc || '')}</p>
         </div>
 
         ${posterHTML}

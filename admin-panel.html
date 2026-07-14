@@ -56,6 +56,16 @@
     .gen-spec-item.added { background:#d4edda; border-color:#27ae60; color:#155724; }
     .gen-spec-item .gen-spec-check { width:16px; height:16px; border-radius:3px; border:1px solid #ccc; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:0.7rem; }
     .gen-spec-item.added .gen-spec-check { background:#27ae60; border-color:#27ae60; color:#fff; }
+    #mdPreview h3 { font-size:1.1rem; margin:1rem 0 0.3rem; color:#333; }
+    #mdPreview h4 { font-size:1rem; margin:0.8rem 0 0.3rem; color:#444; }
+    #mdPreview ul, #mdPreview ol { margin:0.3rem 0 0.8rem 1.5rem; }
+    #mdPreview li { margin-bottom:0.2rem; }
+    #mdPreview code { background:#f0f0f0; padding:0.1rem 0.3rem; border-radius:3px; font-size:0.85em; color:#c0392b; }
+    #mdPreview pre { background:#2d2d2d; color:#f8f8f2; padding:0.8rem; border-radius:4px; overflow-x:auto; margin:0.5rem 0; }
+    #mdPreview pre code { background:none; color:inherit; padding:0; }
+    #mdPreview blockquote { border-left:3px solid #0097e6; padding:0.3rem 0.8rem; color:#666; background:#f9f9f9; margin:0.5rem 0; border-radius:0 4px 4px 0; }
+    #mdPreview strong { color:#222; }
+    #mdPreview a { color:#0097e6; }
 
     .preview-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 0.5rem; margin-top: 0.5rem; }
     .preview-grid img { width: 100%; height: 80px; object-fit: cover; border-radius: 4px; border: 1px solid #ddd; }
@@ -145,8 +155,9 @@
         <input type="text" id="shortDesc" placeholder="Brief one-line description">
       </div>
       <div class="form-group">
-        <label>Deskripsi Lengkap</label>
-        <textarea id="fullDesc" rows="4" placeholder="Full detailed description..."></textarea>
+        <label style="display:flex;justify-content:space-between;align-items:center;">Deskripsi Lengkap <button type="button" class="btn btn-secondary" style="padding:0.2rem 0.6rem;font-size:0.75rem;" onclick="toggleMdPreview()"><i class="fas fa-eye"></i> Preview MD</button></label>
+        <textarea id="fullDesc" rows="4" placeholder="Full detailed description... (Markdown supported)"></textarea>
+        <div id="mdPreview" style="display:none;padding:1rem;background:#fff;border:1px solid #ddd;border-radius:6px;margin-top:0.5rem;line-height:1.8;color:#444;"></div>
       </div>
     </div>
 
@@ -277,6 +288,7 @@
 
   </div> <!-- end container -->
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.1/marked.min.js" integrity="sha512-AbVlFvPWGFq2VVGTLmDRb8R1MGV0gfVYUhKFBOTyoQO6GvqQ7LOIEN7pO0VdIq0JGM5bGpGiJJW1IqB8EhMdg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script>
     let projectDirHandle = null;
     let imagePickers = [];
@@ -364,7 +376,7 @@
     function generateSpecsFromDesc() {
       const short = (document.getElementById('shortDesc').value || '').trim();
       const full = (document.getElementById('fullDesc').value || '').trim();
-      const text = (short + '. ' + full).replace(/\n+/g, ' ');
+      const text = (short + '. ' + full).replace(/\n+/g, ' ').replace(/#{1,6}\s/g, '').replace(/\*\*(.+?)\*\*/g, '$1').replace(/\*(.+?)\*/g, '$1').replace(/`{1,3}[^`]*`{1,3}/g, '').replace(/\[(.+?)\]\(.+?\)/g, '$1').replace(/^\s*[-*+]\s/gm, '').replace(/^\s*\d+\.\s/gm, '').replace(/^>\s/gm, '');
       const raw = text.split(/(?<=[.!?])\s+/).map(s => s.trim()).filter(s => s.length > 10 && s.length < 250);
       const phrases = [];
       for (const s of raw) {
@@ -644,6 +656,19 @@
         img.onerror = () => { URL.revokeObjectURL(url); resolve(file); };
         img.src = url;
       });
+    }
+
+    function toggleMdPreview() {
+      const textarea = document.getElementById('fullDesc');
+      const preview = document.getElementById('mdPreview');
+      if (preview.style.display === 'none') {
+        preview.innerHTML = marked.parse(textarea.value || '_Tulis deskripsi dulu..._');
+        preview.style.display = 'block';
+        textarea.style.display = 'none';
+      } else {
+        preview.style.display = 'none';
+        textarea.style.display = '';
+      }
     }
 
     function formatBytes(bytes) {
