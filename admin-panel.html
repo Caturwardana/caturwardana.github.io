@@ -98,7 +98,7 @@
         </div>
         <div class="form-group" style="flex:1;">
           <label>Slug (ID Folder)</label>
-          <input type="text" id="projectSlug" placeholder="ib-gun">
+          <input type="text" id="projectSlug" placeholder="ib-gun" oninput="document.getElementById('slugPath').textContent=this.value||'slug'">
           <div class="slug-preview">Folder: assets/images/projects/<span id="slugPath">slug</span>/</div>
         </div>
       </div>
@@ -261,6 +261,7 @@
     let specs = [];
     let videos = [];
     let newsItems = [];
+    let originalSlug = null;
 
     function showStatus(msg, type) {
       const el = document.getElementById('status');
@@ -269,6 +270,7 @@
     }
 
     function generateSlug() {
+      if (originalSlug) return;
       const name = document.getElementById('projectName').value;
       const slug = name.toLowerCase()
         .replace(/[^a-z0-9\s-]/g, '')
@@ -542,6 +544,26 @@
       return results;
     }
 
+    async function renameProjectFolder(oldSlug, newSlug) {
+      const oldDir = await getNestedHandle(projectDirHandle, `assets/images/projects/${oldSlug}`);
+      if (!oldDir) return;
+
+      const newDir = await getNestedHandle(projectDirHandle, `assets/images/projects/${newSlug}`, true);
+
+      for await (const [name, handle] of oldDir.entries()) {
+        if (handle.kind === 'file') {
+          const file = await handle.getFile();
+          await writeFileToHandle(newDir, name, file);
+        }
+      }
+
+      try {
+        await projectDirHandle.removeEntry(`assets/images/projects/${oldSlug}`, { recursive: true });
+      } catch (e) {
+        console.warn('Gagal hapus folder lama:', e.message);
+      }
+    }
+
     // ==== FOLDER PICKER ====
     document.getElementById('btnOpenFolder').addEventListener('click', async () => {
       if (!window.showDirectoryPicker) {
@@ -636,6 +658,7 @@
         const project = projects.find(p => p.id === slug);
         if (!project) { showStatus('Project tidak ditemukan!', 'error'); return; }
 
+        originalSlug = slug;
         resetForm();
         imagePickers = [];
         document.getElementById('imagePickers').innerHTML = '';
@@ -714,6 +737,12 @@
       showStatus('Menyimpan project... <small>(kompresi gambar berjalan)</small>', 'info');
 
       try {
+        // If slug changed in edit mode, move old folder to new slug
+        if (originalSlug && originalSlug !== slug) {
+          showStatus('Memindahkan folder ke slug baru...', 'info');
+          await renameProjectFolder(originalSlug, slug);
+        }
+
         const slugDir = await getNestedHandle(projectDirHandle, `assets/images/projects/${slug}`, true);
 
         // Save images with compression
@@ -809,6 +838,7 @@
         showStatus(
           `Project <strong>${escapeHtml(name)}</strong> berhasil disimpan!<br>
           <i class="fas fa-folder"></i> assets/images/projects/${slug}/ — ${imagesArr.length} gambar<br>
+          ${originalSlug && originalSlug !== slug ? `<i class="fas fa-exchange-alt"></i> Folder direname: <code>${originalSlug}</code> → <code>${slug}</code><br>` : ''}
           <i class="fas fa-compress-arrows-alt"></i> Kompresi: ${formatBytes(totalOriginal)} → ${formatBytes(totalCompressed)} (hemat ${totalOriginal > 0 ? Math.round((1 - totalCompressed/totalOriginal) * 100) : 0}%)<br>
           <i class="fas fa-file-code"></i> projects/projects.json — diupdate`,
           'success'
@@ -845,6 +875,7 @@
       videos = [];
       newsItems = [];
       selectedPoster = null;
+      originalSlug = null;
     }
 
     // ========================
