@@ -156,7 +156,11 @@
       <h2><i class="fas fa-images"></i> 5. Gambar Project</h2>
       <p style="margin-bottom:0.5rem;color:#666;">Klik tombol di bawah untuk menambah gambar. Thumbnail otomatis dari gambar pertama.</p>
       <p style="margin-bottom:0.5rem;color:#27ae60;font-size:0.85rem;"><i class="fas fa-compress-arrows-alt"></i> Auto-kompresi: resize max 1920px + JPEG quality 88% (semua gambar termasuk thumb).</p>
-      <button class="btn btn-secondary" onclick="addImagePicker()"><i class="fas fa-plus"></i> Tambah Gambar</button>
+      <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:0.5rem;">
+        <button class="btn btn-secondary" onclick="addImagePicker()"><i class="fas fa-plus"></i> Tambah Gambar</button>
+        <button class="btn btn-secondary" onclick="addMultipleImages()"><i class="fas fa-images"></i> Tambah Banyak</button>
+      </div>
+      <input type="file" id="multiImageInput" accept="image/*" multiple style="display:none">
       <div id="imagePickers"></div>
       <div class="preview-grid" id="imagePreview"></div>
     </div>
@@ -256,6 +260,7 @@
   <script>
     let projectDirHandle = null;
     let imagePickers = [];
+    let thumbIndex = 0;
     let selectedPoster = null;
     let skills = [];
     let specs = [];
@@ -407,13 +412,28 @@
       renderImagePreviews();
     }
 
+    function addMultipleImages() {
+      const input = document.getElementById('multiImageInput');
+      input.onchange = () => {
+        for (const file of input.files) addImagePicker(file);
+        input.value = '';
+      };
+      input.click();
+    }
+
+    function setThumbIndex(i) {
+      thumbIndex = i;
+      renderImagePreviews();
+    }
+
     function renderImagePreviews() {
       const el = document.getElementById('imagePreview');
       const files = imagePickers.filter(f => f !== null);
       if (files.length === 0) { el.innerHTML = ''; return; }
       el.innerHTML = files.map((f, i) => {
         const url = URL.createObjectURL(f);
-        return `<div><img src="${url}"><div style="font-size:0.75rem;text-align:center;word-break:break-all;">${i===0?'<b>THUMB</b> ':''}${escapeHtml(f.name)}<br><span style="color:#27ae60;">${formatBytes(f.size)}</span></div></div>`;
+        const isThumb = i === thumbIndex;
+        return `<div style="position:relative;${isThumb?'border:2px solid #27ae60;border-radius:6px;':''}"><img src="${url}"><label style="display:flex;align-items:center;gap:0.3rem;font-size:0.7rem;justify-content:center;margin-top:0.2rem;cursor:pointer;"><input type="radio" name="thumbRadio" ${isThumb?'checked':''} onchange="setThumbIndex(${i})"> Thumb</label><div style="font-size:0.75rem;text-align:center;word-break:break-all;">${escapeHtml(f.name)}<br><span style="color:#27ae60;">${formatBytes(f.size)}</span></div></div>`;
       }).join('');
     }
 
@@ -661,6 +681,7 @@
         originalSlug = slug;
         resetForm();
         imagePickers = [];
+        thumbIndex = 0;
         document.getElementById('imagePickers').innerHTML = '';
         document.getElementById('imagePreview').innerHTML = '';
 
@@ -755,11 +776,23 @@
           const compressed = await compressImage(file);
           totalOriginal += file.size;
           totalCompressed += compressed.size;
-          const ext = 'jpg';
-          const fileName = i === 0 ? `thumb.${ext}` : `${i}.${ext}`;
+          let fileName;
+          if (i === thumbIndex) {
+            fileName = 'thumb.jpg';
+          } else if (i === 0 && thumbIndex !== 0) {
+            fileName = `${thumbIndex}.jpg`;
+          } else {
+            fileName = `${i}.jpg`;
+          }
           await writeFileToHandle(slugDir, fileName, compressed);
           imagesArr.push(`${slug}/${fileName}`);
         }
+
+        imagesArr.sort((a, b) => {
+          if (a.endsWith('thumb.jpg')) return -1;
+          if (b.endsWith('thumb.jpg')) return 1;
+          return 0;
+        });
 
         // Save poster (compress or as-is based on checkbox)
         let poster = '';
@@ -847,6 +880,7 @@
         loadExistingProjects();
         resetForm();
         imagePickers = [];
+        thumbIndex = 0;
         document.getElementById('imagePickers').innerHTML = '';
         document.getElementById('imagePreview').innerHTML = '';
       } catch (e) {
@@ -875,6 +909,7 @@
       videos = [];
       newsItems = [];
       selectedPoster = null;
+      thumbIndex = 0;
       originalSlug = null;
     }
 

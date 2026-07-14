@@ -593,5 +593,38 @@
         "url": "https://www.militerdefence.com/2025/06/7-fakta-unik-drone-sa-6-mortar-dropper.html"
       }
     ]
+  },
+  {
+    "id": "smart-solar-finder-prototipe",
+    "name": "Smart Solar Finder (Prototipe)",
+    "category": "automation",
+    "date": "Jan 2022",
+    "client": "Universitas Gadjah Mada",
+    "thumbnail": "smart-solar-finder-prototipe/thumb.jpg",
+    "shortDesc": "Dual-Axis Solar Tracker Prototype",
+    "fullDesc": "Designed and developed a prototype dual-axis solar tracking system to demonstrate automatic photovoltaic (PV) panel positioning based on real-time sunlight detection. The prototype utilizes an Arduino Uno, four Light Dependent Resistor (LDR) sensors, and two servo motors to continuously adjust the panel's horizontal (azimuth) and vertical (elevation) angles, ensuring maximum solar exposure throughout the day.\n\nThe control algorithm compares light intensity from four directional sensors and dynamically drives both axes to minimize the difference in illumination, allowing the solar panel to maintain an optimal orientation relative to the sun. The project included electronic circuit design, embedded software development, mechanical assembly, sensor calibration, and system testing.\n\nAlthough developed as a proof-of-concept prototype, the system architecture is highly scalable. The same tracking principle can be implemented on larger solar installations by replacing hobby servo motors with industrial actuators, stepper motors, or geared DC motors equipped with appropriate position feedback and motor drivers. The control algorithm can also be migrated to industrial-grade controllers such as STM32, PLCs, or other embedded platforms, making it suitable for commercial-scale photovoltaic tracking applications.\n\nKey Responsibilities\n\n Designed the mechanical structure for dual-axis motion.\n Developed embedded firmware using Arduino (C/C++).\n Designed and assembled the electronic control system.\n Implemented real-time solar tracking algorithms using four LDR sensors.\n Performed sensor calibration and servo tuning to improve tracking accuracy.\n Built and tested a functional prototype for performance validation.\n Evaluated scalability for larger photovoltaic systems using industrial actuators and controllers.\n\nTechnologies\nArduino Uno • Embedded C/C++ • LDR Sensors • Servo Motors • Solar Energy Systems • Mechanical Design • Electronics Design • Control Systems • Rapid Prototyping • Sensor Calibration",
+    "specs": [],
+    "skills": [
+      "CAD"
+    ],
+    "images": [
+      "smart-solar-finder-prototipe/thumb.jpg",
+      "smart-solar-finder-prototipe/6.jpg",
+      "smart-solar-finder-prototipe/1.jpg",
+      "smart-solar-finder-prototipe/2.jpg",
+      "smart-solar-finder-prototipe/3.jpg",
+      "smart-solar-finder-prototipe/4.jpg",
+      "smart-solar-finder-prototipe/5.jpg",
+      "smart-solar-finder-prototipe/7.jpg",
+      "smart-solar-finder-prototipe/8.jpg",
+      "smart-solar-finder-prototipe/9.jpg",
+      "smart-solar-finder-prototipe/10.jpg"
+    ],
+    "videos": [
+      {
+        "title": "SMART SOLAR TRACKER 2 AXIS",
+        "url": "https://www.youtube.com/embed/6JFZGgFwM6A?si=mhgF6gd7DzsLVofW"
+      }
+    ]
   }
 ]
