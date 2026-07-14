@@ -685,5 +685,42 @@
         "url": "https://www.youtube.com/watch?v=u9sDrPg5_k4"
       }
     ]
+  },
+  {
+    "id": "smart-npk-analyzer",
+    "name": "Smart NPK Analyzer",
+    "category": "automation",
+    "date": "Feb 2025 - Mar 2025",
+    "client": "Agricultural Technology (FTP), Universitas Gadjah Mada (UGM)",
+    "thumbnail": "smart-npk-analyzer/thumb.jpg",
+    "shortDesc": "Smart NPK Analyzer",
+    "fullDesc": "The Smart NPK Analyzer Prototype is a research and development project owned by the Faculty of Agricultural Technology (FTP), Universitas Gadjah Mada (UGM). The system is designed to provide rapid digital measurement of the primary soil nutrients—Nitrogen (N), Phosphorus (P), and Potassium (K)—through an integrated desktop instrument.\n\nAs part of the engineering support team, I contributed to the development of the prototype by assisting in the mechanical, electrical, and embedded system integration, transforming research concepts into a functional working prototype.\n\nWorking Principle\nThe operator places the prepared sample into the measurement chamber and initiates the analysis through the touchscreen interface. The instrument performs an automated measurement sequence, ensuring consistent operating conditions during data acquisition.\n\nThe embedded control system processes sensor data to obtain the nutrient values for Nitrogen (N), Phosphorus (P), and Potassium (K). The results are displayed in real time on the touchscreen interface and can be printed immediately using the integrated thermal printer.\n\nTo improve usability, the system also provides a preliminary interpretation of the measurement results, allowing users to quickly assess the nutrient condition of the tested sample.\n\nMy Contribution\n\nI supported the development of this prototype by contributing to:\n\nMechanical enclosure design and assembly support\nEmbedded firmware development\nSensor communication integration\nTouchscreen HMI implementation\nThermal printer integration\nElectronic system integration\nPrototype assembly, testing, and functional validation\nTechnologies\nEmbedded Systems\nESP32 Firmware Development\nRS485 Communication\nHuman Machine Interface (HMI)\nThermal Printing\nElectronics Integration\nMechanical Design Support\nPrototype Development\nFunctional Testing\n\nThis instrument is currently in the Research & Development (R&D) stage. The prototype has been developed as a validation platform for future refinement, calibration, and feature expansion before wider deployment. Certain implementation details are intentionally omitted due to the ongoing research and development process.\n\nNote: This project is owned by the Faculty of Agricultural Technology, Universitas Gadjah Mada (FTP UGM). The information presented here highlights my engineering contributions to the prototype development and intentionally excludes proprietary technical details due to the ongoing R&D process.",
+    "specs": [
+      "Semi-automatic measurement workflow",
+      "Sensor, HMI, embedded controller, and printer integrated into a single desktop unit",
+      "Compact desktop enclosure with modular internal architecture",
+      "Rapid digital measurement of Nitrogen (N), Phosphorus (P), and Potassium (K)",
+      "Real-time data acquisition and processing",
+      "Easy operation with minimal user interaction"
+    ],
+    "skills": [
+      "CAD Modeling",
+      "Digital Manufacturing",
+      "Electrical Design",
+      "IoT",
+      "Prototyping",
+      "Sensor Integration",
+      "Electrical Wiring",
+      "Embedded Systems",
+      "Electronics Integration"
+    ],
+    "images": [
+      "smart-npk-analyzer/thumb.jpg",
+      "smart-npk-analyzer/1.jpg",
+      "smart-npk-analyzer/2.jpg",
+      "smart-npk-analyzer/3.jpg",
+      "smart-npk-analyzer/4.jpg",
+      "smart-npk-analyzer/5.jpg"
+    ]
   }
 ]
