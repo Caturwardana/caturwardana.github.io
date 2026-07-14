@@ -51,6 +51,11 @@
     .skill-btn { padding: 0.35rem 0.7rem; border-radius: 4px; font-size: 0.8rem; cursor: pointer; border: 1px solid #ddd; background: #f0f0f0; color: #555; transition: all 0.15s; }
     .skill-btn.active { background: #27ae60; color: #fff; border-color: #27ae60; }
     .skill-btn:hover { opacity: 0.85; }
+    .gen-spec-item { display:flex; align-items:center; gap:0.5rem; padding:0.4rem 0.6rem; background:#f8f9fa; border:1px solid #e0e0e0; border-radius:6px; font-size:0.85rem; color:#444; cursor:pointer; transition:all 0.15s; }
+    .gen-spec-item:hover { background:#e8f4fd; border-color:#0097e6; }
+    .gen-spec-item.added { background:#d4edda; border-color:#27ae60; color:#155724; }
+    .gen-spec-item .gen-spec-check { width:16px; height:16px; border-radius:3px; border:1px solid #ccc; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:0.7rem; }
+    .gen-spec-item.added .gen-spec-check { background:#27ae60; border-color:#27ae60; color:#fff; }
 
     .preview-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 0.5rem; margin-top: 0.5rem; }
     .preview-grid img { width: 100%; height: 80px; object-fit: cover; border-radius: 4px; border: 1px solid #ddd; }
@@ -158,6 +163,8 @@
 
     <div class="card">
       <h2><i class="fas fa-list"></i> 4. Key Features & Specifications</h2>
+      <button class="btn btn-secondary" onclick="generateSpecsFromDesc()" style="margin-bottom:0.5rem;"><i class="fas fa-magic"></i> Generate dari Deskripsi</button>
+      <div id="generatedSpecs" style="display:none;margin-bottom:0.5rem;"></div>
       <div class="array-input">
         <input type="text" id="specInput" placeholder="Contoh: High-resolution camera" onkeypress="if(event.key==='Enter')addSpec()">
         <button class="btn btn-primary" onclick="addSpec()">Tambah</button>
@@ -353,6 +360,49 @@
       input.value = '';
     }
     function removeSpec(i) { specs.splice(i,1); renderTags('specList', specs, 'removeSpec'); }
+
+    function generateSpecsFromDesc() {
+      const short = (document.getElementById('shortDesc').value || '').trim();
+      const full = (document.getElementById('fullDesc').value || '').trim();
+      const text = (short + '. ' + full).replace(/\n+/g, ' ');
+      const raw = text.split(/(?<=[.!?])\s+/).map(s => s.trim()).filter(s => s.length > 10 && s.length < 250);
+      const phrases = [];
+      for (const s of raw) {
+        const clean = s.replace(/^[—\-\s]+/, '').replace(/\.$/, '').trim();
+        const parts = clean.split(/,\s*|\s+and\s+|\s+or\s+|\s*;\s*/).map(p => p.trim()).filter(p => p.length > 5);
+        for (const p of parts) {
+          const short = p.length > 80 ? p.substring(0, 77) + '...' : p;
+          phrases.push(short);
+        }
+      }
+      const seen = new Set(specs.map(s => s.toLowerCase()));
+      const candidates = [];
+      for (const p of phrases) {
+        const key = p.toLowerCase();
+        if (!seen.has(key) && !candidates.some(c => c.toLowerCase() === key)) {
+          candidates.push(p);
+          seen.add(key);
+        }
+      }
+      if (!candidates.length) { showStatus('Tidak ada poin baru yang bisa di-generate dari deskripsi.', 'info'); return; }
+      const el = document.getElementById('generatedSpecs');
+      el.style.display = 'block';
+      el.innerHTML = '<p style="font-size:0.8rem;color:#666;margin-bottom:0.3rem;">Klik untuk tambahkan ke specs:</p>' +
+        candidates.map((c, i) =>
+          `<div class="gen-spec-item" onclick="addGeneratedSpec(${i})" id="genspec-${i}"><span class="gen-spec-check"></span><span>${escapeHtml(c)}</span></div>`
+        ).join('');
+      window._generatedSpecs = candidates;
+    }
+
+    function addGeneratedSpec(i) {
+      const el = document.getElementById('genspec-' + i);
+      if (el.classList.contains('added')) return;
+      const text = window._generatedSpecs[i];
+      specs.push(text);
+      renderTags('specList', specs, 'removeSpec');
+      el.classList.add('added');
+      el.querySelector('.gen-spec-check').textContent = '✓';
+    }
 
     function renderTags(elId, arr, fnName) {
       const el = document.getElementById(elId);
@@ -975,6 +1025,8 @@
       document.getElementById('posterPreview').innerHTML = '';
       document.getElementById('skillList').innerHTML = '';
       document.getElementById('specList').innerHTML = '';
+      document.getElementById('generatedSpecs').innerHTML = '';
+      document.getElementById('generatedSpecs').style.display = 'none';
       document.getElementById('videoList').innerHTML = '';
       document.getElementById('newsList').innerHTML = '';
       document.getElementById('resourcesList').innerHTML = '';

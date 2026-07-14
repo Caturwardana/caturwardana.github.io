@@ -626,5 +626,64 @@
         "url": "https://www.youtube.com/embed/6JFZGgFwM6A?si=mhgF6gd7DzsLVofW"
       }
     ]
+  },
+  {
+    "id": "automatic-wood-drying-oven-control-system",
+    "name": "Automatic Wood Drying Oven Control System",
+    "category": "automation",
+    "date": "Jun 2022 - Aug 2026",
+    "client": "local wood craftsmen in Pandeglang, Banten, Indonesia",
+    "thumbnail": "automatic-wood-drying-oven-control-system/thumb.jpg",
+    "shortDesc": "Field Implementation – Community-Based Wood Drying Automation",
+    "fullDesc": "Designed and implemented an automated control system for a wood drying oven as part of a community engineering project for local wood craftsmen in Pandeglang, Banten, Indonesia. The system was developed to improve drying efficiency, reduce manual operation, and maintain consistent drying temperatures for higher-quality wood processing.\n\nThe control system integrates a digital thermostat (STC-1000) with a relay-based electrical panel to automatically regulate the heating process. A temperature sensor continuously monitors the drying chamber and controls the gas burner through an electric solenoid valve. The blower system is equipped with an SCR (Silicon Controlled Rectifier) speed controller to optimize airflow and heat distribution, while a DC-powered ignition module provides reliable automatic burner ignition.\n\nThe temperature controller allows operators to configure the maximum drying temperature and hysteresis, enabling stable and energy-efficient operation with minimal user intervention.\n\nKey Responsibilities\n\nDesigned the electrical control system and wiring architecture.\nConfigured automatic temperature control using a digital thermostat.\nIntegrated gas burner automation with an electric solenoid valve.\nImplemented variable-speed blower control using an SCR controller.\nInstalled and tested the complete control system on-site.\nCommissioned the system for daily use by local wood craftsmen.\n\nTechnologies & Components\n\nSTC-1000 Digital Thermostat\nRelay-Based Control Panel\nGas Solenoid Valve\nSCR AC Motor Speed Controller\nDC Ignition Module\n220 VAC Electrical Distribution\nTemperature Sensor\nForced-Air Blower System\n\nProject Impact\nThe automated wood drying oven has been successfully deployed and operated by local wood craftsmen in Pandeglang, Banten. The system improves temperature stability, reduces manual supervision, enhances drying consistency, and increases operational efficiency compared to conventional manual drying methods.",
+    "specs": [
+      "The system was developed to improve drying efficiency",
+      "and maintain consistent drying temperatures for higher-quality wood processing",
+      "A temperature sensor continuously monitors the drying chamber",
+      "controls the gas burner through an electric solenoid valve",
+      "Configured automatic temperature control using a digital thermostat",
+      "Integrated gas burner automation with an electric solenoid valve",
+      "Implemented variable-speed blower control using an SCR controller",
+      "The system improves temperature stability",
+      "reduces manual supervision"
+    ],
+    "skills": [
+      "CAD Modeling",
+      "Composite Structure Design",
+      "SolidWorks",
+      "Product Design",
+      "Sensor Integration",
+      "Mechanical Assembly",
+      "Mechanical Engineering",
+      "Electrical Wiring",
+      "Electrical Design",
+      "Control Systems",
+      "Temperature Control",
+      "Industrial Heating Systems"
+    ],
+    "images": [
+      "automatic-wood-drying-oven-control-system/thumb.jpg",
+      "automatic-wood-drying-oven-control-system/9.jpg",
+      "automatic-wood-drying-oven-control-system/1.jpg",
+      "automatic-wood-drying-oven-control-system/2.jpg",
+      "automatic-wood-drying-oven-control-system/3.jpg",
+      "automatic-wood-drying-oven-control-system/4.jpg",
+      "automatic-wood-drying-oven-control-system/5.jpg",
+      "automatic-wood-drying-oven-control-system/6.jpg",
+      "automatic-wood-drying-oven-control-system/7.jpg",
+      "automatic-wood-drying-oven-control-system/8.jpg",
+      "automatic-wood-drying-oven-control-system/10.jpg",
+      "automatic-wood-drying-oven-control-system/11.jpg"
+    ],
+    "videos": [
+      {
+        "title": "Oven Pengering Kayu Otomatis",
+        "url": "https://youtu.be/ZhpHxQsY4-4?si=nE5TussvAcEYK0Ey"
+      },
+      {
+        "title": "PANDUAN PENGGUNAAN DAN PEDOMAN TEKNIS OVEN KAYU",
+        "url": "https://www.youtube.com/watch?v=u9sDrPg5_k4"
+      }
+    ]
   }
 ]
