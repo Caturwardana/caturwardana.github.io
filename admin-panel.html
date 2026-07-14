@@ -288,7 +288,7 @@
 
   </div> <!-- end container -->
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.1/marked.min.js" integrity="sha512-AbVlFvPWGFq2VVGTLmDRb8R1MGV0gfVYUhKFBOTyoQO6GvqQ7LOIEN7pO0VdIq0JGM5bGpGiJJW1IqB8EhMdg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.1/marked.min.js"></script>
   <script>
     let projectDirHandle = null;
     let imagePickers = [];
@@ -662,7 +662,7 @@
       const textarea = document.getElementById('fullDesc');
       const preview = document.getElementById('mdPreview');
       if (preview.style.display === 'none') {
-        preview.innerHTML = marked.parse(textarea.value || '_Tulis deskripsi dulu..._');
+        preview.innerHTML = typeof marked !== 'undefined' ? marked.parse(textarea.value || '_Tulis deskripsi dulu..._') : (textarea.value || '_Tulis deskripsi dulu..._').replace(/\n/g, '<br>');
         preview.style.display = 'block';
         textarea.style.display = 'none';
       } else {

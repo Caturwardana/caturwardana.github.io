@@ -164,7 +164,7 @@ function renderProject(project) {
 
         <div class="project-description">
             <h2>Overview</h2>
-            <p>${marked.parse(project.fullDesc || '')}</p>
+            <p>${typeof marked !== 'undefined' ? marked.parse(project.fullDesc || '') : (project.fullDesc || '').replace(/\n/g, '<br>')}</p>
         </div>
 
         ${posterHTML}
