@@ -47,6 +47,10 @@
     .tag-list { display: flex; flex-wrap: wrap; gap: 0.4rem; }
     .tag { display: inline-flex; align-items: center; gap: 0.3rem; background: #e8f4fd; color: #0097e6; padding: 0.3rem 0.6rem; border-radius: 4px; font-size: 0.85rem; }
     .tag .remove-tag { cursor: pointer; font-weight: bold; color: #e74c3c; }
+    .skill-buttons { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.5rem; }
+    .skill-btn { padding: 0.35rem 0.7rem; border-radius: 4px; font-size: 0.8rem; cursor: pointer; border: 1px solid #ddd; background: #f0f0f0; color: #555; transition: all 0.15s; }
+    .skill-btn.active { background: #27ae60; color: #fff; border-color: #27ae60; }
+    .skill-btn:hover { opacity: 0.85; }
 
     .preview-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 0.5rem; margin-top: 0.5rem; }
     .preview-grid img { width: 100%; height: 80px; object-fit: cover; border-radius: 4px; border: 1px solid #ddd; }
@@ -115,12 +119,19 @@
           </select>
         </div>
         <div class="form-group">
-          <label>Tanggal</label>
-          <input type="text" id="projectDate" placeholder="Jan 2024 - Jun 2024">
-        </div>
-        <div class="form-group">
           <label>Client</label>
           <input type="text" id="projectClient" placeholder="Universitas Gadjah Mada (UGM)">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group" style="min-width:300px;">
+          <label>Tanggal</label>
+          <div style="display:flex;gap:0.5rem;align-items:center;">
+            <input type="month" id="projectDateFrom" style="flex:1">
+            <span style="color:#888;">—</span>
+            <input type="month" id="projectDateTo" style="flex:1">
+          </div>
         </div>
       </div>
 
@@ -136,8 +147,10 @@
 
     <div class="card">
       <h2><i class="fas fa-microchip"></i> 3. Skills</h2>
+      <p style="margin-bottom:0.5rem;color:#666;font-size:0.85rem;">Klik skill untuk toggle on/off. Ambil dari semua project yang ada.</p>
+      <div id="skillButtons" class="skill-buttons"></div>
       <div class="array-input">
-        <input type="text" id="skillInput" placeholder="Contoh: CAD" onkeypress="if(event.key==='Enter')addSkill()">
+        <input type="text" id="skillInput" placeholder="Tambah skill custom..." onkeypress="if(event.key==='Enter')addSkill()">
         <button class="btn btn-primary" onclick="addSkill()">Tambah</button>
       </div>
       <div class="tag-list" id="skillList"></div>
@@ -263,6 +276,7 @@
     let thumbIndex = 0;
     let selectedPoster = null;
     let skills = [];
+    let allProjectSkills = [];
     let specs = [];
     let videos = [];
     let newsItems = [];
@@ -291,10 +305,44 @@
       const v = input.value.trim();
       if (!v || skills.includes(v)) return;
       skills.push(v);
+      if (!allProjectSkills.includes(v)) { allProjectSkills.push(v); allProjectSkills.sort(); }
       renderTags('skillList', skills, 'removeSkill');
+      renderSkillButtons();
       input.value = '';
     }
-    function removeSkill(i) { skills.splice(i,1); renderTags('skillList', skills, 'removeSkill'); }
+    function removeSkill(i) { skills.splice(i,1); renderTags('skillList', skills, 'removeSkill'); renderSkillButtons(); }
+
+    function toggleSkill(name) {
+      const idx = skills.indexOf(name);
+      if (idx >= 0) { skills.splice(idx, 1); } else { skills.push(name); }
+      renderTags('skillList', skills, 'removeSkill');
+      renderSkillButtons();
+    }
+
+    async function loadProjectSkills() {
+      if (!projectDirHandle) return;
+      try {
+        const projectsDir = await getNestedHandle(projectDirHandle, 'projects');
+        if (!projectsDir) return;
+        const jsonHandle = await projectsDir.getFileHandle('projects.json');
+        const file = await jsonHandle.getFile();
+        const projects = JSON.parse(await file.text());
+        const skillSet = new Set();
+        for (const p of projects) {
+          if (p.skills) p.skills.forEach(s => skillSet.add(s));
+        }
+        allProjectSkills = [...skillSet].sort();
+        renderSkillButtons();
+      } catch (e) { console.error('loadProjectSkills error:', e); }
+    }
+
+    function renderSkillButtons() {
+      const el = document.getElementById('skillButtons');
+      if (!allProjectSkills.length) { el.innerHTML = '<span style="color:#888;font-size:0.85rem;">Belum ada skill dari project lain.</span>'; return; }
+      el.innerHTML = allProjectSkills.map(s =>
+        `<button type="button" class="skill-btn${skills.includes(s)?' active':''}" onclick="toggleSkill('${s.replace(/'/g,"\\'")}')">${escapeHtml(s)}</button>`
+      ).join('');
+    }
 
     function addSpec() {
       const input = document.getElementById('specInput');
@@ -554,6 +602,27 @@
       return (bytes / 1048576).toFixed(2) + ' MB';
     }
 
+    const monthNames = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    function dateToMonthInput(str) {
+      if (!str) return '';
+      const parts = str.trim().split(' ');
+      if (parts.length < 2) return '';
+      const mi = monthNames.indexOf(parts[0]);
+      if (mi < 0) return '';
+      return parts[1] + '-' + String(mi + 1).padStart(2, '0');
+    }
+    function formatMonthRange(from, to) {
+      if (!from) return '';
+      const fmt = v => {
+        if (!v) return '';
+        const [y, m] = v.split('-');
+        return monthNames[parseInt(m, 10) - 1] + ' ' + y;
+      };
+      const f = fmt(from);
+      const t = fmt(to);
+      return t && t !== f ? f + ' - ' + t : f;
+    }
+
     async function compressAllImages() {
       const files = imagePickers.filter(f => f !== null);
       const results = [];
@@ -597,6 +666,7 @@
         showStatus('Folder root repo berhasil dipilih: <strong>' + projectDirHandle.name + '</strong>', 'success');
         loadExistingProjects();
         loadSkills();
+        loadProjectSkills();
         loadExperiences();
       } catch (e) {
         if (e.name !== 'AbortError') {
@@ -689,13 +759,15 @@
         document.getElementById('projectSlug').value = project.id || '';
         document.getElementById('slugPath').textContent = project.id || 'slug';
         document.getElementById('projectCategory').value = project.category || 'mechanical';
-        document.getElementById('projectDate').value = project.date || '';
+        const dateParts = (project.date || '').split(' - ');
+        document.getElementById('projectDateFrom').value = dateToMonthInput(dateParts[0] || '');
+        document.getElementById('projectDateTo').value = dateToMonthInput(dateParts[1] || dateParts[0] || '');
         document.getElementById('projectClient').value = project.client || '';
         document.getElementById('shortDesc').value = project.shortDesc || '';
         document.getElementById('fullDesc').value = project.fullDesc || '';
         document.getElementById('achievements').value = project.achievements || '';
 
-        if (project.skills) { skills = [...project.skills]; renderTags('skillList', skills, 'removeSkill'); }
+        if (project.skills) { skills = [...project.skills]; renderTags('skillList', skills, 'removeSkill'); renderSkillButtons(); }
         if (project.specs) { specs = [...project.specs]; renderTags('specList', specs, 'removeSpec'); }
         if (project.videos) { videos = [...project.videos]; renderVideos(); }
         if (project.news) { newsItems = [...project.news]; renderNews(); }
@@ -832,7 +904,7 @@
           id: slug,
           name,
           category: document.getElementById('projectCategory').value,
-          date: document.getElementById('projectDate').value.trim(),
+          date: formatMonthRange(document.getElementById('projectDateFrom').value, document.getElementById('projectDateTo').value),
           client: document.getElementById('projectClient').value.trim(),
           thumbnail: imagesArr.length > 0 ? imagesArr[0] : `${slug}/thumb.jpg`,
           shortDesc: document.getElementById('shortDesc').value.trim(),
@@ -883,6 +955,7 @@
         thumbIndex = 0;
         document.getElementById('imagePickers').innerHTML = '';
         document.getElementById('imagePreview').innerHTML = '';
+        renderSkillButtons();
       } catch (e) {
         showStatus('Error: ' + e.message, 'error');
         console.error(e);
@@ -894,7 +967,8 @@
       document.getElementById('projectSlug').value = '';
       document.getElementById('shortDesc').value = '';
       document.getElementById('fullDesc').value = '';
-      document.getElementById('projectDate').value = '';
+      document.getElementById('projectDateFrom').value = '';
+      document.getElementById('projectDateTo').value = '';
       document.getElementById('projectClient').value = '';
       document.getElementById('achievements').value = '';
       document.getElementById('posterFile').value = '';
