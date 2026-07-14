@@ -5,7 +5,7 @@
     "category": "mechanical",
     "date": "Feb 2022 - Nov 2022",
     "client": "Universitas Gadjah Mada (UGM)",
-    "thumbnail": "IB-GUN/thumb.jpg",
+    "thumbnail": "digital-artificial-insemination-gun/thumb.jpg",
     "shortDesc": "Device that detects heat cycles and pregnancy in female cows, sheep, and goats, improving the success of artificial insemination.",
     "fullDesc": "This device can detect heat cycles and pregnancy in female cows, sheep, and goats, improving the success of artificial insemination. Through a grant program in 2022, the second-generation IB-Gun (IB-G2) was developed with a high-resolution camera and onboard color LCD for accurate semen placement. It also includes a temperature sensor to monitor the reproductive health of livestock.",
     "specs": [
@@ -24,23 +24,25 @@
       "Prototyping"
     ],
     "images": [
-      "IB-GUN/thumb.jpg",
-      "IB-GUN/1.jpg",
-      "IB-GUN/2.jpg",
-      "IB-GUN/3.jpg",
-      "IB-GUN/4.jpg",
-      "IB-GUN/5.jpg",
-      "IB-GUN/6.jpg",
-      "IB-GUN/7.jpg",
-      "IB-GUN/8.jpg",
-      "IB-GUN/9.jpg",
-      "IB-GUN/10.jpg",
-      "IB-GUN/11.jpg"
+      "digital-artificial-insemination-gun/thumb.jpg",
+      "digital-artificial-insemination-gun/1.jpg",
+      "digital-artificial-insemination-gun/2.jpg",
+      "digital-artificial-insemination-gun/3.jpg",
+      "digital-artificial-insemination-gun/4.jpg",
+      "digital-artificial-insemination-gun/5.jpg",
+      "digital-artificial-insemination-gun/6.jpg",
+      "digital-artificial-insemination-gun/7.jpg",
+      "digital-artificial-insemination-gun/8.jpg",
+      "digital-artificial-insemination-gun/9.jpg",
+      "digital-artificial-insemination-gun/10.jpg",
+      "digital-artificial-insemination-gun/11.jpg",
+      "digital-artificial-insemination-gun/12.jpg",
+      "digital-artificial-insemination-gun/13.jpg"
     ],
     "resources": [
       {
-        "title": "Sertifikat HKI - Alat Inseminasi Buatan Berbasis Digital",
-        "url": "assets/images/projects/IB-GUN/Sertifikat DI ALAT INSEMINASI BUATAN BERBASIS DIGITAL.pdf",
+        "title": "Sertifikat DI ALAT INSEMINASI BUATAN BERBASIS DIGITAL",
+        "url": "assets/images/projects/digital-artificial-insemination-gun/Sertifikat DI ALAT INSEMINASI BUATAN BERBASIS DIGITAL.pdf",
         "type": "patent"
       }
     ]

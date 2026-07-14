@@ -155,6 +155,7 @@
     <div class="card">
       <h2><i class="fas fa-images"></i> 5. Gambar Project</h2>
       <p style="margin-bottom:0.5rem;color:#666;">Klik tombol di bawah untuk menambah gambar. Thumbnail otomatis dari gambar pertama.</p>
+      <p style="margin-bottom:0.5rem;color:#27ae60;font-size:0.85rem;"><i class="fas fa-compress-arrows-alt"></i> Auto-kompresi: resize max 1920px + JPEG quality 88% (semua gambar termasuk thumb).</p>
       <button class="btn btn-secondary" onclick="addImagePicker()"><i class="fas fa-plus"></i> Tambah Gambar</button>
       <div id="imagePickers"></div>
       <div class="preview-grid" id="imagePreview"></div>
@@ -163,6 +164,9 @@
     <div class="card">
       <h2><i class="fas fa-image"></i> 6. Poster (Opsional)</h2>
       <input type="file" id="posterFile" accept="image/*" onchange="previewPoster(event)">
+      <label style="display:inline-flex;align-items:center;gap:0.4rem;margin-top:0.5rem;font-size:0.9rem;color:#555;cursor:pointer;">
+        <input type="checkbox" id="posterCompress" checked> Kompresi poster (resize + JPEG 88%)
+      </label>
       <div id="posterPreview" style="margin-top:0.5rem;"></div>
     </div>
 
@@ -407,7 +411,7 @@
       if (files.length === 0) { el.innerHTML = ''; return; }
       el.innerHTML = files.map((f, i) => {
         const url = URL.createObjectURL(f);
-        return `<div><img src="${url}"><div style="font-size:0.75rem;text-align:center;word-break:break-all;">${i===0?'<b>THUMB</b> ':''}${escapeHtml(f.name)}</div></div>`;
+        return `<div><img src="${url}"><div style="font-size:0.75rem;text-align:center;word-break:break-all;">${i===0?'<b>THUMB</b> ':''}${escapeHtml(f.name)}<br><span style="color:#27ae60;">${formatBytes(f.size)}</span></div></div>`;
       }).join('');
     }
 
@@ -496,6 +500,46 @@
       const div = document.createElement('div');
       div.textContent = text;
       return div.innerHTML;
+    }
+
+    // === IMAGE COMPRESSION (Canvas API) ===
+    function compressImage(file, maxWidth = 1920, quality = 0.88) {
+      return new Promise((resolve) => {
+        if (!file.type.startsWith('image/')) { resolve(file); return; }
+        const img = new Image();
+        const url = URL.createObjectURL(file);
+        img.onload = () => {
+          let w = img.width, h = img.height;
+          if (w > maxWidth) { h = Math.round(h * maxWidth / w); w = maxWidth; }
+          const canvas = document.createElement('canvas');
+          canvas.width = w;
+          canvas.height = h;
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0, w, h);
+          canvas.toBlob((blob) => {
+            URL.revokeObjectURL(url);
+            resolve(blob && blob.size < file.size ? blob : file);
+          }, 'image/jpeg', quality);
+        };
+        img.onerror = () => { URL.revokeObjectURL(url); resolve(file); };
+        img.src = url;
+      });
+    }
+
+    function formatBytes(bytes) {
+      if (bytes < 1024) return bytes + ' B';
+      if (bytes < 1048576) return (bytes / 1024).toFixed(1) + ' KB';
+      return (bytes / 1048576).toFixed(2) + ' MB';
+    }
+
+    async function compressAllImages() {
+      const files = imagePickers.filter(f => f !== null);
+      const results = [];
+      for (const f of files) {
+        const compressed = await compressImage(f);
+        results.push({ original: f, compressed, saved: f.size - compressed.size });
+      }
+      return results;
     }
 
     // ==== FOLDER PICKER ====
@@ -667,29 +711,35 @@
         return;
       }
 
-      showStatus('Menyimpan project...', 'info');
+      showStatus('Menyimpan project... <small>(kompresi gambar berjalan)</small>', 'info');
 
       try {
         const slugDir = await getNestedHandle(projectDirHandle, `assets/images/projects/${slug}`, true);
 
-        // Save images
+        // Save images with compression
         const imagesArr = [];
         const validPickers = imagePickers.filter(f => f !== null);
+        let totalOriginal = 0, totalCompressed = 0;
 
         for (let i = 0; i < validPickers.length; i++) {
           const file = validPickers[i];
-          const ext = file.name.split('.').pop();
+          const compressed = await compressImage(file);
+          totalOriginal += file.size;
+          totalCompressed += compressed.size;
+          const ext = 'jpg';
           const fileName = i === 0 ? `thumb.${ext}` : `${i}.${ext}`;
-          await writeFileToHandle(slugDir, fileName, file);
+          await writeFileToHandle(slugDir, fileName, compressed);
           imagesArr.push(`${slug}/${fileName}`);
         }
 
-        // Save poster
+        // Save poster (compress or as-is based on checkbox)
         let poster = '';
         if (selectedPoster) {
-          const ext = selectedPoster.name.split('.').pop();
+          const doCompress = document.getElementById('posterCompress').checked;
+          const posterData = doCompress ? await compressImage(selectedPoster) : selectedPoster;
+          const ext = doCompress ? 'jpg' : selectedPoster.name.split('.').pop();
           const fileName = `poster.${ext}`;
-          await writeFileToHandle(slugDir, fileName, selectedPoster);
+          await writeFileToHandle(slugDir, fileName, posterData);
           poster = `${slug}/${fileName}`;
         }
 
@@ -759,6 +809,7 @@
         showStatus(
           `Project <strong>${escapeHtml(name)}</strong> berhasil disimpan!<br>
           <i class="fas fa-folder"></i> assets/images/projects/${slug}/ — ${imagesArr.length} gambar<br>
+          <i class="fas fa-compress-arrows-alt"></i> Kompresi: ${formatBytes(totalOriginal)} → ${formatBytes(totalCompressed)} (hemat ${totalOriginal > 0 ? Math.round((1 - totalCompressed/totalOriginal) * 100) : 0}%)<br>
           <i class="fas fa-file-code"></i> projects/projects.json — diupdate`,
           'success'
         );
