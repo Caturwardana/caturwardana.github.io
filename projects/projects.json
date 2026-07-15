@@ -771,5 +771,58 @@
         "type": "patent"
       }
     ]
+  },
+  {
+    "id": "classification-of-beverage-ingredient-aromas",
+    "name": "classification of beverage ingredient aromas",
+    "category": "automation",
+    "date": "Mar 2024 - Dec 2024",
+    "client": "Faculty of Vocational College, Universitas Gadjah Mada (UGM)",
+    "thumbnail": "classification-of-beverage-ingredient-aromas/thumb.jpg",
+    "shortDesc": "AI-powered Electronic Nose for Automatic Tea Classification using Multi-Gas Sensors and Convolutional Neural Networks (CNN).",
+    "fullDesc": "The **Tea Classification Machine** is a research prototype developed at the **Faculty of Vocational College, Universitas Gadjah Mada (UGM)** to automatically classify tea types based on their aroma profiles using an electronic nose (E-Nose) system and machine learning.\n\nThe system captures volatile organic compounds (VOCs) released by tea samples through a multi-sensor gas array and processes the acquired data using a **Convolutional Neural Network (CNN)** to identify different tea varieties. This project demonstrates the integration of mechanical design, embedded systems, sensor technology, and artificial intelligence into a compact automated classification platform.\n\n> **Status:** Research Prototype (R&D)  \n> **Institution:** Faculty of Vocational College, Universitas Gadjah Mada (UGM)\n\n---\n\n## Project Objectives\n\n- Develop a compact electronic nose (E-Nose) for tea aroma analysis.\n- Acquire gas sensor data from different tea samples.\n- Build an automated data acquisition and preprocessing system.\n- Train a machine learning model for tea classification.\n- Demonstrate the feasibility of AI-assisted quality assessment for tea products.\n\n---\n\n## System Features\n\n- Multi-gas sensor array for aroma detection\n- Automated sampling chamber\n- Raspberry Pi-based processing unit\n- Arduino-controlled sensor acquisition\n- Real-time sensor monitoring\n- Machine learning inference using CNN\n- Modular enclosure designed for research applications\n- Expandable architecture for additional sensors and tea varieties\n\n---\n\n## Hardware Components\n\n### Processing Unit\n\n- Processing Raspberry Pi\n- Sensor Data Acquisition with Microcontrollers\n\n### Gas Sensors\n\n- Array Gas Sensor (Total 6)\n\n### Mechanical System\n\n- Custom 3D Printed Components\n- Laser-cut Acrylic Enclosure\n- Sealed Aroma Sampling Chamber\n- Sensor Mounting Module\n\n---\n\n## Software Stack\n\n- Python\n- Arduino IDE\n- TensorFlow / Keras\n- OpenCV (Data Processing)\n- NumPy\n- Machine Learning (CNN)\n\n---\n\n## Development Process\n\nThe development consisted of several engineering stages:\n\n1. Mechanical CAD design\n2. Prototype fabrication using 3D printing, metal and acrylic\n3. Electronic circuit design\n4. Embedded programming (Arduino)\n5. Raspberry Pi software development\n6. Gas sensor calibration\n7. Dataset acquisition\n8. Data preprocessing\n9. CNN model training\n10. Model validation and testing\n11. System integration\n\n---\n\n## Classification Workflow\n\n```text\nTea Sample\n      │\n      ▼\n Aroma Chamber\n      │\n      ▼\n Multi-Gas Sensor Array\n      │\n      ▼\n Arduino Data Acquisition\n      │\n      ▼\n Raspberry Pi\n      │\n      ▼\n Data Preprocessing\n      │\n      ▼\n CNN Machine Learning Model\n      │\n      ▼\n Predicted Tea Type\n```\n\n---\n\n## Research Results\n\nThe prototype successfully demonstrated that different tea varieties produce distinguishable gas sensor response patterns during aroma measurement.\n\nExperimental evaluation showed that:\n\n- Black tea and white tea generated different VOC response characteristics.\n- Sensor responses varied in both concentration levels and temporal behavior.\n- The collected sensor data could be processed using a Convolutional Neural Network (CNN) for automatic classification.\n- The initial research prototype achieved a classification accuracy of approximately **50%**, providing a baseline for future dataset expansion, sensor optimization, and model improvement.\n\n---\n\n## Engineering Contributions\n\nThis project involved the end-to-end development of the prototype, including:\n\n- Mechanical system design\n- CAD modeling\n- 3D printed prototype fabrication\n- Acrylic enclosure fabrication\n- Electronic hardware integration\n- Sensor interface development\n- Embedded system programming\n- Raspberry Pi software development\n- Data acquisition pipeline\n- Machine learning implementation\n- System integration and validation\n\n---\n\n## Potential Applications\n\n- Tea quality inspection\n- Tea production automation\n- Food and beverage quality control\n- Electronic nose (E-Nose) research\n- Agricultural product classification\n- Smart quality assurance systems\n- AI-assisted aroma analysis\n\n---\n\n## Skills\n\n`Mechanical Design` • `CAD` • `3D Printing` • `Embedded Systems` • `Arduino` • `Raspberry Pi` • `Python` • `Machine Learning` • `CNN` • `TensorFlow` • `Sensor Integration` • `Gas Sensors` • `Electronic Nose (E-Nose)` • `Electronics Design` • `Rapid Prototyping` • `Research & Development` • `Data Acquisition` • `Artificial Intelligence`",
+    "specs": [
+      "Multi-Gas Sensor Array",
+      "Embedded Data Acquisition System",
+      "Raspberry Pi + Arduino Integration",
+      "CNN-Based Classification Algorithm",
+      "Real-Time Sensor Data Processing",
+      "Automated Aroma Sampling Chamber",
+      "Custom Electronics Design",
+      "Modular and Scalable Architecture",
+      "Electronic Nose (E-Nose) Technology"
+    ],
+    "skills": [
+      "Mechanical Engineering",
+      "Mechanical Design",
+      "Microprocessor Programming",
+      "Mechanical Assembly",
+      "Electrical Wiring",
+      "Electrical Design",
+      "Sensor Integration",
+      "Prototyping",
+      "3D Printing",
+      "Automation",
+      "CAD",
+      "SolidWorks"
+    ],
+    "images": [
+      "classification-of-beverage-ingredient-aromas/thumb.jpg",
+      "classification-of-beverage-ingredient-aromas/1.jpg",
+      "classification-of-beverage-ingredient-aromas/2.jpg",
+      "classification-of-beverage-ingredient-aromas/3.jpg",
+      "classification-of-beverage-ingredient-aromas/4.jpg",
+      "classification-of-beverage-ingredient-aromas/5.jpg",
+      "classification-of-beverage-ingredient-aromas/6.jpg",
+      "classification-of-beverage-ingredient-aromas/7.jpg",
+      "classification-of-beverage-ingredient-aromas/8.jpg"
+    ],
+    "resources": [
+      {
+        "title": "https://pdki-indonesia.dgip.go.id:/link/4130303230323530353830317c6469",
+        "url": "https://pdki-indonesia.dgip.go.id:/link/4130303230323530353830317c6469",
+        "type": "patent"
+      }
+    ]
   }
 ]

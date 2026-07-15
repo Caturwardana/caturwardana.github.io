@@ -823,8 +823,8 @@
         const project = projects.find(p => p.id === slug);
         if (!project) { showStatus('Project tidak ditemukan!', 'error'); return; }
 
-        originalSlug = slug;
         resetForm();
+        originalSlug = slug;
         imagePickers = [];
         thumbIndex = 0;
         document.getElementById('imagePickers').innerHTML = '';
