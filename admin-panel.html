@@ -571,7 +571,7 @@
       const urlInput = document.createElement('input');
       urlInput.className = 'res-url';
       urlInput.placeholder = 'URL (kosongkan jika upload file)';
-      if (data?.url && !data.url.startsWith('assets/')) urlInput.value = data.url;
+      if (data?.url) urlInput.value = data.url;
 
       const typeSelect = document.createElement('select');
       typeSelect.className = 'res-type';

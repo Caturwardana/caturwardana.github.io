@@ -41,6 +41,11 @@
     ],
     "resources": [
       {
+        "title": "PDKI - Sertifikat DI ALAT INSEMINASI BUATAN BERBASIS DIGITAL",
+        "url": "https://pdki-indonesia.dgip.go.id:/link/4130303230323230313939327c6469",
+        "type": "patent"
+      },
+      {
         "title": "Sertifikat DI ALAT INSEMINASI BUATAN BERBASIS DIGITAL",
         "url": "assets/images/projects/digital-artificial-insemination-gun/Sertifikat DI ALAT INSEMINASI BUATAN BERBASIS DIGITAL.pdf",
         "type": "patent"
@@ -123,10 +128,9 @@
     "category": "mechanical",
     "date": "Feb 2021 - Sep 2021",
     "client": "UMKM Sinar Abadi Batik Kulon Progo",
-    "thumbnail": "batik-dryer/thumb.jpg",
+    "thumbnail": "alat-pengering-batik/thumb.jpg",
     "shortDesc": "Drying chamber for batik fabric using water heat converted to hot air, centrally integrated and automatically controlled.",
     "fullDesc": "### About\n\nThe batik drying chamber is a specially designed room for drying batik fabric. It utilizes a system that converts **water heat into hot air**, which is then circulated inside the chamber.\n\n### How It Works\n\n- Average temperature inside the drying chamber reaches **42°C**, ensuring quick and efficient drying of batik fabric\n- The system is centrally integrated and can be controlled automatically\n\n### Impact\n\nThis innovation aims to provide a solution for **UMKM Sinar Abadi Batik**, allowing them to shorten drying time, maintain production stability, and preserve the quality of the batik fabric.",
-    "poster": "batik-dryer/POSTER CaturWardana_UniversitasGadjahMada_PKM-PI.jpg",
     "specs": [
       "Water heat to hot air conversion system",
       "Average temperature 42°C",
@@ -141,13 +145,13 @@
       "Product Design"
     ],
     "images": [
-      "batik-dryer/thumb.jpg",
-      "batik-dryer/1.jpg",
-      "batik-dryer/2.jpg",
-      "batik-dryer/3.jpg",
-      "batik-dryer/4.jpg",
-      "batik-dryer/5.jpg",
-      "batik-dryer/6.jpg"
+      "alat-pengering-batik/thumb.jpg",
+      "alat-pengering-batik/1.jpg",
+      "alat-pengering-batik/2.jpg",
+      "alat-pengering-batik/3.jpg",
+      "alat-pengering-batik/4.jpg",
+      "alat-pengering-batik/5.jpg",
+      "alat-pengering-batik/6.jpg"
     ],
     "videos": [
       {
@@ -161,6 +165,33 @@
       {
         "title": "Video Penjelasan Alat PKM PI & Testimonial Mitra",
         "url": "https://youtu.be/qRzjm3ugzAw"
+      }
+    ],
+    "resources": [
+      {
+        "title": "Jurnal - Penerapan Alat Pengering Batik",
+        "url": "https://www.researchgate.net/publication/360001459_Penerapan_Alat_Pengering_Batik_dengan_Memanfaatkan_Kalor_Tungku_Pelorotan_guna_Meningkatkan_Efesiensi_Produksi_sebagai_Antisipasi_Cuaca_yang_Tidak_Menentu",
+        "type": "journal"
+      },
+      {
+        "title": "Poster Publication - ResearchGate",
+        "url": "https://www.researchgate.net/publication/360001463_Catur_Wardana_Poster_Ruangan_Pegering_Batik",
+        "type": "journal"
+      },
+      {
+        "title": "PDKI - Alat Pengering Batik",
+        "url": "https://pdki-indonesia.dgip.go.id:/link/4130303230323130323535327c6469",
+        "type": "patent"
+      },
+      {
+        "title": "Sertifikat - Alat Pengering Batik",
+        "url": "assets/images/projects/alat-pengering-batik/sertifikat DI ALAT PENGERING BATIK 24 Maret 2022.pdf",
+        "type": "patent"
+      },
+      {
+        "title": "3rd Place in PKM - Application of Science and Technology PIMNAS 34",
+        "url": "assets/images/projects/alat-pengering-batik/SERTIF PIMNAS.pdf",
+        "type": "documentation"
       }
     ],
     "news": [
@@ -181,28 +212,6 @@
         "url": "https://jogja.idntimes.com/news/jogja/permudah-perajin-mahasiswa-ugm-bikin-pengering-kain-batik-otomatis-00-jq5qx-vw562t"
       }
     ],
-    "resources": [
-      {
-        "title": "Jurnal - Penerapan Alat Pengering Batik",
-        "url": "https://www.researchgate.net/publication/360001459_Penerapan_Alat_Pengering_Batik_dengan_Memanfaatkan_Kalor_Tungku_Pelorotan_guna_Meningkatkan_Efesiensi_Produksi_sebagai_Antisipasi_Cuaca_yang_Tidak_Menentu",
-        "type": "journal"
-      },
-      {
-        "title": "Poster Publication - ResearchGate",
-        "url": "https://www.researchgate.net/publication/360001463_Catur_Wardana_Poster_Ruangan_Pegering_Batik",
-        "type": "journal"
-      },
-      {
-        "title": "Sertifikat DI - Alat Pengering Batik (24 Maret 2022)",
-        "url": "assets/images/projects/batik-dryer/sertifikat DI ALAT PENGERING BATIK 24 Maret 2022.pdf",
-        "type": "patent"
-      },
-      {
-        "title": "Sertifikat Juara PIMNAS - PKM Pi Alat Pengering Batik",
-        "url": "assets/images/projects/batik-dryer/SERTIF PIMNAS.pdf",
-        "type": "documentation"
-      }
-    ],
     "achievements": "3rd Place in PKM - Application of Science and Technology PIMNAS 34"
   },
   {
@@ -214,7 +223,6 @@
     "thumbnail": "smart-leveling/thumb.jpg",
     "shortDesc": "Robot utilizing inertia sensors and mecanum-driven wheels to detect and measure floor surface inclination.",
     "fullDesc": "### About\n\nTim mahasiswa dari Sekolah Vokasi UGM berhasil menciptakan robot pintar pemindai dan pengukur kemiringan permukaan lantai dengan teknologi **sensor inersia** dan **mechanum-driven wheel** yang mampu bergerak secara **3-DOF** (Degree of Freedom).\n\n### Function\n\nRobot yang dinamakan Smart Leveling dapat digunakan untuk mempersingkat waktu pekerjaan pengecekan kerataan lantai keramik tanpa mengurangi kualitas pekerjaan sehingga mengurangi risiko terjadinya kerugian pemilik proyek maupun pelaksana proyek.\n\n### Achievement\n\nRobot canggih ini merupakan salah satu produk unggulan dari **Sekolah Vokasi UGM** yang diikutsertakan dalam kompetisi **Program Kreativitas Mahasiswa - Karya Inovatif (PKM-KI)** dan mendapat pendanaan riset dari Dirjen Kemendikbud Ristek RI.",
-    "poster": "smart-leveling/poster.jpg",
     "specs": [
       "Inertia Measurement Unit (IMU) sensors",
       "Mecanum-driven wheels",
@@ -251,6 +259,28 @@
         "url": "https://youtu.be/5NCpB_3Ww_8"
       }
     ],
+    "resources": [
+      {
+        "title": "Jurnal - Smart Leveling Pendeteksi Kemiringan Permukaan Lantai Keramik",
+        "url": "https://www.researchgate.net/publication/369912763_Smart_Leveling_Pendeteksi_Kemiringan_Permukaan_Lantai_Keramik_Berbasis_Sensor_Inertia_Measurement_Unit_dengan_Mechanum-Driven_Technology",
+        "type": "journal"
+      },
+      {
+        "title": "Poster Publication - PIMNAS 34 PKM-KI",
+        "url": "https://www.researchgate.net/publication/369912873_Naufal_Rashad_Aryaputra_Poster_Smart_Leveling_for_PIMNAS_34_PKM-KI",
+        "type": "journal"
+      },
+      {
+        "title": "Sertifikat HKI - Alat Pendeteksi Kerataan Lantai Pintar",
+        "url": "assets/images/projects/smart-leveling/sertifikat ALAT PENDETEKSI KERATAAN LANTAI PINTAR.pdf",
+        "type": "patent"
+      },
+      {
+        "title": "Alat Pendeteksi Kerataan Lantai Pintar",
+        "url": "https://pdki-indonesia.dgip.go.id:/link/4130303230323130323538377c6469",
+        "type": "patent"
+      }
+    ],
     "news": [
       {
         "title": "UGM - Mahasiswa UGM Ciptakan Robot Pengukur Kemiringan Lantai",
@@ -273,23 +303,6 @@
         "url": "https://edukasi.sindonews.com/read/529310/211/inovasi-keren-mahasiswa-ugm-buat-robot-pengukur-kemiringan-lantai-1630552172"
       }
     ],
-    "resources": [
-      {
-        "title": "Jurnal - Smart Leveling Pendeteksi Kemiringan Permukaan Lantai Keramik",
-        "url": "https://www.researchgate.net/publication/369912763_Smart_Leveling_Pendeteksi_Kemiringan_Permukaan_Lantai_Keramik_Berbasis_Sensor_Inertia_Measurement_Unit_dengan_Mechanum-Driven_Technology",
-        "type": "journal"
-      },
-      {
-        "title": "Poster Publication - PIMNAS 34 PKM-KI",
-        "url": "https://www.researchgate.net/publication/369912873_Naufal_Rashad_Aryaputra_Poster_Smart_Leveling_for_PIMNAS_34_PKM-KI",
-        "type": "journal"
-      },
-      {
-        "title": "Sertifikat HKI - Alat Pendeteksi Kerataan Lantai Pintar",
-        "url": "assets/images/projects/smart-leveling/sertifikat ALAT PENDETEKSI KERATAAN LANTAI PINTAR.pdf",
-        "type": "patent"
-      }
-    ],
     "achievements": "PKM-KI Pendanaan Riset - Dirjen Kemendikbud Ristek RI"
   },
   {
@@ -298,7 +311,7 @@
     "category": "mechanical",
     "date": "Sep 2023 - Mar 2024",
     "client": "Universitas Gadjah Mada (UGM)",
-    "thumbnail": "kandang-ventilasi/1.jpg",
+    "thumbnail": "kandang-hewan-ventilasi/thumb.jpg",
     "shortDesc": "Individually Ventilated Cage (IVC) - Sistem kandang khusus hewan laboratorium dengan ventilasi udara terpisah.",
     "fullDesc": "### About\n\n**Kandang Hewan Percobaan dengan Ventilasi Individual (Individually Ventilated Cage/IVC)** merupakan sistem pemeliharaan hewan laboratorium yang dilengkapi ventilasi udara terpisah pada setiap kandang.\n\n### Airflow System\n\nUdara bersih disuplai melalui sistem **Air Handling Unit (AHU)** dan disaring menggunakan **HEPA filter** sebelum didistribusikan ke masing-masing kandang.\n\n### Benefits\n\n- Menjaga hewan tetap bebas dari kontaminasi mikroorganisme\n- Mencegah infeksi silang antar kandang\n- Memastikan kondisi lingkungan yang stabil sehingga menghasilkan data penelitian yang akurat, konsisten, dan dapat dipertanggungjawabkan\n\n### Application\n\nIVC banyak digunakan pada fasilitas penelitian biomedis, farmasi, dan laboratorium yang memelihara hewan dengan standar **Specific Pathogen Free (SPF)**.",
     "specs": [
@@ -319,18 +332,18 @@
       "HEPA Filtration"
     ],
     "images": [
-      "kandang-ventilasi/1.jpg",
-      "kandang-ventilasi/2.jpg",
-      "kandang-ventilasi/3.jpg",
-      "kandang-ventilasi/4.jpg",
-      "kandang-ventilasi/5.jpg",
-      "kandang-ventilasi/6.jpg",
-      "kandang-ventilasi/7.jpg",
-      "kandang-ventilasi/8.jpg",
-      "kandang-ventilasi/9.jpg",
-      "kandang-ventilasi/10.jpg",
-      "kandang-ventilasi/11.jpg",
-      "kandang-ventilasi/12.jpg"
+      "kandang-hewan-ventilasi/thumb.jpg",
+      "kandang-hewan-ventilasi/1.jpg",
+      "kandang-hewan-ventilasi/2.jpg",
+      "kandang-hewan-ventilasi/3.jpg",
+      "kandang-hewan-ventilasi/4.jpg",
+      "kandang-hewan-ventilasi/5.jpg",
+      "kandang-hewan-ventilasi/6.jpg",
+      "kandang-hewan-ventilasi/7.jpg",
+      "kandang-hewan-ventilasi/8.jpg",
+      "kandang-hewan-ventilasi/9.jpg",
+      "kandang-hewan-ventilasi/10.jpg",
+      "kandang-hewan-ventilasi/11.jpg"
     ],
     "resources": [
       {
@@ -342,6 +355,16 @@
         "title": "Sertifikat DI - Kandang Hewan Percobaan Dilengkapi Filter Udara",
         "url": "assets/images/projects/kandang-ventilasi/IDD000074886_Kandang Hewan Percobaan Dilengkapi Filter Udara.pdf",
         "type": "patent"
+      },
+      {
+        "title": "PDKI - Katup Saluran Udara Pengunci",
+        "url": "https://pdki-indonesia.dgip.go.id:/link/4130303230323430343139397c6469",
+        "type": "patent"
+      },
+      {
+        "title": "PDKI - Kandang Hewan Percobaan Dilengkapi Filter Udara",
+        "url": "https://pdki-indonesia.dgip.go.id:/link/4130303230323430343238367c6469",
+        "type": "patent"
       }
     ]
   },
@@ -351,7 +374,7 @@
     "category": "mechanical",
     "date": "Sep 2023 - Feb 2024",
     "client": "Universitas Gadjah Mada (UGM)",
-    "thumbnail": "kandang-filter/thumb.jpg",
+    "thumbnail": "kandang-hewan-filter/thumb.jpg",
     "shortDesc": "IVC Rack System - Sistem rak kandang hewan laboratorium dengan HEPA filter untuk udara bersih.",
     "fullDesc": "### About\n\n**Individually Ventilated Cage (IVC)** merupakan sistem kandang khusus untuk hewan laboratorium (tikus, mencit, hamster, dll.) yang setiap kandangnya memiliki aliran udara bersih sendiri, sehingga antar kandang tidak saling mencemari.\n\n### HEPA Filtration\n\nBerbeda dengan kandang biasa yang udara di dalam rak bercampur, pada IVC setiap kandang mendapatkan suplai udara yang telah disaring menggunakan **HEPA Filter**.\n\n> HEPA mampu menyaring sekitar **99,97%** partikel berukuran 0,3 mikron, sehingga bakteri, spora jamur, debu, dan sebagian besar aerosol biologis tertahan.",
     "specs": [
@@ -372,17 +395,22 @@
       "HVAC"
     ],
     "images": [
-      "kandang-filter/thumb.jpg",
-      "kandang-filter/1.jpg",
-      "kandang-filter/2.jpg",
-      "kandang-filter/3.jpg",
-      "kandang-filter/4.jpg",
-      "kandang-filter/5.jpg"
+      "kandang-hewan-filter/thumb.jpg",
+      "kandang-hewan-filter/1.jpg",
+      "kandang-hewan-filter/2.jpg",
+      "kandang-hewan-filter/3.jpg",
+      "kandang-hewan-filter/4.jpg",
+      "kandang-hewan-filter/5.jpg"
     ],
     "resources": [
       {
         "title": "Sertifikat DI - Kandang Hewan Percobaan dengan Ventilasi Individu",
         "url": "assets/images/projects/kandang-filter/IDD000075957_Kandang Hewan Percobaan dengan Ventilasi Individu.pdf",
+        "type": "patent"
+      },
+      {
+        "title": "PDKI - Kandang Hewan Percobaan dengan Ventilasi Individu",
+        "url": "https://pdki-indonesia.dgip.go.id:/link/4130303230323430343331367c6469",
         "type": "patent"
       }
     ]
@@ -393,7 +421,7 @@
     "category": "automation",
     "date": "Dec 2023 - Feb 2024",
     "client": "Universitas Gadjah Mada (UGM)",
-    "thumbnail": "dosing-irigasi/thumb.jpg",
+    "thumbnail": "mesin-dosing-irigasi/thumb.jpg",
     "shortDesc": "Automatic dosing and irrigation machine to control mixing of plant nutrients and watering times in greenhouse.",
     "fullDesc": "### About\n\nPerangkat untuk mengontrol pencampuran nutrisi tanaman dan waktu penyiraman pada green house.\n\n### How It Works\n\nSistem ini menggunakan sensor untuk memantau kondisi tanaman dan mengatur **dosis nutrisi** serta **jadwal irigasi** secara otomatis, meningkatkan efisiensi dan produktivitas pertanian.",
     "specs": [
@@ -411,18 +439,17 @@
       "Programming"
     ],
     "images": [
-      "dosing-irigasi/thumb.jpg",
-      "dosing-irigasi/1.jpg",
-      "dosing-irigasi/2.jpg",
-      "dosing-irigasi/3.jpg",
-      "dosing-irigasi/4.jpg",
-      "dosing-irigasi/5.jpg",
-      "dosing-irigasi/6.jpg",
-      "dosing-irigasi/7.jpg",
-      "dosing-irigasi/8.jpg",
-      "dosing-irigasi/9.jpg",
-      "dosing-irigasi/10.jpg",
-      "dosing-irigasi/11.jpg"
+      "mesin-dosing-irigasi/thumb.jpg",
+      "mesin-dosing-irigasi/1.jpg",
+      "mesin-dosing-irigasi/2.jpg",
+      "mesin-dosing-irigasi/3.jpg",
+      "mesin-dosing-irigasi/4.jpg",
+      "mesin-dosing-irigasi/5.jpg",
+      "mesin-dosing-irigasi/6.jpg",
+      "mesin-dosing-irigasi/7.jpg",
+      "mesin-dosing-irigasi/8.jpg",
+      "mesin-dosing-irigasi/9.jpg",
+      "mesin-dosing-irigasi/10.jpg"
     ],
     "resources": [
       {
@@ -433,6 +460,11 @@
       {
         "title": "Sertifikat HKI - Mesin Dosing dan Irigasi Otomatis",
         "url": "assets/images/projects/dosing-irigasi/IDD000071849_Mesin Dosing dan Irigasi Otomatis.pdf",
+        "type": "patent"
+      },
+      {
+        "title": "PDKI - Mesin Dosing dan Irigasi Otomatis",
+        "url": "https://pdki-indonesia.dgip.go.id:/link/4130303230323430303237307c6469",
         "type": "patent"
       }
     ]
