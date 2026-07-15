@@ -35,7 +35,7 @@ function renderExperiences(experiences) {
 
     timeline.innerHTML = experiences.map(exp => `
         <div class="container ${exp.side || 'right'}">
-            <div class="content">
+            <div class="content tilt-card">
                 <div class="tag">
                     <h2>${escapeHtml(exp.company)}</h2>
                 </div>
@@ -50,6 +50,13 @@ function renderExperiences(experiences) {
             </div>
         </div>
     `).join('');
+
+    VanillaTilt.init(document.querySelectorAll('.tilt-card'), {
+        max: 10,
+        speed: 400,
+        glare: true,
+        "max-glare": 0.2
+    });
 }
 
 function escapeHtml(text) {
@@ -63,7 +70,7 @@ const srtop = ScrollReveal({
     origin: 'top',
     distance: '80px',
     duration: 1000,
-    reset: true
+    reset: false
 });
 
 /* SCROLL EXPERIENCE */

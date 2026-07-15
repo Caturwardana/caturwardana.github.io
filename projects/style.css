@@ -196,13 +196,29 @@ header .navbar ul li a:hover{
   color: #000;
 }
 .work .box-container{
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap:1.5rem !important;
+  margin: 2rem auto !important;
+  justify-content: center !important;
+  max-width: 1200px;
+}
+.work .grid-item {
+  position: relative !important;
+  left: auto !important;
+  top: auto !important;
+  flex: 0 0 calc(33.333% - 1rem);
+  min-width: 300px;
+  max-width: 380px;
   display: flex;
-  flex-wrap: wrap;
-  gap:1.5rem;
-  margin: 2rem;
+  justify-content: center;
+}
+.work .grid-item {
+  display: flex;
+  justify-content: center;
 }
 .work .box-container .box{
-  flex:1 1 30rem;
+  flex: 0 0 360px;
   border-radius: .5rem;
   box-shadow: 0 .7rem 1rem rgba(0,0,0,.3);
   position: relative;
@@ -276,6 +292,7 @@ header .navbar ul li a:hover{
   }
   .work .box-container{
     margin: 0rem;
+    justify-content: center;
   }
   .work .box-container .grid-item .box{
     width: 95% !important;

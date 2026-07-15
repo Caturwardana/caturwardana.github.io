@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const basePath = footerPlaceholder.getAttribute('data-base') || '.';
 
     footerPlaceholder.innerHTML = `
-<section class="footer">
+<footer class="footer">
   <div class="box-container">
       <div class="box">
           <h3>Catur's Portfolio</h3>
@@ -35,6 +35,6 @@ document.addEventListener('DOMContentLoaded', function () {
   </div>
 
   <h1 class="credit"><a href="https://www.linkedin.com/in/caturwardana"> catur wardana</a></h1>
-</section>
+</footer>
 `;
 });

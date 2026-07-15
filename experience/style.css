@@ -211,27 +211,27 @@ header .navbar ul li a:hover{
   left: 50%;
 }
 /* arrows pointing right */
-.experience .left::before {
+.experience .left .content::before {
   content: " ";
   height: 0;
   position: absolute;
   top: 22px;
   width: 0;
   z-index: 1;
-  right: 30px;
+  right: -10px;
   border: medium solid #f68c09;
   border-width: 10px 0 10px 10px;
   border-color: transparent transparent transparent #f68c09;
 }
 /* arrows pointing left  */
-.experience .right::before {
+.experience .right .content::before {
   content: " ";
   height: 0;
   position: absolute;
   top: 22px;
   width: 0;
   z-index: 1;
-  left: 30px;
+  left: -10px;
   border: medium solid #f68c09;
   border-width: 10px 10px 10px 0;
   border-color: transparent #f68c09 transparent transparent;
@@ -243,6 +243,8 @@ header .navbar ul li a:hover{
   background-color: #f68c09;
   position: relative;
   border-radius: 6px;
+  transform-style: preserve-3d;
+  transform: perspective(1000px);
 }
 .experience .content .tag{
   font-size: 1.3rem;
@@ -251,7 +253,7 @@ header .navbar ul li a:hover{
 }
 .experience .content .desc{
   margin-left: 1.5rem;
-  padding-bottom: 1rem;
+  padding: 1rem 1.5rem 1.5rem;
 }
 .experience .content .desc h3{
   font-size: 1.5rem;
@@ -259,6 +261,16 @@ header .navbar ul li a:hover{
 }
 .experience .content .desc p{
   font-size: 1.2rem;
+}
+.experience .content .desc .experience-list {
+  padding-left: 2rem;
+  margin: 0.5rem 0;
+}
+.experience .content .desc .experience-list li {
+  font-size: 1.2rem;
+  color: #333;
+  padding: 0.2rem 0;
+  text-transform: none;
 }
 /* view all button */
 .morebtn{
@@ -304,8 +316,8 @@ header .navbar ul li a:hover{
   padding-left: 70px;
   padding-right: 25px;
   }
-  .experience .container::before {
-  left: 60px;
+  .experience .container .content::before {
+  left: -10px;
   border: medium solid #f68c09;
   border-width: 10px 10px 10px 0;
   border-color: transparent #f68c09 transparent transparent;

@@ -113,11 +113,16 @@ function showExperience(experiences) {
     }
 }
 
-function showProjects(projects) {
-    let projectsContainer = document.querySelector("#work .box-container");
-    let projectHTML = "";
-    projects.slice(0, 6).forEach(project => {
-        projectHTML += `
+function shuffleArray(arr) {
+    for (let i = arr.length - 1; i > 0; i--) {
+        let j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+}
+
+function renderProjectCards(projects) {
+    return projects.slice(0, 6).map(project => `
         <div class="box tilt">
       <img draggable="false" src="./assets/images/projects/${project.thumbnail}" alt="project" onerror="this.src='./assets/images/placeholder.png'" />
       <div class="content">
@@ -132,13 +137,48 @@ function showProjects(projects) {
         </div>
       </div>
     </div>`
-    });
-    projectsContainer.innerHTML = projectHTML;
+    ).join('');
+}
 
-    // <!-- tilt js effect starts -->
-    VanillaTilt.init(document.querySelectorAll(".tilt"), {
-        max: 15,
-    });
+function showProjects(projects) {
+    let projectsContainer = document.querySelector("#work .box-container");
+    let allProjects = projects.slice();
+    let shown = shuffleArray(allProjects.slice(0, 6));
+    let queue = allProjects.slice(6);
+    shuffleArray(queue);
+    let currentOrder = shown.slice();
+    projectsContainer.innerHTML = renderProjectCards(currentOrder);
+
+    let swapIdx = 0;
+    function scheduleSwap() {
+        let delay = 1500 + Math.random() * 500;
+        setTimeout(() => {
+            if (!queue.length) {
+                queue = shuffleArray(allProjects.slice());
+                queue = queue.filter(p => !currentOrder.includes(p));
+            }
+            let newProject = queue.shift();
+            let oldProject = currentOrder[swapIdx];
+            currentOrder[swapIdx] = newProject;
+            queue.push(oldProject);
+
+            let allBoxes = projectsContainer.querySelectorAll(".box");
+            let box = allBoxes[swapIdx];
+            if (box) {
+                box.style.transition = "opacity 0.6s ease";
+                box.style.opacity = "0";
+                setTimeout(() => {
+                    projectsContainer.innerHTML = renderProjectCards(currentOrder);
+                    VanillaTilt.init(document.querySelectorAll(".tilt"), { max: 15 });
+                }, 300);
+            }
+            swapIdx = (swapIdx + 1) % currentOrder.length;
+            scheduleSwap();
+        }, delay);
+    }
+    scheduleSwap();
+
+    VanillaTilt.init(document.querySelectorAll(".tilt"), { max: 15 });
     // <!-- tilt js effect ends -->
 
     /* ===== SCROLL REVEAL ANIMATION ===== */
